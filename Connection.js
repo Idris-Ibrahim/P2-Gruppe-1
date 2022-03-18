@@ -13,7 +13,7 @@ const connection = mysql.createConnection({
     database: "store",  
     connectionLimit: 10  
 });
-
+//connection er skabt via objektet connection som tidligere defineret.
 connection.connect(function(err){
     if (err) throw err;
     console.log('CONNECTED');
