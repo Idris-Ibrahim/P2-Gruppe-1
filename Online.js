@@ -22,6 +22,6 @@ connection.connect(function(err){
 });*/
 
 //Bruger object til at sende query til Databasen
-connection.query('SELECT * FROM customers;', (err, res)=>{
+connection.query('SELECT * FROM kalender;', (err, res)=>{
         console.log(res);    
     });
