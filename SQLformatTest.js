@@ -43,7 +43,7 @@ connection.query('SELECT * FROM kalender;', (err, res)=>{
     ALL = res;
 });
 */
-connection.query('SELECT id FROM kalender WHERE id = 1;', (err, res)=>{
+connection.query(`SELECT id FROM kalender WHERE id ${brugerinput};`, (err, res)=>{
     if (err) throw err;
     //console.log(res);
     id = res;
