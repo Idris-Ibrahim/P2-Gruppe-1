@@ -31,7 +31,7 @@ If successful, the program will log "Connected" to console */
 //^unused code
 
 //Bruger object til at sende query til Databasen
-connection.query('SELECT * FROM kalender;', (err, res)=>{
+connection.query('call EventMan.Vis();', (err, res)=>{
         if (err) throw err;
         console.log(res);
     });
