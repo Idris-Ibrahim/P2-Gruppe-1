@@ -24,16 +24,17 @@ app.listen(port, ()=>{
     console.log(`port open at Localhost:${port}`);
 });
 
-app.get('/', function(req, res){
+app.get('/', (req, res)=>{
     res.send('main page');
 });
 
-connection.query('SELECT * FROM kalender;', (err, res)=>{
+connection.query('SELECT dato FROM kalender;', (err, res)=>{
     if (err) throw err;
     console.log(res);
     response = res;
 });
 
-app.get('/kalender', function (req, res){
+app.get('/kalender', (req, res)=>{
     res.send(response);
+
 });
