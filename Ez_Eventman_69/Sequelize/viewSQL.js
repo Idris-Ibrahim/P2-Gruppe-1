@@ -2,6 +2,7 @@ const sequelize = require("./Sequelize");
 
 const Events = require("./EventmanSequlize");
 
+//force erstatter forige data:
 sequelize
 .sync(/*{force:true}*/)
 .then((result)=>{
