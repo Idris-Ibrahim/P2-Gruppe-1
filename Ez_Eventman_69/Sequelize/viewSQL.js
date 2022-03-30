@@ -3,9 +3,10 @@ const sequelize = require("./Sequelize");
 const Events = require("./EventmanSequlize");
 
 sequelize
-.sync()
+.sync(/*{force:true}*/)
 .then((result)=>{
-    Events.create({orgname:"Scrumkluben",event_name: "Stadning_scrum",lokation: "AAU",tid: "12:30",dato:"2023-02-02"});
+    //dato skal være: (år-måned-dag):
+    Events.create({orgname:"Skatklubben",event_name: "Skakspil",lokation: "AAU",tid: "14:00",dato:"2023-02-23"});
     console.log(result);
 })
 
