@@ -1,0 +1,10 @@
+
+10.92.0.104
+P2gruppeM$ql
+
+10.92.0.104
+P2grupper#mote
+
+Rocky:
+P2gruppeFrontend
+P2gruppeBackend
