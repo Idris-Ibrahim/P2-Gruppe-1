@@ -18,11 +18,11 @@ const Events = connection.define("Events", {
     },
     event_type:{
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
     },
     beskrivelse:{
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
     },
     lokation:{
         type: Sequelize.STRING,
