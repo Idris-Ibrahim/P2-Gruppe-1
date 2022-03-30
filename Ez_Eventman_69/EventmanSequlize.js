@@ -8,7 +8,7 @@ const Events = connect.define("Events", {
         allowNull: false,
         primaryKey: true,
     },
-    ìd_organisationer:{
+    orgname:{
         type: Sequelize.STRING,
         allowNull: false,
     },
