@@ -7,7 +7,7 @@ sequelize
 .sync(/*{force:true}*/)
 .then((result)=>{
     //dato skal være: (år-måned-dag):
-    Events.create({orgname:"Skatklubben",event_name: "Skakspil",lokation: "AAU",tid: "14:00",dato:"2023-02-23"});
+    Events.create({orgname:"Scrumklubben",event_name: "Scrummespil",lokation: "Scrumkammeret på AAU",tid: "13:34",dato:"2023-04-14"});
     console.log(result);
 })
 
