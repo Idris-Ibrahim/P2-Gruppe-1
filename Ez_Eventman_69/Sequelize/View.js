@@ -1,23 +1,17 @@
-const sequelize = require("./SequelizeDB");
+const sequelize = require("./Sequelize");
 
 const Events = require("./EventmanSequlize");
 
-
-//force erstatter forige data:
 sequelize
-.sync(/*{force:true}*/)
-.then(Events => {
-  Eventsid = Events.id;
-  
-}) 
-
-.then(Events => {
-  
-  return Events.findAll();
-}) 
-
-//catcher en error hvis der opstår en
-.catch ((err) =>{
-    console.log(err);
+Events.sync({ alter: true }).then(()  => {
+    return Events.findAll();
+}).then((data) => {
+    data.forEach((element) => {
+        console.log(element.toJSON());
+    })
 })
+    .catch((err) => {
+        console.log(err)
+    });
+
 

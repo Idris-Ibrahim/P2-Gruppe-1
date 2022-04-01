@@ -1,9 +1,9 @@
-const sequelize = require("./SequelizeDB");
+const sequelize = require("./Sequelize");
 
 const Events = require("./EventmanSequlize");
 
-//koden under kan danne en pathway fra orgname til organitations tabled.
-Events.hasMany(Orgname);
+//koden under kan danne en pathway fra orgname til organitations table.
+//Events.hasMany(Orgname);
 
 //force erstatter forige data:
 sequelize
