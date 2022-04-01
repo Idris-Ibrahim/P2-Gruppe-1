@@ -6,7 +6,7 @@ const Events = require("./EventmanSequlize");
 
 sequelize
 Events.sync({ alter: true }).then(()  => {
-    return Events.findAll({ where: { id: {[Op.gt]: 2}}});
+    return Events.findAll({ order: [['dato'],['tid']]});
 }).then((data) => {
     data.forEach((element) => {
         console.log(element.toJSON());
