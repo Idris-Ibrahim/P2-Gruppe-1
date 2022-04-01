@@ -13,6 +13,14 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.get('/', (req, res) => {
+  res.render('layout');
+});
+app.listen(3000, () =>{
+console.log('Listtening on port 3000...');
+});
+
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
