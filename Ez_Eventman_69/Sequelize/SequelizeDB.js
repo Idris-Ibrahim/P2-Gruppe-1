@@ -1,4 +1,6 @@
 const Sequelize = require("sequelize");
+//Op operator functionality
+const {Datatypes, Op} = Sequelize;
 
 const connection = new Sequelize("EventMan", "remote", "P2grupper#mote",{
     dialect: "mysql",
