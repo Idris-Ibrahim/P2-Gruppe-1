@@ -4,7 +4,6 @@ const Sequelize = require("sequelize");
 const {Datatypes, Op} = Sequelize;
 const Events = require("./EventmanSequlize");
 
-sequelize
 Events.sync({ alter: true }).then(()  => {
     return Events.findAll({ order: [['dato'],['tid']]});
 }).then((data) => {
