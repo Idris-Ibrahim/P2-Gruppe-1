@@ -4,7 +4,7 @@ const Events = require("./EventmanSequlize");
 
 sequelize
 Events.sync({ alter: true }).then(()  => {
-    return Events.findAll();
+    return Events.findAll({});
 }).then((data) => {
     data.forEach((element) => {
         console.log(element.toJSON());
