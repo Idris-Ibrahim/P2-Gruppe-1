@@ -1,4 +1,4 @@
-const sequelize = require("./Sequelize");
+const sequelize = require("./SequelizeDB");
 
 const Events = require("./EventmanSequlize");
 
@@ -13,3 +13,5 @@ Events.sync({ alter: true }).then(()  => {
     .catch((err) => {
         console.log(err)
     });
+// Brugt denne guide https://www.youtube.com/watch?v=jWdVy265Q-A
+
