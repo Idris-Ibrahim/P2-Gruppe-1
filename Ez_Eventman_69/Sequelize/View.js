@@ -13,5 +13,5 @@ Events.sync({ alter: true }).then(()  => {
     .catch((err) => {
         console.log(err)
     });
-
+// Brugt denne guide https://www.youtube.com/watch?v=jWdVy265Q-A
 
