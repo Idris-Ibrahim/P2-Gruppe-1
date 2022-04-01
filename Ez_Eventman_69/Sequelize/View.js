@@ -3,13 +3,15 @@ const sequelize = require("./Sequelize");
 const Events = require("./EventmanSequlize");
 
 sequelize
-.sync()
-.then(Events =>{
-    return Events.findAll({where: dato < 0});
-
+Events.sync({ alter: true }).then(()  => {
+    return Events.findAll();
+}).then((data) => {
+    data.forEach((element) => {
+        console.log(element.toJSON());
+    })
 })
-.then(Events =>{
-  console.log(Events)
+    .catch((err) => {
+        console.log(err)
+    });
 
-});
 
