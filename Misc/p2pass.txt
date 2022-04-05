@@ -8,6 +8,9 @@ P2grupper#mote
 username: nodejs
 password: Nod3j$App
 
+username rocky
+password R0cky!inu#
+
 Rocky:
 P2gruppeFrontend
 P2gruppeBackend
