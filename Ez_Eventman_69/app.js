@@ -17,7 +17,7 @@ app.set('view engine', 'pug');
 app.get('/', (req, res) => {
   res.render('layout');
 });
-app.listen(4000,() =>{
+app.listen(3001,() =>{
 console.log('Listtening on port 8080...');
 });
 
