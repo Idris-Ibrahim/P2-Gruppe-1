@@ -1,3 +1,4 @@
+// Brugt denne guide https://www.youtube.com/watch?v=jWdVy265Q-A
 const sequelize = require("./SequelizeDB");
 const Sequelize = require("sequelize");
 //Op operator functionality
@@ -14,5 +15,3 @@ Events.sync({ alter: true }).then(()  => {
     .catch((err) => {
         console.log(err)
     });
-// Brugt denne guide https://www.youtube.com/watch?v=jWdVy265Q-A
-
