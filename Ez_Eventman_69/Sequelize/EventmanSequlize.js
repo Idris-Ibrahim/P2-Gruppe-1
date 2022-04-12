@@ -1,5 +1,5 @@
 const Sequelize = require("sequelize");
-const connection = require("./SequelizeDB");
+const connection = require("./SequelizeDB.js");
 
 const Events = connection.define("Events", {
     id: {
