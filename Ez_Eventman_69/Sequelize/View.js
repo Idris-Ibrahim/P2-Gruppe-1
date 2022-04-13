@@ -14,4 +14,3 @@ Events.sync({ alter: true }).then(()  => {
     .catch((err) => {
         console.log(err)
     });
-
