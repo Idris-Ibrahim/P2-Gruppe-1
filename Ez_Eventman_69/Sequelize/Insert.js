@@ -1,6 +1,6 @@
-const sequelize = require("./Sequelize");
+const sequelize = require("./Sequelize.js.js.js");
 
-const Events = require("./EventmanSequlize");
+const Events = require("./EventmanSequlize.js");
 
 //koden under kan danne en pathway fra orgname til organitations table.
 //Events.hasMany(Orgname);
