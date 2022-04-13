@@ -1,5 +1,5 @@
 // Brugt denne guide https://www.youtube.com/watch?v=jWdVy265Q-A
-const sequelize = require("./SequelizeDB.js");
+const sequelize = require("./SequelizeDB");
 const Sequelize = require("sequelize");
 //Op operator functionality
 const {Datatypes, Op} = Sequelize;
