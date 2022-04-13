@@ -5,8 +5,6 @@ const Sequelize = require("sequelize");
 const {Datatypes, Op} = Sequelize;
 const Events = require("./EventmanSequlize.js");
 
-ListEvents: (callback) => {
-
 Events.sync({ alter: true }).then(()  => {
     return Events.findAll({ order: [['dato'],['tid']]});
 }).then((data) => {
@@ -19,5 +17,3 @@ Events.sync({ alter: true }).then(()  => {
         console.log(err)
     });
 
-}
-module.export = ListEvents;
