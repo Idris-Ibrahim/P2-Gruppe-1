@@ -17,14 +17,14 @@ const Events = require("./EventmanSequlize");
 //     });
 
 
-exports.view = function (req, res, next) {
-    return Events.findAll({ order: [['dato'],['tid']]});
-}).then((data) => {
-    data.forEach((element) => {
-        console.log(element.toJSON());
-    })
-})
-    .catch((err) => {
-        console.log(err)
+exports.viewevents = function (req, res, next) {
+    return Events.findAll({ order: [['dato'],['tid']]})
+        .then((data) => {
+            data.forEach((element) => {
+                console.log(element.toJSON());
+            })
+        })
+        .catch((err) => {
+            console.log(err)
     });
 }
