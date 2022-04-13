@@ -21,7 +21,8 @@ exports.viewevents = function (req, res, next) {
     return Events.findAll({ order: [['dato'],['tid']]})
         .then((data) => {
             data.forEach((element) => {
-                console.log(element.toJSON());
+                console.log(element.toJSON().event_name);
+                res.render('view', { title: 'Begivenheder', eventlist: element.toJSON() });
             })
         })
         .catch((err) => {
