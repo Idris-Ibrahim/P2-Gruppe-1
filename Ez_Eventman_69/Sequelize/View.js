@@ -20,10 +20,12 @@ const Events = require("./EventmanSequlize");
 exports.viewevents = (req, res, next) => {
     return Events.findAll({ order: [['dato'],['tid']]})
         .then((data) => {
-            data.forEach((element) => {
-                console.log(element.toJSON());
-                res.render('view', { title: 'Begivenheder', eventlist: element.toJSON() });
-            })
+            res.render('view', { title: 'Begivenheder', eventlist: data });
+
+            // data.forEach((element) => {
+            //     console.log(element.toJSON());
+            //     res.render('view', { title: 'Begivenheder', eventlist: element.toJSON() });
+            // })
         })
         .catch((err) => {
             console.log(err)
