@@ -5,7 +5,7 @@ block content
 
   ul
       each event in eventlist
-          p #{event.id} #{event.event_name}
+          p #{event.id} #{event.event_name} #{event.orgname} #{event.event_type} #{event.beskrivelse} #{event.lokation} #{event.tid} #{event.dato} #{event.pris}
 
       else
           li There are no events. big sad.
