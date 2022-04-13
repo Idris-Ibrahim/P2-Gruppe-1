@@ -1,4 +1,4 @@
-const sequelize = require("./Sequelize");
+const sequelize = require("./SequelizeDB");
 
 const Events = require("./EventmanSequlize");
 
