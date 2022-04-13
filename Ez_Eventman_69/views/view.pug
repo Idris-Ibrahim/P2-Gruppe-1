@@ -4,9 +4,9 @@ block content
   h1= title
 
   ul
-    each id in eventlist
-      li
-        p id.event_name
+    each event in eventlist
+      ul
+        li = event.event_name
 
     else
       li There are no events. big sad.
