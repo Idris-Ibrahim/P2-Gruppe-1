@@ -17,7 +17,7 @@ const Events = require("./EventmanSequlize");
 //     });
 
 
-exports.viewevents = function (req, res, next) {
+exports.viewevents = (req, res, next) => {
     return Events.findAll({ order: [['dato'],['tid']]})
         .then((data) => {
             data.forEach((element) => {
