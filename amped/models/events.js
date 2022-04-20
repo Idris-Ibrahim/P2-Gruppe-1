@@ -34,7 +34,7 @@ const Events = connection.define("Events", {
         allowNull: false,
     },
     dato:{
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
         allowNull: false,
     },
     pris:{
