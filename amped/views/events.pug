@@ -1,0 +1,18 @@
+extends layout
+block content
+    include nav
+    h1= current = 'Events'
+    body
+
+    ol
+        each event in eventlist
+            .event-container
+                .event
+                    .event-left
+                        .event-date
+                            .date #{event.dato}
+                    .event-right
+                        h3.event-title #{event.event_name}
+                        .event-description #{event.beskrivelse}
+                        .event-timing #{event.tid}
+

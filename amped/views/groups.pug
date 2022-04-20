@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    include nav
+    h1= current = 'Groups'
+
+    ol
+        each group in grouplist
+            p #{group.group_name} #{group.group_about} #{group.group_email} #{group.fburl}
+
