@@ -3,6 +3,22 @@ block content
     include nav
     h1= current = 'Events'
     body
+    .form
+        input(type='text' placeholder=' Search...' name='search')
+        button(type='submit') Submit
+
+    .dropdown
+    button Sort
+            .dropdown-content
+
+                li
+                    a(href='#') Date&uarr;
+                li
+                    a(href='#') Date&darr;
+                li
+                    a(href='#') Name&uarr;
+                li
+                    a(href='#') Name&darr;
 
     ol
         each event in eventlist
