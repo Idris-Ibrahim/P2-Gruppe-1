@@ -2,6 +2,8 @@ const Sequelize = require("sequelize");
 const connection = require("../config");
 const express =require('express');
 
+
+
 const Events = connection.define("Events", {
     id: {
         type: Sequelize.INTEGER,
@@ -33,6 +35,7 @@ const Events = connection.define("Events", {
         type: Sequelize.TIME,
         allowNull: false,
     },
+
     dato:{
         type: Sequelize.DATEONLY,
         allowNull: false,

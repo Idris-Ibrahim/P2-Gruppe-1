@@ -13,14 +13,34 @@ exports.viewevents =  function (req, res, next) {
         });
 }
 
-// events sorted by date and time ascendeing
-/*exports.vieweventsasc = (req, res, next) => {
-    return Events.findAll({ order: [['dato', 'ASC'],['tid','ASC']]})
-        .then((data) => {
+// all events sorted by date DESC
+exports.eventsdesc =  function (req, res, next) {
+    return Events.findAll({ order: [['dato','DESC']]})
+        .then(function(data) {
             res.render('events', {eventlist: data });
         })
-        .catch((err) => {
+        .catch( function(err)  {
             console.log(err)
         });
 }
-*/
+
+// alle events sortert efter navn ASC
+exports.eventnameasc =  function (req, res, next) {
+    return Events.findAll({ order: ['event_name']})
+        .then(function(data) {
+            res.render('events', {eventlist: data });
+        })
+        .catch( function(err)  {
+            console.log(err)
+        });
+}
+// alle events sortert efter navn DESC
+exports.eventnamedesc =  function (req, res, next) {
+    return Events.findAll({ order: [['event_name','DESC']]})
+        .then(function(data) {
+            res.render('events', {eventlist: data });
+        })
+        .catch( function(err)  {
+            console.log(err)
+        });
+}
