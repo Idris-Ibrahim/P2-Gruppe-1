@@ -1,14 +1,22 @@
 body {
   background-image: url('../images/cage.jpg');
   background-repeat: no-repeat;
-  width: 600px;
-  height: 200px;
+  background-size: contain;
 }
 a:link { text-decoration: none; }
 a:visited { text-decoration: none; }
 a:hover { text-decoration: none; }
 a:active { text-decoration: none; }
 
-img{
-  width:100px; height:100px;
+ul ul li{
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+ul li{
+    display: block;
 }
