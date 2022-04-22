@@ -7,28 +7,28 @@ block content
         input(type='text' placeholder=' Search...' name='search')
         button(type='submit') Submit
 
-    .dropdown
-    button Sort
+    button.dropbtn Sort
             .dropdown-content
 
-                li
-                    a(href='#') Date&uarr;
-                li
-                    a(href='#') Date&darr;
-                li
-                    a(href='#') Name&uarr;
-                li
-                    a(href='#') Name&darr;
+                    a(href='#') Date  &uarr;
+
+                    a(href='#') Date  &darr;
+
+                    a(href='#') Name &uarr;
+
+                    a(href='#') Name &darr;
 
     ol
         each event in eventlist
+            h3.event-title #{event.event_name}
+
             .event-container
                 .event
                     .event-left
                         .event-date
-                        
+
                     .event-right
-                        h3.event-title #{event.event_name}
+
                         .klub Klub: #{event.orgname}
                         .date d. #{event.dato}
                         .event-description #{event.beskrivelse}
