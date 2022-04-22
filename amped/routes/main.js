@@ -4,10 +4,10 @@ const router = express.Router();
 // Require controller modules.
 const events_controller = require('../controllers/eventscontrolller');
 const groups_controller = require('../controllers/groupscontroller');
-const main_controller = require('../controllers/maincontroller');
+
 
 // main page
-router.get('/', main_controller.viewintro);
+router.get('/', events_controller.viewevents);
 
 /// Events
 // gets all sorted events from events_controller
