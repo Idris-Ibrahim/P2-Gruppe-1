@@ -3,16 +3,33 @@ block content
     include nav
     h1= current = 'Events'
     body
-    form(action='/search' method='post')
-        input(type='text' id='event_name' placeholder=' Search...' name='q')
-        button(type='search') Search
+    .form
+        input(type='text' placeholder=' Search...' name='search')
+        button(type='submit') Submit
 
-    include sort
+    .dropdown
+    button Sort
+            .dropdown-content
 
-    h2
+                li
+                    a(href='#') Date&uarr;
+                li
+                    a(href='#') Date&darr;
+                li
+                    a(href='#') Name&uarr;
+                li
+                    a(href='#') Name&darr;
+
+    ol
         each event in eventlist
-            .event
-                h3.event-title #{event.event_name}
-                p.event-description #{event.beskrivelse}
-                p.event-timing kl.#{event.tid}
-                p.date #{event.dato}
+            .event-container
+                .event
+                    .event-left
+                        .event-date
+                        
+                    .event-right
+                        h3.event-title #{event.event_name}
+                        .date #{event.dato}
+                        .event-description #{event.beskrivelse}
+                        .event-timing #{event.tid}
+

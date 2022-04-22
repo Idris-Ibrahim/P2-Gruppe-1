@@ -1,11 +1,8 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  list-style: none;
 }
 
 a {
-  color: black;
-  text-decoration: none;
-  list-style: none;
+  color: #00B7FF;
 }
