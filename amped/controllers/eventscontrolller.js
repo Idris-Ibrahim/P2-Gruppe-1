@@ -8,23 +8,13 @@ exports.viewevents =  function (req, res, next) {
     return Events.findAll({ order: [['dato'],['tid']]})
         .then(function(data) {
             res.render('events', {eventlist: data });
+            
         })
         .catch( function(err)  {
             console.log(err)
         });
 }
 
-
-exports.vieweventsorderet =  function (req, res, next) {
-    return Events.findAll
-    ({ order: [Sequelize.fn(date_format, Sequelize.col('date_col'), '%d-%m-%y')][['dato'],['tid']]})
-        .then(function(data) {
-            res.render('events', {eventlist: data });
-        })
-        .catch( function(err)  {
-            console.log(err)
-        });
-}
 
 // all events sorted by date DESC
 exports.eventsdesc =  function (req, res, next) {
