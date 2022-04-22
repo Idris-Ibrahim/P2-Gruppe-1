@@ -8,7 +8,6 @@ exports.viewevents =  function (req, res, next) {
     return Events.findAll({ order: [['dato'],['tid']]})
         .then(function(data) {
             res.render('events', {eventlist: data });
-            
         })
         .catch( function(err)  {
             console.log(err)
