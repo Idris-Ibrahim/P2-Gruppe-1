@@ -26,12 +26,10 @@ block content
                 .event
                     .event-left
                         .event-date
-
+                        
                     .event-right
                         h3.event-title #{event.event_name}
-                        .group Klub: #{event.orgname}
-                        .date Dato: #{event.dato}
-                        .event-sted Sted: #{event.lokation}
-                        .event-timing Kl. #{event.tid}
-                        
+                        .date #{event.dato}
+                        .event-description #{event.beskrivelse}
+                        .event-timing #{event.tid}
 
