@@ -1,8 +1,14 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url('../images/cage.jpg');
+  background-repeat: no-repeat;
+  width: 600px;
+  height: 200px;
 }
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:active { text-decoration: none; }
 
-a {
-  color: #00B7FF;
+img{
+  width:100px; height:100px;
 }
