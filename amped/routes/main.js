@@ -4,6 +4,7 @@ const router = express.Router();
 // Require controller modules.
 const events_controller = require('../controllers/eventscontrolller');
 const groups_controller = require('../controllers/groupscontroller');
+const admin_controller = require('../controllers/admincontroller');
 
 
 // main page
@@ -50,8 +51,8 @@ router.post('/register',groups_controller.registergroups);
 
 
 
-////
-
+//admin page:
+router.get('/admin', admin_controller.viewevents.viewgroups);
 
 
 module.exports = router;

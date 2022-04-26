@@ -1,0 +1,41 @@
+extends layout
+block content
+    .topbar 
+    ul
+    a(href='/events' style='color: white') Events &nbsp&nbsp&nbsp&nbsp&nbsp
+
+    a(href='/groups' style='color: white') Groups &nbsp&nbsp&nbsp&nbsp&nbsp
+
+    a(href='/logout' style='color: white') Login &nbsp&nbsp&nbsp&nbsp&nbsp
+    
+    a(href='/admin' style='color: white') Login &nbsp&nbsp&nbsp&nbsp&nbsp
+
+    button.dropbtn Sort
+            .dropdown-content
+
+                    a(href='/events/sortddateasc') Date  &uarr;
+
+                    a(href='/events/sortddatedesc') Date &darr;
+
+                    a(href='/events/eventnameasc') Name &uarr;
+
+                    a(href='/events/eventnamedesc') Name &darr;
+
+    .sidebar
+        ol 
+            Groups  
+                     ol
+                        each group in grouplist
+                         p Name: #{group.group_name}  
+                         p Email: #{group.group_email} 
+                         p Facebook Url: #{group.fburl} 
+                         p Group Role#{group.role} 
+                         P Password: #{group.password}
+            Events
+                    ol
+                        each group in grouplist
+                            .klub Klub: #{event.orgname}
+                            .date d. #{event.dato}
+                            .sted Sted: #{event.lokation}
+                            .event-description Beskrivelse: #{event.beskrivelse}
+                            .event-timing Kl. #{event.tid}

@@ -29,7 +29,12 @@ const Groups = connection.define("Groups", {
     password:{
         type: Sequelize.STRING,
         allowNull: false
-    }
-});
+    },
+    role:{
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        default: 0,
+        
+}});
 
 module.exports = Groups;
