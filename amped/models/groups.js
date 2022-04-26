@@ -30,7 +30,7 @@ const Groups = connection.define("Groups", {
         type: Sequelize.STRING,
         allowNull: false
     },
-    role:{
+    roles:{
         type: Sequelize.INTEGER,
         allowNull: true,
         default: 0,

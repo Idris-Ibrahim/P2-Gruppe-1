@@ -8,7 +8,7 @@ const Groups = require("../models/groups");
 exports.viewevents =  function (req, res, next) {
     return Events.findAll({ order: [['dato'],['tid']]})
         .then(function(data) {
-            res.render('events', {eventlist: data });
+            res.render('admin', {eventlist: data });
         })
         .catch( function(err)  {
             console.log(err)
@@ -18,7 +18,7 @@ exports.viewevents =  function (req, res, next) {
 exports.viewgroups = (req, res, next) => {
     return Groups.findAll()
         .then((data) => {
-            res.render('Groups', {grouplist: data });
+            res.render('admin', {grouplist: data });
         })
         .catch((err) => {
             console.log(err)
