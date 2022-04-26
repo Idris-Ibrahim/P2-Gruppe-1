@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    include nav
+    .login-box
+        .header
+            h2 Log In
+        form(action="/login", method="post")
+            .form-group
+                label username
+                input(type="text" name="username" class="form-control shadow-none")
+            .form-group
+                label Password
+                input(type="password" name="password" class="form-control")
+            button(type="submit" class="btn btn-primary") Login
+
+    input(type='button' onclick="location.href='/register';" value='Registre')
+

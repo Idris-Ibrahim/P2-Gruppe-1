@@ -1,6 +1,7 @@
 const Sequelize = require("sequelize");
 const connection = require("../config");
 const express =require('express');
+const bcrypt = require('bcrypt-nodejs');
 
 const Users = connection.define("Users", {
     idUsers: {
