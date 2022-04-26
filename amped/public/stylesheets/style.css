@@ -1,7 +1,8 @@
 body {
-  background-image: url('../images/cage.jpg');
+  /*background-image: url('../images/cage.jpg');
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: contain;*/
+  background-color: navy;
 }
 a:link { text-decoration: none; }
 a:visited { text-decoration: none; }
@@ -33,12 +34,6 @@ button:hover .dropdown-content {
     margin: 0 auto;
 }
 
-.event-container h3.year {
-    font-size: 40px;
-    text-align: center;
-    border-bottom: 1px solid #b1b1b1;
-}
-
 .event-container .event {
     box-shadow: 0 4px 16px -8px rgba(0, 0, 0, 0.4);
     display: flex;
@@ -47,7 +42,9 @@ button:hover .dropdown-content {
 }
 
 .event .event-left {
-    background: #222;
+    background-image: url('../images/cage.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     min-width: 82px;
     display: flex;
     align-items: center;
@@ -59,15 +56,6 @@ button:hover .dropdown-content {
     border-radius: 8px 0 0 8px;
 }
 
-.event .event-left .date {
-    font-size: 56px;
-}
-
-.event .event-left .month {
-    font-size: 16px;
-    font-weight: normal;
-}
-
 .event .event-right {
     display: flex;
     flex-direction: column;
@@ -75,11 +63,8 @@ button:hover .dropdown-content {
     padding: 0 24px;
 }
 
-.event h3.event-title {
-    font-size: 24px;
-    margin: 24px 0 10px 0;
-    color: #218bbb;
-    text-transform: uppercase;
+ol h3.event-title {
+    display: grid;
 }
 
 .event .event-right .event-timing {
@@ -97,25 +82,4 @@ button:hover .dropdown-content {
 .event .event-right .event-timing img {
     height: 20px;
     padding-right: 8px;
-}
-
-@media (max-width: 550px) {
-    .event {
-        flex-direction: column;
-    }
-
-    .event .event-left {
-        padding: 0;
-        border-radius: 8px 8px 0 0;
-    }
-
-    .event .event-left .event-date .date,
-    .event .event-left .event-date .month {
-        display: inline-block;
-        font-size: 24px;
-    }
-
-    .event .event-left .event-date {
-        padding: 10px 0;
-    }
 }
