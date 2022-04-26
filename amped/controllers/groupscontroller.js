@@ -7,7 +7,7 @@ const Events = require("../models/groups");
 exports.viewgroups = (req, res, next) => {
     return Events.findAll()
         .then((data) => {
-            res.render('groups', {grouplist: data });
+            res.render('Groups', {grouplist: data });
         })
         .catch((err) => {
             console.log(err)
