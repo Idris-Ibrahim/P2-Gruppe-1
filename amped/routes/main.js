@@ -52,7 +52,8 @@ router.post('/register',groups_controller.registergroups);
 
 
 //admin page:
-router.get('/admin', admin_controller.viewevents.viewgroups);
+router.get('/admin', admin_controller.viewevents);
+router.get('/admin', admin_controller.viewgroups);
 
 
 module.exports = router;
