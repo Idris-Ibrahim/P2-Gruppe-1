@@ -5,6 +5,13 @@ block content
     h1= current = 'Groups'
 
     ol
-        each group in grouplist
-            p #{group.group_name} #{group.group_email} #{group.fburl}
+        .group-event
+            each group in grouplist
+                h5.group-name
 
+                    .group
+                        .group-left
+
+                            .name #{group.group_name}
+                            .email Email: #{group.group_email}
+                            .fburl Facebook: #{group.fburl}
