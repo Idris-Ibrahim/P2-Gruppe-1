@@ -26,6 +26,10 @@ const Groups = connection.define("Groups", {
         type: Sequelize.STRING,
         allowNull: true,
     },
+    password:{
+        type: Sequelize.STRING,
+        allowNull: false
+    }
 });
 
 module.exports = Groups;

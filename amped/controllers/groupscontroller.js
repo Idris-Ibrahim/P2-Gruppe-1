@@ -1,11 +1,11 @@
 
 const Sequelize = require("sequelize");
 const {Datatypes, Op} = Sequelize;
-const Events = require("../models/groups");
+const Groups = require("../models/groups");
 
 
 exports.viewgroups = (req, res, next) => {
-    return Events.findAll()
+    return Groups.findAll()
         .then((data) => {
             res.render('Groups', {grouplist: data });
         })
@@ -15,10 +15,10 @@ exports.viewgroups = (req, res, next) => {
 }
 
 // register group
-exports.registergroups = async function (req, res, next) {
-    await Groups.create({
+exports.registergroups = function (req, res, next) {
+        Groups.create({
         group_name: req.body.group_name,
-        email: req.body.email,
+        group_email: req.body.group_email,
         password: req.body.password,
         roles: 0
     }).then(function (groups) {
