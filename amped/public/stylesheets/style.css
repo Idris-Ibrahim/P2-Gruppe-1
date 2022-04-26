@@ -1,8 +1,10 @@
 body {
-  /*background-image: url('../images/cage.jpg');
+  background-image: url('../images/AMP.png');
+    margin-bottom: 100px;
   background-repeat: no-repeat;
-  background-size: contain;*/
-  background-color: navy;
+  background-size: contain;
+  background-color: black;
+    color: #eeeeee;
 }
 a:link { text-decoration: none; }
 a:visited { text-decoration: none; }
@@ -11,13 +13,17 @@ a:active { text-decoration: none; }
 button {
     position: relative;
     display: inline-block;
-    background-color: sandybrown;
+    background-color: white;
+}
+
+.nav.ul{
+    color: #eeeeee;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: sandybrown;
+    background-color: black;
     width: 50px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 12px 16px;
@@ -35,7 +41,8 @@ button:hover .dropdown-content {
 }
 
 .event-container .event {
-    box-shadow: 0 4px 16px -8px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 16px -8px white;
+    ;
     display: flex;
     border-radius: 8px;
     margin: 32px 0;
@@ -68,7 +75,7 @@ ol h3.event-title {
 }
 
 .event .event-right .event-timing {
-    background: #fff8ba;
+    background: navy;
     display: flex;
     align-items: center;
     justify-content: center;
