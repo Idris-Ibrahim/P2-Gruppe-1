@@ -16,7 +16,7 @@ const Groups = connection.define("Groups", {
     },
     group_about:{
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
     },
         group_email:{
             type: Sequelize.STRING,
