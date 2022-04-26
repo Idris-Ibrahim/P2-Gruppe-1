@@ -4,7 +4,6 @@ const router = express.Router();
 // Require controller modules.
 const events_controller = require('../controllers/eventscontrolller');
 const groups_controller = require('../controllers/groupscontroller');
-const users_controller = require('../controllers/userscontroller');
 
 
 // main page
@@ -47,7 +46,7 @@ router.get('/register', (req, res) => {
     res.render('register')
 })
 
-router.post('/register',users_controller.registeruser);
+router.post('/register',groups_controller.registergroups);
 
 
 
