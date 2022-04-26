@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    include nav
+    .reg-box
+        .header
+            h2 Registre
+        form(action="/register", method="post")
+            .form-group
+                label Groupname
+                input(type="text" name="Group name" class="group-input")
+            .form-group
+                label Email
+                input(type="email" name="email" class="group-input")
+            .form-group
+                label Password
+                input(type="password" name="password" class="group-input")
+
+            button(type="submit" class="btn btn-primary") Submit
