@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 // Require controller modules.
-const events_controller = require('../controllers/eventscontrolller');
+const events_controller = require('../controllers/eventscontroller');
 const groups_controller = require('../controllers/groupscontroller');
 const admin_controller = require('../controllers/admincontroller');
 

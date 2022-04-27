@@ -69,8 +69,8 @@ connection
 }
 
 exports.eventdelete = function(req, res, next){
-    await Events.destroy({
-        //
+     Events.destroy({
+        //slet ud fra id
         where: {id: req.body.id}
     });
 }
