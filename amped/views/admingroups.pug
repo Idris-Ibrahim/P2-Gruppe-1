@@ -25,17 +25,6 @@ block content
         ol 
             Groups  
                      ol
-                        each group in grouplist
-                         p Name: #{group.group_name}  
-                         p Email: #{group.group_email} 
-                         p Facebook Url: #{group.fburl} 
-                         p Group Role#{group.role} 
-                         P Password: #{group.password}
-            Events
-                    ol
-                        each event in eventlist
-                            .klub Klub: #{event.orgname}
-                            .date d. #{event.dato}
-                            .sted Sted: #{event.lokation}
-                            .event-description Beskrivelse: #{event.beskrivelse}
-                            .event-timing Kl. #{event.tid}
+                       each group in grouplist ? grouplist : []
+                         p  Name: #{group.group_name} Email  #{group.group_email} Facebook Url: #{group.fburl} Group Role: #{group.role} Password: #{group.password}
+
