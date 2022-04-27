@@ -30,13 +30,6 @@ exports.registergroups = function (req, res, next) {
     });
 }
 
-
-// login group
-
-
-
-
-
 //justering af admin status:
 /*
 exports.registergroups = async function (req, res, next) {
@@ -54,5 +47,3 @@ exports.registergroups = async function (req, res, next) {
     });
 }
 */
-
-
