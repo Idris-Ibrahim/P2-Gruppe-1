@@ -7,14 +7,19 @@ block content
     ol
         .group-event
             each group in grouplist
-                h5.group-name
+                h5.group-name #{group.group_name}
 
                     .group
                         .group-left
 
+                        .group-right
+
                             .name #{group.group_name}
                             .email Email: #{group.group_email}
                             .fburl Facebook: #{group.fburl}
+                            .info Om: #{group.group_about}
+
+
     head
         meta(charset='utf-8')
         style.

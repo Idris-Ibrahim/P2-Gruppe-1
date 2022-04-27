@@ -8,32 +8,31 @@ block content
         input(type='text' placeholder=' Search...' name='search')
         button(type='submit') Submit
 
-    button.dropbtn Sort
-            .dropdown-content
+        button.dropbtn Sort
+                .dropdown-content
 
-                    a(href='/events/sortddateasc') Date  &uarr;
+                        a(href='/events/sortddateasc') Date  &uarr;
 
-                    a(href='/events/sortddatedesc') Date &darr;
+                        a(href='/events/sortddatedesc') Date &darr;
 
-                    a(href='/events/eventnameasc') Name &uarr;
+                        a(href='/events/eventnameasc') Name &uarr;
 
-                    a(href='/events/eventnamedesc') Name &darr;
+                        a(href='/events/eventnamedesc') Name &darr;
 
-    ol
-        .event-container
-            each event in eventlist
-                h3.event-title #{event.event_name}
+        ol
+            .event-container
+                each event in eventlist
+                    h3.event-title #{event.event_name}
 
-                    .event
-                        .event-left
-                            .event-date
+                        .event
+                            .event-left
+                                .event-date
 
+                            .event-right
 
-                        .event-right
-
-                            .klub Klub: #{event.orgname}
-                            .date d. #{event.dato}
-                            .sted Sted: #{event.lokation}
-                            .event-description #{event.beskrivelse}
-                            .event-timing Kl. #{event.tid}
+                                .klub Klub: #{event.orgname}
+                                .date d. #{event.dato}
+                                .sted Sted: #{event.lokation}
+                                .event-description #{event.beskrivelse}
+                                .event-timing Kl. #{event.tid}
 

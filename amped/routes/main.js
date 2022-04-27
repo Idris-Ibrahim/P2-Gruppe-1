@@ -57,7 +57,7 @@ router.get('/admin', (req, res) => {
     res.render('admin')
 })
 
-
+router.get('/Calendar');
 
 //admin page:
 router.get('/admin/groups', admin_controller.viewgroups);

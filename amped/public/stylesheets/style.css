@@ -1,40 +1,40 @@
+/*Change standard style on the hole page*/
 body {
-  /*background-image: url('../images/AMP.png');*/
-
-    margin-bottom: 100px;
+  background-image: url('../images/AMP.png');
+  margin-bottom: 100px;
   background-repeat: no-repeat;
   background-size: contain;
   background-color: black;
-    color: #eeeeee;
+    color: white;
 }
+/*Removes the underline of hyperlinks*/
 a:link { text-decoration: none; }
 a:visited { text-decoration: none; }
 a:hover { text-decoration: none; }
 a:active { text-decoration: none; }
+
+/*Style the button color*/
 button {
     position: relative;
     display: inline-block;
     background-color: white;
 }
 
-.nav.ul{
-    color: #eeeeee;
-}
-
+/*Change the dropdown*/
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: black;
     width: 50px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(white);
     padding: 12px 16px;
     z-index: 1;
 }
-
+/*Makes the option stand over each other instead of beside*/
 button:hover .dropdown-content {
     display: grid;
 }
-
+/*Adjust the placements of the events*/
 .event-container {
     font-family: "Roboto", sans-serif;
     max-width: 800px;
@@ -49,7 +49,7 @@ button:hover .dropdown-content {
 }
 
 .event .event-left {
-    background-image: url('../images/pan.jpg');
+    background-image: url('../images/evn.PNG');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     min-width: 82px;
@@ -95,7 +95,7 @@ ol.h3.group-name {
     display: grid;
 }
 
-.group-event .group {
+/*.group-event .group {
     display: grid;
     border-radius: 8px;
     padding-right: 600px;
@@ -104,7 +104,7 @@ ol.h3.group-name {
 }
 
 .group .group-left {
-    background-image: url('../images/cage.jpg');
+    background-image: url('../images/grup.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     min-width: 200px;
@@ -129,3 +129,48 @@ ol.h3.group-name {
     margin: 24px 0;
     font-size: 14px;
 }
+.h5 {
+    display: table-column;
+}*/
+
+.group-event {
+    font-family: "Roboto", sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.group-event .group {
+    box-shadow: 0 4px 16px -8px white;
+    display: flex;
+    border-radius: 8px;
+    margin: 32px 0;
+}
+
+.group .group-left {
+    background-image: url('../images/grup.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    min-width: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #eee;
+    padding: 75px 48px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px 0 0 8px;
+}
+
+.group .group-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 24px;
+}
+
+ol h5.event-title {
+    display: grid;
+}
+
+ol.h3.group-name {
+    display: grid;
