@@ -68,3 +68,31 @@ connection
 });
 }
 
+exports.eventdelete = function(req, res, next){
+    await Events.destroy({
+        //
+        where: {id: req.body.id}
+    });
+}
+
+exports.eventupdate = function(req, res, next){
+    
+    Events.update(
+        // Values to update
+        {   orgname: req.body.org_name,
+            event_name: req.body.event_name,
+            lokation: req.body.event_lokation,
+            tid: req.body.event_tid,
+            dato: req.body.event_dato,
+            pris: req.body.event_pris,
+            pris: req.body.event_fburl
+        },
+        {
+            where: {id: req.body.id}
+        },
+        console.log(result)
+        //catching error
+    ).catch ((err) => {
+        console.log(err);
+    });
+}
