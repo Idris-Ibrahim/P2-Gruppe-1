@@ -6,7 +6,6 @@ const events_controller = require('../controllers/eventscontroller');
 const groups_controller = require('../controllers/groupscontroller');
 const admin_controller = require('../controllers/admincontroller')
 
-
 // main page
 router.get('/', events_controller.viewevents);
 
@@ -32,6 +31,11 @@ router.get('/events/eventnamedesc', events_controller.eventsdesc);
 
 // gets all groups from groups_controller
 router.get('/groups', groups_controller.viewgroups);
+
+//Kalender
+router.get('/calender', (req, res) => {
+    res.render('calender')
+})
 
 /// login
 // get login page
