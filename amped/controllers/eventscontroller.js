@@ -86,7 +86,7 @@ exports.eventupdate = function(req, res, next){
             tid: req.body.event_tid,
             dato: req.body.event_dato,
             pris: req.body.event_pris,
-            pris: req.body.event_fburl
+            fburl: req.body.event_fburl
         },
         {
             where: {id: req.body.id}
