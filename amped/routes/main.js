@@ -60,8 +60,8 @@ router.get('/admin', (req, res) => {
 
 
 //admin page:
-router.get('/admingroups', admin_controller.viewgroups);
-router.get('/adminevents', admin_controller.viewevents);
+router.get('/admin/groups', admin_controller.viewgroups);
+router.get('/admin/events', admin_controller.viewevents);
 
 
 module.exports = router;

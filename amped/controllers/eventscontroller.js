@@ -17,7 +17,7 @@ exports.viewevents =  function (req, res, next) {
 
 // all events sorted by date DESC
 exports.eventsdesc =  function (req, res, next) {
-    return Events.findAll({ order: [['dato','tid','DESC']]})
+    return Events.findAll({ order: [['dato','DESC'],['tid','DESC']]})
         .then(function(data) {
             res.render('events', {eventlist: data });
         })
@@ -86,7 +86,7 @@ exports.eventupdate = function(req, res, next){
             tid: req.body.event_tid,
             dato: req.body.event_dato,
             pris: req.body.event_pris,
-            pris: req.body.event_fburl
+            fburl: req.body.event_fburl
         },
         {
             where: {id: req.body.id}
