@@ -90,9 +90,9 @@ exports.eventupdate = function(req, res, next){
         {
             where: {id: req.body.id}
         },
-        console.log(result)
+        console.log(result))
         //catching error
-    ).catch ((err) => {
+    .catch ((err) => {
         console.log(err);
     });
 }
