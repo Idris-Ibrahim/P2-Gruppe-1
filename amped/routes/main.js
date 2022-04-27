@@ -33,8 +33,8 @@ router.get('/events/eventnamedesc', events_controller.eventsdesc);
 router.get('/groups', groups_controller.viewgroups);
 
 //Kalender
-router.get('/calender', (req, res) => {
-    res.render('calender')
+router.get('/calendar', (req, res) => {
+    res.render('calendar')
 })
 
 /// login
