@@ -52,13 +52,14 @@ connection
 .sync(/*{force:true}*/)
 .then((result) => {
     //dato skal være: (år-måned-dag):
-    Events.create({ orgname: req.body.org_name,
-                    event_name: req.body.event_name,
-                    lokation: req.body.event_lokation,
-                    tid: req.body.event_tid,
-                    dato: req.body.event_dato,
-                    pris: req.body.event_pris,
-                    pris: req.body.event_fburl});
+    Events.create({ 
+            orgname: req.body.org_name,
+            event_name: req.body.event_name,
+            lokation: req.body.event_lokation,
+            tid: req.body.event_tid,
+            dato: req.body.event_dato,
+            pris: req.body.event_pris,
+            pris: req.body.event_fburl});
                     
     console.log(result);
 })
