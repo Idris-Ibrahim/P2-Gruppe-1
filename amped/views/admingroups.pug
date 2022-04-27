@@ -1,30 +1,18 @@
-extends layout
-block content
-    .topbar 
-    ul
-    a(href='/events' style='color: white') Events &nbsp&nbsp&nbsp&nbsp&nbsp
-
-    a(href='/groups' style='color: white') Groups &nbsp&nbsp&nbsp&nbsp&nbsp
-
-    a(href='/logout' style='color: white') Login &nbsp&nbsp&nbsp&nbsp&nbsp
-    
-    a(href='/admin' style='color: white') Login &nbsp&nbsp&nbsp&nbsp&nbsp
-
-    button.dropbtn Sort
-            .dropdown-content
-
-                    a(href='/events/sortddateasc') Date  &uarr;
-
-                    a(href='/events/sortddatedesc') Date &darr;
-
-                    a(href='/events/eventnameasc') Name &uarr;
-
-                    a(href='/events/eventnamedesc') Name &darr;
-
-    .sidebar
-        ol 
-            Groups  
-                     ol
-                       each group in grouplist ? grouplist : []
-                         p  Name: #{group.group_name} Email  #{group.group_email} Facebook Url: #{group.fburl} Group Role: #{group.role} Password: #{group.password}
-
+table.table
+    tr
+        th Id
+        th Org
+        th Om
+        th Email
+        th Facebook url
+        th Password
+        th Roles
+            each group in grouplist ? grouplist : []
+                tr
+                    td #{group.id}
+                    td #{group.group_name}
+                    td #{group.group_about}
+                    td #{group.group_email}
+                    td #{group.fburl}
+                    td #{group.password}
+                    td #{group.roles}

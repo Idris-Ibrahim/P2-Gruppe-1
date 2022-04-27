@@ -1,0 +1,32 @@
+extends layout
+
+block content
+        .topnav
+            a(href='/events' style='color: white') Events
+
+            a(href='/groups' style='color: white') Groups
+
+            a(href='/login' style='color: white') Logout
+
+            a(href='?' style='color: white') My page
+
+        nav#sidebar
+            ul.list-unstyled.components
+
+                li.active
+                    a.dropdown-toggle(href='#eventSubmenu' data-toggle='collapse' aria-expanded='false') Events
+                    ul#eventsSubmenu.collapse.list-unstyled
+                        li
+                            a(href='#') Create event
+                        li
+                            a(href='#') Edit event
+                        li
+                            a(href='#') Delete event
+                li
+                    a(href='#') Portfolio
+
+
+
+
+
+
