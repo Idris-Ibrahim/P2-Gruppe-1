@@ -38,6 +38,7 @@ exports.grouproleone = function(req, res, next){
         {
             roles : 1
         },
+        //what group to update
         {
             where: {id: req.body.id}
         },
