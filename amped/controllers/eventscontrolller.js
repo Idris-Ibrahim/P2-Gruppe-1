@@ -46,3 +46,24 @@ exports.eventnamedesc =  function (req, res, next) {
             console.log(err)
         });
 }
+
+exports.eventcreate = function (req, res, next){
+connection
+.sync(/*{force:true}*/)
+.then((result) => {
+    //dato skal være: (år-måned-dag):
+    Events.create({ orgname: req.body.org_name,
+                    event_name: req.body.event_name,
+                    lokation: req.body.event_lokation,
+                    tid: req.body.event_tid,
+                    dato: req.body.event_dato,
+                    pris: req.body.event_pris});
+                    
+    console.log(result);
+})
+
+//catcher en error hvis der opstår en
+.catch ((err) => {
+    console.log(err);
+});
+}
