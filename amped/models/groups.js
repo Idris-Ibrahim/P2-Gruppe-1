@@ -18,9 +18,9 @@ const Groups = connection.define("Groups", {
         type: Sequelize.STRING,
         allowNull: true,
     },
-        group_email:{
-            type: Sequelize.STRING,
-            allowNull: false,
+    group_email:{
+        type: Sequelize.STRING,
+        allowNull: false,
     },
     fburl:{
         type: Sequelize.STRING,
