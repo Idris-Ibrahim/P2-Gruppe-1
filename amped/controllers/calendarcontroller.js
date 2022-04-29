@@ -16,7 +16,8 @@ router.get("/get-events", async (req,res) => {
         .catch( function(err)  {
             console.log(err)
         });
-})
+    res.send(events);
+});
 
 
 module.exports = router;
