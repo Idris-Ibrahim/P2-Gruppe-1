@@ -1,7 +1,6 @@
 const Sequelize = require("sequelize");
 const connection = require("../config");
-const express =require('express');
-
+const express = require('express');
 
 
 const Events = connection.define("Events", {
@@ -65,5 +64,4 @@ const Events = connection.define("Events", {
      },
      */
 });
-
 module.exports = Events;
