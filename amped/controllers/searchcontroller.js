@@ -10,17 +10,17 @@ const Events = require("../models/events");
     res.render('search', {eventlist: searchfilter});
 }*/
 exports.eventsearch = function (req, res, next){
-       return Events.findAll({where: {event_name : event_name.include(req.body.search)}})
+    let input = req.body.searchss;
+    console.log(input);
+       return Events.findAll({where: {Events : Events.event_name.includes(input)}})
 
        .then(function(data) {
-        res.render('events', {eventlist: data});
-       })
-
-       .catch( function(err)  {
+        res.render('events', {eventlist: data });
+    })
+    .catch( function(err)  {
         console.log(err)
     });
-
-};
+}
 
 /*
 

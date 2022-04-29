@@ -5,13 +5,11 @@ block content
     h1= current = 'Events'
     body
     
-    form(action="/events/search", method="post")
+    form(action="/events/search", method='get')
         .form-search
-        input(type='text' placeholder=' Search...' name='search' id='inputId')
-        button(type="submit" class="btn btn-primary") Submit
+            input(type='text' placeholder=' Search...' name='searchss' id='inputId')
+            button(type="submit" class="btn btn-primary") Submit
         
-
-
         button.dropbtn Sort
                 .dropdown-content
 
