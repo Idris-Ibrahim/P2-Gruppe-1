@@ -2,11 +2,12 @@ const Sequelize = require("sequelize");
 const {Datatypes, Op} = Sequelize;
 const Events = require("../models/events");
 
+//det virker men searchss er undifined:
 
 exports.eventsearch = function (req, res, next){
-    const input = req.body.searchss;
+    const input = req.body.searchss
     console.log(input);
-       return Events.findAll({where: { name: { [Op.like]: `%${input}%`}}
+       return Events.findAll({where: { event_name: { [Op.like]: `${input}`}}
       })
 
        .then(function(data) {
