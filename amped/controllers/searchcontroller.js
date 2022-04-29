@@ -2,10 +2,12 @@ const Sequelize = require("sequelize");
 const {Datatypes, Op} = Sequelize;
 const Events = require("../models/events");
 
+
 exports.eventsearch = function (req, res, next){
-    let input = req.body.searchss;
+    const input = req.body.searchss;
     console.log(input);
-       return Events.findAll({where: {Events : Events.event_name.includes(input)}})
+       return Events.findAll({where: { name: { [Op.like]: `%${input}%`}}
+      })
 
        .then(function(data) {
         res.render('events', {eventlist: data });
