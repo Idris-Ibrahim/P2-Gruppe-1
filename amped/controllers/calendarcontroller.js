@@ -9,7 +9,13 @@ router.post("/creat-event", async (req,res) => {
 })
 
 router.get("/get-events", async (req,res) => {
-    const events = await Events
+    const events = await Events.findAll({ order: [['dato'],['tid']]})
+        .then(function(data) {
+            res.render('events', {eventlist: data });
+        })
+        .catch( function(err)  {
+            console.log(err)
+        });
 })
 
 
