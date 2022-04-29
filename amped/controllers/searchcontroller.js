@@ -1,14 +1,7 @@
 const Sequelize = require("sequelize");
 const {Datatypes, Op} = Sequelize;
 const Events = require("../models/events");
-//getting search input:
-/*exports.eventsearch = function (req, res, next){
-    var searchString = req.body.search
-    var searchfilter = Events.filter(function(req, res, next){
-      return Events.event_name.includes(searchString) || Events.orgname.includes(searchString)
-    })
-    res.render('search', {eventlist: searchfilter});
-}*/
+
 exports.eventsearch = function (req, res, next){
     let input = req.body.searchss;
     console.log(input);
@@ -22,9 +15,16 @@ exports.eventsearch = function (req, res, next){
     });
 }
 
+//getting search input:
+/*exports.eventsearch = function (req, res, next){
+    var searchString = req.body.search
+    var searchfilter = Events.filter(function(req, res, next){
+      return Events.event_name.includes(searchString) || Events.orgname.includes(searchString)
+    })
+    res.render('search', {eventlist: searchfilter});
+}*/
+
 /*
-
-
 searchbar = req.body.search
 searchbar.addEventListener('keyup', function(req, res, next){
     var searchString = searchfilter
