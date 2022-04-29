@@ -2,9 +2,37 @@ const Sequelize = require("sequelize");
 const {Datatypes, Op} = Sequelize;
 const Events = require("../models/events");
 //getting search input:
-const value = input.getElementById('inputId').value;
-const button = input.getElementById('btn');
+/*exports.eventsearch = function (req, res, next){
+    var searchString = req.body.search
+    var searchfilter = Events.filter(function(req, res, next){
+      return Events.event_name.includes(searchString) || Events.orgname.includes(searchString)
+    })
+    res.render('search', {eventlist: searchfilter});
+}*/
+exports.eventsearch = function (req, res, next){
+       return Events.findAll({where: {event_name : event_name.include(req.body.search)}})
+
+       .then(function(data) {
+        res.render('events', {eventlist: data});
+       })
+
+       .catch( function(err)  {
+        console.log(err)
+    });
+
+};
+
+/*
+
+
+searchbar = req.body.search
+searchbar.addEventListener('keyup', function(req, res, next){
+    var searchString = searchfilter
+
+
+
 button.addEventListener('click', eventnamesearched);
+const searchInput = Events.querySelector('.input')
 //defining button in use:
 exports.eventnamesearched =  function (req, res, next) {
     

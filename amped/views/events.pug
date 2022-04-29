@@ -4,9 +4,13 @@ block content
     include nav
     h1= current = 'Events'
     body
-    .form
+    
+    form(action="/events/search", method="post")
+        .form-search
         input(type='text' placeholder=' Search...' name='search' id='inputId')
-        button(type='submit' id='btn') Submit
+        button(type="submit" class="btn btn-primary") Submit
+        
+
 
         button.dropbtn Sort
                 .dropdown-content

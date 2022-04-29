@@ -27,7 +27,8 @@ router.get('/events/eventnameasc', events_controller.eventnameasc);
 // gets all sorted events with event name DESC from events_controller
 router.get('/events/eventnamedesc', events_controller.eventsdesc);
 
-router.get('/search', search_controller.eventnamesearched);
+//search
+router.get('/events/search', search_controller.eventsearch);
 
 
 /// Groups:
