@@ -4,7 +4,10 @@ block content
     include nav
     h1= current = 'Events'
     body
-    include search
+    .form
+        input(type='text' placeholder=' Search...' name='search' id='inputId')
+        button(type='submit' id='btn') Submit
+
         button.dropbtn Sort
                 .dropdown-content
 

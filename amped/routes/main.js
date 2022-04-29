@@ -5,6 +5,7 @@ const router = express.Router();
 const events_controller = require('../controllers/eventscontroller');
 const groups_controller = require('../controllers/groupscontroller');
 const admin_controller = require('../controllers/admincontroller')
+const search_controller = require('../controllers/searchcontroller')
 
 // main page
 router.get('/', events_controller.viewevents);
@@ -25,6 +26,8 @@ router.get('/events/eventnameasc', events_controller.eventnameasc);
 
 // gets all sorted events with event name DESC from events_controller
 router.get('/events/eventnamedesc', events_controller.eventsdesc);
+
+router.get('/search', search_controller.eventnamesearched);
 
 
 /// Groups:
