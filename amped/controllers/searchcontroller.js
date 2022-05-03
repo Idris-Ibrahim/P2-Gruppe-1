@@ -7,7 +7,8 @@ const Events = require("../models/events");
 exports.eventsearch = function (req, res, next){
    var searchInput = req.query.SearchName
     console.log(searchInput);
-       return Events.findAll({where: { event_name: { [Op.like]: `%${searchInput}%`}}
+       return Events.findAll({where:{
+        [Op.or]: [{ event_name: { [Op.like]: `%${searchInput}%`}}, {orgname: { [Op.like]: `%${searchInput}%`}}]}
       })
 
        .then(function(data) {
