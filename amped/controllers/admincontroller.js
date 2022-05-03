@@ -5,7 +5,11 @@ const Groups = require("../models/groups");
 
 // all events sorted by date and time
 
-exports.viewevents =  function (req, res, next) {
+exports.adminpage = (req, res) => {
+    res.render("admin")
+}
+
+exports.viewevents = (req, res, next) => {
     return Events.findAll({ order: [['dato'],['tid']]})
         .then(function(data) {
             res.render('adminevents', {eventlist: data });
