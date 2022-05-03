@@ -5,13 +5,13 @@ const Events = require("../models/events");
 //det virker men searchss er undifined:
 
 exports.eventsearch = function (req, res, next){
-    const input = req.body.searchss
-    console.log(input);
-       return Events.findAll({where: { event_name: { [Op.like]: `${input}`}}
+   var searchInput = req.query.SearchName
+    console.log(searchInput);
+       return Events.findAll({where: { event_name: { [Op.like]: `%${searchInput}%`}}
       })
 
        .then(function(data) {
-        res.render('events', {eventlist: data });
+       return res.render('events', {eventlist: data });
     })
     .catch( function(err)  {
         console.log(err)

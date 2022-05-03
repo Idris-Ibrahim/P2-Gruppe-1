@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+var searchInput = require("../controllers/searchcontroller");
 
 // Require controller modules.
 const events_controller = require('../controllers/eventscontroller');
@@ -28,7 +29,7 @@ router.get('/events/eventnameasc', events_controller.eventnameasc);
 router.get('/events/eventnamedesc', events_controller.eventsdesc);
 
 //search
-router.get('/events/search', search_controller.eventsearch);
+router.get(`/events/search`, search_controller.eventsearch)
 
 
 /// Groups:
