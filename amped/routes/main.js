@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-var searchInput = require("../controllers/searchcontroller");
 
 // Require controller modules.
 const events_controller = require('../controllers/eventscontroller');

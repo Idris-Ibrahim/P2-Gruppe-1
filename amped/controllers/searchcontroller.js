@@ -5,10 +5,17 @@ const Events = require("../models/events");
 //det virker men searchss er undifined:
 
 exports.eventsearch = function (req, res, next){
+    //req.query fik det til at virke :D, req.body eller req.params virkede ikke
    var searchInput = req.query.SearchName
-    console.log(searchInput);
-       return Events.findAll({where:{
-        [Op.or]: [{ event_name: { [Op.like]: `%${searchInput}%`}}, {orgname: { [Op.like]: `%${searchInput}%`}}]}
+       return Events.findAll({
+           where:{
+               //Op.or signalere at vi retunere eventen det enten hvis event_name, eller orgname indeholder vores søgeord
+            [Op.or]: [
+                //% (procenttegn) signalere at søgerinputtet kan findes inde i et ord og bliver displayed
+                { event_name: { [Op.like]: `%${searchInput}%`}},
+                { orgname: { [Op.like]: `%${searchInput}%`}
+            }]
+        }
       })
 
        .then(function(data) {
