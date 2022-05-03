@@ -5,6 +5,7 @@ const router = express.Router();
 const events_controller = require('../controllers/eventscontroller');
 const groups_controller = require('../controllers/groupscontroller');
 const admin_controller = require('../controllers/admincontroller')
+const calendar_controller = require('../controllers/calendarcontroller')
 const search_controller = require('../controllers/searchcontroller')
 
 // main page
@@ -37,9 +38,7 @@ router.get('/events/search', search_controller.eventsearch);
 router.get('/groups', groups_controller.viewgroups);
 
 //Kalender
-router.get('/calendar', (req, res) => {
-    res.render('calendar')
-})
+router.get('/calendar', calendar_controller.calendar); 
 
 /// login
 // get login page
@@ -60,8 +59,6 @@ router.post('/register',groups_controller.registergroups);
 router.get('/admin', (req, res) => {
     res.render('admin')
 })
-
-router.get('/Calendar');
 
 //admin page:
 router.get('/admin/groups', admin_controller.viewgroups);
