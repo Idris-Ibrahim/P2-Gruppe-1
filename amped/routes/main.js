@@ -67,9 +67,14 @@ router.get('/register', register_controller.registerpage);
 router.post('/register',register_controller.registergroups);
 
 
-//admin
+///admin
+//
 router.get('/admin', admin_controller.adminpage);
+// se gruper
 router.get('/admin/groups', admin_controller.viewgroups);
+//slet grupper
+router.post('/admin/groups', groups_controller.groupsdelete);
+// se events
 router.get('/admin/events', admin_controller.viewevents);
 
 
