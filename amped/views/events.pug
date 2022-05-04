@@ -2,7 +2,7 @@ extends layout
 
 block content
     include nav
-    h1= current = 'Events'
+    h1= current = ''
     body
     
     form(action="/events/search", method='GET', role='search')
@@ -10,7 +10,7 @@ block content
             input(type='search' placeholder=' Search...' name='SearchName' id="SearchID")
             button(type='search' id='searchButton') Search 
         
-        button.dropbtn Sort
+            button.dropbtn Sort
                 .dropdown-content
 
                         a(href='/events/sortddateasc') Date  &uarr;

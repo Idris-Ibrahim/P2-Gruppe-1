@@ -20,7 +20,7 @@ button {
     background-color: white;
 }
 
-/*Change the dropdown*/
+/*Customize the dropdown*/
 .dropdown-content {
     display: none;
     position: absolute;
@@ -40,7 +40,7 @@ button:hover .dropdown-content {
     max-width: 800px;
     margin: 0 auto;
 }
-
+/*Creates the box for event information*/
 .event-container .event {
     box-shadow: 0 4px 16px -8px white;
     background-color: black;
@@ -49,7 +49,7 @@ button:hover .dropdown-content {
     border-radius: 70px;
     margin: 32px 10;
 }
-
+/*Customize the box*/
 .event .event-left {
     background-image: url('../images/evn.PNG');
     background-repeat: no-repeat;
@@ -58,24 +58,21 @@ button:hover .dropdown-content {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #eee;
+    color: white;
     padding: 8px 48px;
     font-weight: bold;
     text-align: center;
     border-radius: 8px 0 0 8px;
 }
-
+/*Customize the placement of the text inside the box*/
 .event .event-right {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0 24px;
+    padding: 10px 24px;
 }
 
-ol h5.event-title {
-    display: grid;
-}
-
+/*Customize the blue box that state time*/
 .event .event-right .event-timing {
     background: navy;
     display: flex;
@@ -84,56 +81,10 @@ ol h5.event-title {
     width: 100px;
     padding: 8px;
     border-radius: 16px;
-    margin: 24px 0;
     font-size: 14px;
 }
 
-.event .event-right .event-timing img {
-    height: 20px;
-    padding-right: 8px;
-}
-
-ol.h3.group-name {
-    display: grid;
-}
-
-/*.group-event .group {
-    display: grid;
-    border-radius: 8px;
-    padding-right: 600px;
-    padding-left: 600px;
-    margin: 20px 0;
-}
-
-.group .group-left {
-    background-image: url('../images/grup.jpg');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    min-width: 200px;
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    padding: 50px 50px;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 8px 0 0 8px;
-}
-
-.group .group-name {
-    background: black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100px;
-    padding: 8px;
-    border-radius: 16px;
-    margin: 24px 0;
-    font-size: 14px;
-}
-.h5 {
-    display: table-column;
-}*/
+/*GROUPS CSS*/
 
 .group-event {
     font-family: "Roboto", sans-serif;
