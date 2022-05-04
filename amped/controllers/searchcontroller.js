@@ -28,19 +28,15 @@ exports.eventsearch = function (req, res, next){
 }
 
 exports.groupsearch = function (req, res, next){
-    //req.query fik det til at virke :D, req.body eller req.params virkede ikke
    var searchInput = req.query.SearchGroup
        return Groups.findAll({
            where:{
-               //Op.or signalere at vi retunere eventen det enten hvis event_name, eller orgname indeholder vores søgeord
             [Op.or]: [
-                //% (procenttegn) signalere at søgerinputtet kan findes inde i et ord og bliver displayed
                 { group_name: { [Op.like]: `%${searchInput}%`}},
                 { group_about: { [Op.like]: `%${searchInput}%`}}
             ]
         }
       })
-
        .then(function(data) {
        return res.render('groups', {grouplist: data });
     })
