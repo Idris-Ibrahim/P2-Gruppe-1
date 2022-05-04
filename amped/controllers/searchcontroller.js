@@ -13,8 +13,8 @@ exports.eventsearch = function (req, res, next){
             [Op.or]: [
                 //% (procenttegn) signalere at søgerinputtet kan findes inde i et ord og bliver displayed
                 { event_name: { [Op.like]: `%${searchInput}%`}},
-                { orgname: { [Op.like]: `%${searchInput}%`}
-            }]
+                { orgname: { [Op.like]: `%${searchInput}%`}}
+            ]
         }
       })
 
