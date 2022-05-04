@@ -13,6 +13,8 @@ exports.registergroups = (req, res, next) => {
         group_name: req.body.group_name,
         group_email: req.body.group_email,
         password: req.body.password,
+        group_about: req.body.GruppeBeskrivelse,
+        fburl: req.body.FacebookURL,
         roles: 0
     }).then(function (groups) {
         if (groups) {
