@@ -5,6 +5,11 @@ block content
     h1= current = ''
 
     ol
+    form(action="/groups/search", method='GET', role='search')
+        .form-search
+            input(type='search' placeholder=' Search...' name='SearchGroup' id="SearchIDG")
+            button(type='search' id='searchButton') Search 
+
         .group-event
             each group in grouplist
                 h5.group-name #{group.group_name}
