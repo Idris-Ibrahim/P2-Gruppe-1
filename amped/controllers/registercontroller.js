@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 const {Datatypes, Op} = Sequelize;
-const Users = require("../models/groups"); //skal implementeres
+const Groups = require("../models/groups"); //skal implementeres
 
 
 exports.registerpage = (req, res, next) => {
