@@ -1,6 +1,7 @@
 const Sequelize = require("sequelize");
 const {Datatypes, Op} = Sequelize;
 const Events = require("../models/events");
+const { grouproleone } = require("./groupscontroller");
 
 // all events sorted by date and time
 
@@ -53,7 +54,7 @@ connection
 .then((result) => {
     //dato skal være: (år-måned-dag):
     Events.create({ 
-            orgname: req.body.org_name,
+            orgname: null, //<= skal være samme gruppe som er logget ind
             event_name: req.body.event_name,
             lokation: req.body.event_lokation,
             tid: req.body.event_tid,
@@ -80,7 +81,7 @@ exports.eventupdate = function(req, res, next){
     
     Events.update(
         // Values to update
-        {   orgname: req.body.org_name,
+        {
             event_name: req.body.event_name,
             lokation: req.body.event_lokation,
             tid: req.body.event_tid,

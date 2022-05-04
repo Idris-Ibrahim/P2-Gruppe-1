@@ -60,7 +60,7 @@ exports.groupsdelete = function(req, res, next){
         if (groups) {
             res.redirect('/admin/groups');
         } else {
-            response.status(400).send('Error in insert new record');
+            response.status(400).send('Error in delete');
         }
     });
 }
