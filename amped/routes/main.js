@@ -74,9 +74,11 @@ router.get('/admin', admin_controller.adminpage);
 // se gruper
 router.get('/admin/groups', admin_controller.viewgroups);
 //slet grupper
-router.post('/admin/groups', groups_controller.groupsdelete);
+router.post('/:id', groups_controller.groupsdelete);
 // se events
 router.get('/admin/events', admin_controller.viewevents);
+
+// Details
 
 
 module.exports = router;

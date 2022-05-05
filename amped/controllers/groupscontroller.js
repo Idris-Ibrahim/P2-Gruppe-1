@@ -54,7 +54,7 @@ exports.grouproleone = function(req, res, next){
 exports.groupsdelete = function(req, res, next){
     Groups.destroy({
         //slet ud fra id
-        where: {id: req.body.id}
+        where: {'id: = ?': [req.body.id]}
     }).then(function (groups) {
         if (groups) {
             res.redirect('/admin/groups');

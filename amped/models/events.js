@@ -10,17 +10,9 @@ const Events = connection.define("Events", {
         allowNull: false,
         primaryKey: true,
     },
-    orgname:{
-        type: Sequelize.STRING,
-        allowNull: false,
-    },
     event_name:{
         type: Sequelize.STRING,
         allowNull: false,
-    },
-    event_type:{
-        type: Sequelize.STRING,
-        allowNull: true,
     },
     beskrivelse:{
         type: Sequelize.STRING,
