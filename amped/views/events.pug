@@ -9,18 +9,6 @@ block content
         .form-search
             input(type='search' placeholder=' Search...' name='SearchName' id="SearchID")
             button(type='search' id='searchButton') Search 
-        
-            button.dropbtn Sort
-                .dropdown-content
-
-                        a(href='/events/sortddateasc') Date  &uarr;
-
-                        a(href='/events/sortddatedesc') Date &darr;
-
-                        a(href='/events/eventnameasc') Name &uarr;
-
-                        a(href='/events/eventnamedesc') Name &darr;
-
         ol
             .event-container
                 each event in eventlist
