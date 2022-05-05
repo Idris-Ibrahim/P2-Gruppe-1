@@ -99,3 +99,13 @@ exports.eventupdate = function(req, res, next){
     });
 }
 
+//event info display
+exports.eventinfo = function(req, res, next){
+    return Events.findAll({ order: [['name'],['tid']]})
+        .then(function(data) {
+            res.render('eventinfo', {eventlist: data });
+        })
+        .catch( function(err)  {
+            console.log(err)
+        });
+}

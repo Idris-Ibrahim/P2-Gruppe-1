@@ -37,7 +37,6 @@ router.get('/events/eventnameasc', events_controller.eventnameasc);
 router.get('/events/eventnamedesc', events_controller.eventsdesc);
 
 
-
 //search
 router.get(`/events/search`, search_controller.eventsearch);
 router.get(`/groups/search`, search_controller.groupsearch);
