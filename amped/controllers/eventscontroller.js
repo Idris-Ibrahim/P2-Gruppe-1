@@ -59,7 +59,7 @@ connection
 .then((result) => {
     //dato skal være: (år-måned-dag):
     Events.create({ 
-            orgname: req.session.Group.group_name, //<= skal være samme gruppe som er logget ind
+            group_name: req.session.Group.group_name, //<= skal være samme gruppe som er logget ind
             event_name: req.body.event_name,
             lokation: req.body.event_lokation,
             tid: req.body.event_tid,

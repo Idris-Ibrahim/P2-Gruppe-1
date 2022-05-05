@@ -6,7 +6,12 @@ const Groups = require("../models/groups");
 // all events sorted by date and time
 
 exports.adminpage = (req, res) => {
+    if (req.session.loggedin == false || req.session.Group.role !== 2){
+        res.send("You're not an admin")
+        return
+    }
     res.render("admin")
+
 }
 
 exports.viewevents = (req, res, next) => {
