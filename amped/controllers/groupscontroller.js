@@ -1,4 +1,3 @@
-
 const Sequelize = require("sequelize");
 const {Datatypes, Op} = Sequelize;
 const Groups = require("../models/groups");

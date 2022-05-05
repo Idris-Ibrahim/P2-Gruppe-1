@@ -24,7 +24,8 @@ block content
         ol
             .event-container
                 each event in eventlist
-                    h3.event-title #{event.event_name}
+
+                    a(href='/eventinfo')  #{event.event_name}
 
                         .event
                             .event-left

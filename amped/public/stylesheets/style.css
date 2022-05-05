@@ -30,10 +30,11 @@ button {
     padding: 12px 10px;
     z-index: 1;
 }
-/*Makes the option stand over each other instead of beside*/
+/*Makes the option stand over each other instead of beside & makes the button hoverable*/
 button:hover .dropdown-content {
     display: grid;
 }
+
 /*Adjust the placements of the events*/
 .event-container {
     font-family: "Roboto", sans-serif;
@@ -125,5 +126,3 @@ ol h5.event-title {
     display: grid;
 }
 
-ol.h3.group-name {
-    display: grid;
