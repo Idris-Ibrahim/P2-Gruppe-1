@@ -6,6 +6,7 @@ const { grouproleone } = require("./groupscontroller");
 // all events sorted by date and time
 
 exports.viewevents =  function (req, res, next) {
+    console.log(req.session)
     return Events.findAll({ order: [['dato'],['tid']]})
         .then(function(data) {
             res.render('events', {eventlist: data });
@@ -49,12 +50,16 @@ exports.eventnamedesc =  function (req, res, next) {
 }
 
 exports.eventcreate = function (req, res, next){
+ if (req.session.loggedin == false) {
+     res.redirect("/login")
+     return
+}
 connection
 .sync(/*{force:true}*/)
 .then((result) => {
     //dato skal være: (år-måned-dag):
     Events.create({ 
-            orgname: null, //<= skal være samme gruppe som er logget ind
+            orgname: req.session.Group.group_name, //<= skal være samme gruppe som er logget ind
             event_name: req.body.event_name,
             lokation: req.body.event_lokation,
             tid: req.body.event_tid,

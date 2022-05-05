@@ -57,7 +57,8 @@ router.get('/calendar', calendar_controller.calendar);
 
 // get login page
 router.get('/login', login_controller.loginpage);
-router.post('/login', login_controller.loggingin)
+router.post('/login', login_controller.loggingin);
+router.get('/logout', login_controller.logout);
 
 
 // register
