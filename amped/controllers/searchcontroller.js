@@ -45,6 +45,7 @@ exports.groupsearch = function (req, res, next){
     });
 }
 
+
 //getting search input:
 /*exports.eventsearch = function (req, res, next){
     var searchString = req.body.search
