@@ -7,6 +7,7 @@ body {
   background-color: black;
     color: white;
 }
+
 /*Removes the underline of hyperlinks*/
 a:link { text-decoration: none; }
 a:visited { text-decoration: none; }
@@ -108,7 +109,7 @@ button:hover .dropdown-content {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #eee;
+    color: white;
     padding: 75px 48px;
     font-weight: bold;
     text-align: center;
