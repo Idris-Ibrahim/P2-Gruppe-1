@@ -1,15 +1,20 @@
 const Sequelize = require("sequelize");
 const connection = require("../config");
 const express = require('express');
-const Groups = require("../models/groups");
-
+const Groups = require('./groups');
 
 const Events = connection.define("Events", {
-    id: {
+    id:{
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
+    },
+    Groups_id:{
+        //foreign key to Groups id
+        type: Sequelize.INTEGER,
+        required: true,
+        allowNull: false
     },
     event_name:{
         type: Sequelize.STRING,
@@ -58,3 +63,8 @@ const Events = connection.define("Events", {
      */
 });
 module.exports = Events;
+
+Groups.hasMany(Events, {
+    foreignKey: 'id'
+});
+Events.belongsTo(Groups);
