@@ -1,6 +1,7 @@
 const Sequelize = require("sequelize");
 const connection = require("../config");
 const express = require('express');
+const Groups = require("../models/groups");
 
 
 const Events = connection.define("Events", {

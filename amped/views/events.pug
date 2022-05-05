@@ -21,11 +21,11 @@ block content
 
                         a(href='/events/eventnamedesc') Name &darr;
 
-    ol
-        .event-container
-            each event in eventlist
-                a(href='/eventinfo ')
-                    h3.event_name #{event.event_name}
+        ol
+            .event-container
+                each event in eventlist
+
+                    a(href='/eventinfo')  #{event.event_name}
 
                         .event
                             .event-left
@@ -33,11 +33,9 @@ block content
 
                             .event-right
 
-                                .klub Klub:
+                                .klub Klub: #{event.orgname}
                                 .date d. #{event.dato}
                                 .sted Sted: #{event.lokation}
                                 .event-description #{event.beskrivelse}
                                 .event-timing Kl. #{event.tid}
-
-
 
