@@ -1,6 +1,7 @@
 const Sequelize = require("sequelize");
 const connection = require("../config");
 const express = require('express');
+const Groups = require("../models/groups");
 
 
 const Events = connection.define("Events", {
@@ -17,10 +18,6 @@ const Events = connection.define("Events", {
     event_name:{
         type: Sequelize.STRING,
         allowNull: false,
-    },
-    event_type:{
-        type: Sequelize.STRING,
-        allowNull: true,
     },
     beskrivelse:{
         type: Sequelize.STRING,
