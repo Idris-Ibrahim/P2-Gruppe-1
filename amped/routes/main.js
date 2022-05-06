@@ -45,6 +45,7 @@ router.get(`/groups/search`, search_controller.groupsearch);
 
 /// Groups:
 router.get('/groups', groups_controller.viewgroups);
+router.get('/grouppanel', events_controller.vieweventsforgroup)
 
 
 
