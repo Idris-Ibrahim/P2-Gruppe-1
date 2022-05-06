@@ -4,17 +4,17 @@ block content
     include nav
     h1= current = ''
     body
-        event in eventlist
-            a.rs_event_link(itemprop ='url' href="/groupinfo")  #{event.event_name}
+        event in eventlist 
+                a(href='/eventinfo' style='color: white')  #{event.event_name}
+                        p()
 
-                .event
-                    .event-left
-                        .event-date
+                        .event
+                            .event-left
+                                .event-date
 
-                    .event-right
+                            .event-right
 
-                        .klub Klub: #{event.orgname}
-                        .date d. #{event.dato}
-                        .sted Sted: #{event.lokation}
-                        .event-description #{event.beskrivelse}
-                        .event-timing Kl. #{event.tid}
+                                .date d. #{event.dato}
+                                .sted Sted: #{event.lokation}
+                                .event-description #{event.beskrivelse}
+                                .event-timing Kl. #{event.tid}
