@@ -46,3 +46,12 @@ app.use(function(err, req, res, next) {
 app.use(bodyParser.urlencoded({ extended: true }));
 
 module.exports = app;
+
+
+
+app.use(function(req, res, exit) {
+
+  res.locals.loggedin = req.session.loggedin;
+
+  exit();
+})
