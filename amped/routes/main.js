@@ -23,7 +23,6 @@ router.get('/', events_controller.viewevents);
 
 // gets all sorted events from events_controller
 router.get('/events', events_controller.viewevents);
-router.get('/events', groups_controller.viewgroups);
 
 // gets all events sorted ASC
 router.get('/events/sortddateasc', events_controller.viewevents);
