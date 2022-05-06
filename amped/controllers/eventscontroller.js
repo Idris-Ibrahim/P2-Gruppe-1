@@ -20,8 +20,16 @@ exports.viewevents =  function (req, res, next) {
 }
 
 exports.vieweventsforgroup =  function (req, res, next) {
+    if(req.session.loggedIn !== true){
+        res.redirect('/login')
+        return
+    }
+    if (req.session.Group.roles < 1){
+        res.send("You do not have permission to do this")
+        return
+    }
     console.log(req.session)
-    return Events.findAll({order: [['dato'],['tid']]},{where: group_id = req.session.group_id})
+    return Events.findAll({where: {group_id : req.session.Group.id}},{order: [['dato'],['tid']]})
         .then(function(data) {
             res.render('grouppanel', {eventlist: data },
             console.log(data));
@@ -130,7 +138,7 @@ exports.eventupdate = function(req, res, next){
 exports.eventinfo = function(req, res, next){
     return Events.findAll({ order: [['name'],['tid']]})
         .then(function(data) {
-            res.render('eventinfo', {eventlist: data });
+            res.redirect('eventinfo', {eventlist: data });
         })
         .catch( function(err)  {
             console.log(err)
