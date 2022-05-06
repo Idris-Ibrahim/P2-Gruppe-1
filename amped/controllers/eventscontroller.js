@@ -64,7 +64,7 @@ exports.eventnamedesc =  function (req, res, next) {
 }
 
 exports.eventcreate = function (req, res, next){
- if (req.session.loggedin == false) {
+ if (req.session.loggedIn !== true) {
      res.redirect("/login")
      return
 }
