@@ -68,7 +68,7 @@ exports.groupspdate = function(req, res, next){
 
     Events.update(
         // Values to update
-        {   orgname: req.body.org_name,
+        {   
             event_name: req.body.event_name,
             lokation: req.body.event_lokation,
             tid: req.body.event_tid,
