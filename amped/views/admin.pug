@@ -1,18 +1,18 @@
-#mySidenav.sidenav
-    a.closebtn(href='javascript:void(0)' onclick='closeNav()') &times;
-    a(href='/admin/groups') GroupsAdmin
-    a(href='/admin/events') EventsAdmin
-    a(href='/logout') Log ud
-Use any element to open the sidenav
-span(onclick='openNav()')
-#main
+extends layout
+block content
+    ul
+    a(href='/admin' style='color: white') AdminPage &nbsp&nbsp&nbsp&nbsp&nbsp
+
+    a(href='/events' style='color: white') Events &nbsp&nbsp&nbsp&nbsp&nbsp
+
+    a(href='/groups' style='color: white') Groups &nbsp&nbsp&nbsp&nbsp&nbsp
+
+    a(href='/logout' style='color: white') Logout &nbsp&nbsp&nbsp&nbsp&nbsp
 
     .row
         .col-sm-1
         .col-sm-4
-        include admingroups
+        a(href='admin/groups' style='color: white') GroupsAdmin &nbsp&nbsp&nbsp&nbsp&nbsp
         .col-sm-1
         .col-sm-4
-        include adminevents
-
-        .col-sm-2
+        a(href='admin/events' style='color: white') EventsAdmin &nbsp&nbsp&nbsp&nbsp&nbsp
