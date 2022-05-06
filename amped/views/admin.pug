@@ -1,21 +1,18 @@
-extends layout
-block content
-    .topbar
-    ul
-    a(href='/admin' style='color: white') AdminPage &nbsp&nbsp&nbsp&nbsp&nbsp
-
-    a(href='/events' style='color: white') Events &nbsp&nbsp&nbsp&nbsp&nbsp
-
-    a(href='/groups' style='color: white') Groups &nbsp&nbsp&nbsp&nbsp&nbsp
-
-    a(href='/logout' style='color: white') Logout &nbsp&nbsp&nbsp&nbsp&nbsp
+#mySidenav.sidenav
+    a.closebtn(href='javascript:void(0)' onclick='closeNav()') &times;
+    a(href='/admin/groups') GroupsAdmin
+    a(href='/admin/events') EventsAdmin
+    a(href='/logout') Log ud
+Use any element to open the sidenav
+span(onclick='openNav()')
+#main
 
     .row
         .col-sm-1
         .col-sm-4
-         a(href='admin/events' style='color: white') EventsAdmin &nbsp&nbsp&nbsp&nbsp&nbsp
+        include admingroups
         .col-sm-1
         .col-sm-4
-        a(href='admin/groups' style='color: white') GroupsAdmin &nbsp&nbsp&nbsp&nbsp&nbsp
+        include adminevents
 
         .col-sm-2
