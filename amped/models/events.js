@@ -10,7 +10,7 @@ const Events = connection.define("Events", {
         allowNull: false,
         primaryKey: true,
     },
-    Groups_id:{
+    group_id:{
         //foreign key to Groups id
         type: Sequelize.INTEGER,
         required: true,
@@ -65,6 +65,6 @@ const Events = connection.define("Events", {
 module.exports = Events;
 
 Groups.hasMany(Events, {
-    foreignKey: 'Groups_id',
+    foreignKey: 'group_id',
 });
 Events.belongsTo(Groups);

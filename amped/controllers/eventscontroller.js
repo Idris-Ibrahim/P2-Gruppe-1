@@ -8,7 +8,7 @@ const Groups = require("../models/groups");
 
 exports.viewevents =  function (req, res, next) {
     console.log(req.session)
-    return Events.findAll({ order: [['dato'],['tid']]})
+    return Events.findAll({ include: Groups}, { order: [['dato'],['tid']]})
         .then(function(data) {
             res.render('events', {eventlist: data },
             console.log(data));
