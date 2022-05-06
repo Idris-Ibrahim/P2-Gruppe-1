@@ -1,11 +1,19 @@
-includes layout
+extends layout
 
 block content
     include nav
     h1= current = ''
     body
-        event in eventlist 
-                a(href='/eventinfo' style='color: white')  #{event.event_name}
+    
+    form(action="/events/search", method='GET', role='search')
+        .form-search
+            input(type='search' placeholder=' Search...' name='SearchName' id="SearchID")
+            button(type='search' id='searchButton') Search 
+        ol
+            .event-container
+                each event in eventlist
+
+                    a(href='/eventinfo' style='color: white')  #{event.event_name}
                         p()
 
                         .event
@@ -14,6 +22,7 @@ block content
 
                             .event-right
 
+                      
                                 .date d. #{event.dato}
                                 .sted Sted: #{event.lokation}
                                 .event-description #{event.beskrivelse}

@@ -20,7 +20,7 @@ exports.viewevents =  function (req, res, next) {
 
 exports.vieweventsforgroup =  function (req, res, next) {
     console.log(req.session)
-    return Events.findAll({order: [['dato'],['tid']]},{where: group_id = req.session.group_id})
+    return Events.findAll({where: {group_id : req.session.Group.id}},{order: [['dato'],['tid']]})
         .then(function(data) {
             res.render('grouppanel', {eventlist: data },
             console.log(data));
