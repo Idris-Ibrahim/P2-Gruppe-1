@@ -1,0 +1,39 @@
+mixin pagination(totalNewsCount, limit, currentPage, num)
+    - let index = 0;
+    - let pageRange = num || 2;
+    - let totalPages = totalNewsCount / limit;
+    - let rangeStart = () => (currentPage - pageRange > 1) ? currentPage - pageRange : 1;
+    - let rangeEnd = () => (currentPage + pageRange < totalPages) ? currentPage + pageRange : totalPages;
+    - let hasFirst = rangeStart !== 1;
+    - let hasLast = rangeEnd() < totalPages;
+    -console.log(!hasFirst)
+
+    if totalPages > 1
+        ul.pagination
+            li.pagination__item
+                a.pagination__link(href='/events')
+                    span.pagination__previous <
+            if totalPages > 6 && rangeStart() > 1
+                li.pagination__item
+                    a.pagination__link(href='/events') 1
+                li.pagination__item
+                    a.pagination__link(data-eclipdse='true' disabled href='/events') ...
+            if totalPages <= 6
+                -for(let index = 1; index <= totalPages; index +=1)
+                    li.pagination__item
+                        a.pagination__link(href='/events')= index
+            else
+                -for(let index = rangeStart(); index <= rangeEnd(); index +=1)
+                    li.pagination__item
+                        a.pagination__link(href='/events')= index
+
+            if totalPages>6 && hasLast
+                if rangeEnd() + 1 !== totalPages
+                    li.pagination__item
+                        a.pagination__link(data-eclipdse='true' disabled href='/events') ...
+                li.pagination__item
+                    a.pagination__link(href='/events')= totalPages
+
+            li.pagination__item
+                a.pagination__link(href='/events')
+                    span.pagination__next >

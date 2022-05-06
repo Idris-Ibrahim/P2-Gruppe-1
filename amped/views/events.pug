@@ -12,7 +12,7 @@ block content
         ol
             .event-container
                 each event in eventlist
-
+                    p()
                     a(href='/eventinfo' style='color: white')  #{event.event_name}
                         p()
 
@@ -28,3 +28,4 @@ block content
                                 .event-description #{event.beskrivelse}
                                 .event-timing Kl. #{event.tid}
 
+    include pagination
