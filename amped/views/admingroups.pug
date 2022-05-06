@@ -12,6 +12,10 @@ block content
 
     a(href='/logout' style='color: white') Logout &nbsp&nbsp&nbsp&nbsp&nbsp
 
+    form(action="/groups/search", method='GET', role='search')
+        .form-search
+            input(type='search' placeholder=' Search...' name='SearchGroup' id="SearchIDG")
+            button(type='search' id='searchButton') Search
     .container
         table.col-xs-12
             tr
@@ -40,6 +44,8 @@ block content
     form(action="/admin/groups", method="post")
         .form-group
             input(type="text" name="id"  class="group-id" placeholder="Id der skal slettes")
-
-
+    input(type='button' onclick="location.href='/adminopret';" value='Opret en gruppe')
+    form(action="/adminupdate", method="post")
+        .form-group
+            input(type="text" name="id" onclick="location.href='/adminupdate" class="group-id" placeholder="Id der skal opdateres")
 

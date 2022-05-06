@@ -78,6 +78,14 @@ router.get('/admin/groups', admin_controller.viewgroups);
 router.post('/admin/groups', groups_controller.groupsdelete);
 // se events
 router.get('/admin/events', admin_controller.viewevents);
+// søg grupper
+router.get(`/admin/search`, search_controller.groupsearch);
+// opret gruppe
+router.get('/adminopret', admin_controller.registeradmin);
+router.post('/adminopret',admin_controller.adminregistergroups);
+// update gruppe
+router.get('/adminupdate', admin_controller.updateadmin);
+router.post('/adminupdate',admin_controller.adminupdategroups);
 
 /// Grupper
 //

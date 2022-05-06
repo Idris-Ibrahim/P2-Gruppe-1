@@ -33,12 +33,13 @@ exports.groupsearch = function (req, res, next){
            where:{
             [Op.or]: [
                 { group_name: { [Op.like]: `%${searchInput}%`}},
-                { group_about: { [Op.like]: `%${searchInput}%`}}
+                { group_about: { [Op.like]: `%${searchInput}%`}},
+                { id: { [Op.like]: `%${searchInput}%`}}
             ]
         }
       })
        .then(function(data) {
-       return res.render('groups', {grouplist: data });
+       return res.render('admingroups', {grouplist: data });
     })
     .catch( function(err)  {
         console.log(err)

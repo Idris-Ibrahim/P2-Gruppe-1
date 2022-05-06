@@ -7,6 +7,10 @@ exports.registerpage = (req, res, next) => {
     res.render("register")
 }
 
+exports.registeradmin = (req, res, next) => {
+    res.render("adminopret")
+}
+
 // register group
 exports.registergroups = (req, res, next) => {
         Groups.create({
