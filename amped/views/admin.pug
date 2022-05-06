@@ -10,38 +10,9 @@ span(onclick='openNav()')
     .row
         .col-sm-1
         .col-sm-4
-        .container
-            .users.col-md-11.col-xs-12.table-responsive
-                h1 Current Users
-                form.form(method="post" action="/admin/groups")
-                    table.col-xs-12
-                        tr
-                            th Id
-                            th Org
-                            th Om
-                            th Email
-                            th Facebook url
-                            th Password
-                            th Roles
-                            th
-                        each group in grouplist ? grouplist : []
-                            tr
-                                td #{group.id}
-                                td #{group.group_name}
-                                td #{group.group_about}
-                                td #{group.group_email}
-                                td #{group.fburl}
-                                td #{group.password}
-                                td #{group.roles}
-                                td
-
-                                    button.btn.btn-danger.col-xs-12 X
+        include admingroups
         .col-sm-1
         .col-sm-4
-            .sidebar
-                ol
-                    Events
-                        ol
-                            each event in eventlist ? eventlist : []
-                                p  Navn: #{event.event_name} Klubnavn: #{event.orgname} Event Type: #{event.event_type} Beskrivelse: #{event.beskrivelse} Lokation: #{event.lokation} Tid: #{event.tid} Dato: #{event.dato} Pris: #{event.pris} Facebook URL: #{event.fburl}
+        include adminevents
+
         .col-sm-2
