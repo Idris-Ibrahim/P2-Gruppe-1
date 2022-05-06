@@ -1,0 +1,2 @@
+Enforced //enables SELinux
+setsebool -P httpd_can_network_connect true//sets the rights for apache to create network connections.

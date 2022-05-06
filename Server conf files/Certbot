@@ -1,0 +1,4 @@
+Certbot can generate and regenerate certificates for a domain
+and integrate them automatically into apache.
+
+Snapd packet manage installed as part of certbot installation process.
