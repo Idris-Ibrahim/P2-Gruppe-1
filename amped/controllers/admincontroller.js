@@ -6,7 +6,7 @@ const Groups = require("../models/groups");
 // all events sorted by date and time
 
 exports.adminpage = (req, res) => {
-    if (req.session.loggedin !== true || req.session.Group.roles !== 2){
+    if (req.session.loggedIn !== true || req.session.Group.roles !== 2){
         res.send("You're not an admin")
         return
     }
@@ -15,7 +15,7 @@ exports.adminpage = (req, res) => {
 }
 
 exports.viewevents = (req, res, next) => {
-    if (req.session.loggedin !== true || req.session.Group.roles !== 2){
+    if (req.session.loggedIn !== true || req.session.Group.roles !== 2){
         res.send("You're not an admin")
         return
     }
@@ -29,7 +29,7 @@ exports.viewevents = (req, res, next) => {
 }
 
 exports.viewgroups = (req, res, next) => {
-    if (req.session.loggedin !== true || req.session.Group.roles !== 2){
+    if (req.session.loggedIn !== true || req.session.Group.roles !== 2){
         res.send("You're not an admin")
         return
     }

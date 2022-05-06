@@ -4,7 +4,7 @@ const {Datatypes, Op} = Sequelize;
 const Users = require("../models/groups"); //skal implementeres
 
 exports.loginpage = (req, res, next) => {
-    if(req.session.loggedin) {
+    if(req.session.loggedIn) {
         res.redirect("/events")
         return
     }
@@ -29,7 +29,7 @@ exports.loggingin = (req, res, next) => {
             res.send("Username and/or Password is incorrect")
             return
         } 
-        req.session.loggedin = true
+        req.session.loggedIn = true
         req.session.Group = Group
 
         if(Group.roles == 0){
