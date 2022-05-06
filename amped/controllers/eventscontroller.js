@@ -18,6 +18,18 @@ exports.viewevents =  function (req, res, next) {
         });
 }
 
+exports.vieweventsforgroup =  function (req, res, next) {
+    console.log(req.session)
+    return Events.findAll({order: [['dato'],['tid']]},{where: group_id = req.session.Group.group_name})
+        .then(function(data) {
+            res.render('grouppanel', {eventlist: data },
+            console.log(data));
+        })
+        .catch( function(err)  {
+            console.log(err)
+        });
+}
+
 
 // all events sorted by date DESC
 exports.eventsdesc =  function (req, res, next) {
