@@ -1,13 +1,10 @@
 extends layout
 block content
-    .topbar 
+    .topbar
     ul
-     
     a(href='/admin' style='color: white') AdminPage &nbsp&nbsp&nbsp&nbsp&nbsp
 
-    a(href='/admin/events' style='color: white') EventsAdmin &nbsp&nbsp&nbsp&nbsp&nbsp
-
-    a(href='/admin/groups' style='color: white') GroupsAdmin &nbsp&nbsp&nbsp&nbsp&nbsp
+    a(href='admin/groups' style='color: white') GroupsAdmin &nbsp&nbsp&nbsp&nbsp&nbsp
 
     a(href='/events' style='color: white') Events &nbsp&nbsp&nbsp&nbsp&nbsp
 
@@ -15,20 +12,30 @@ block content
 
     a(href='/logout' style='color: white') Logout &nbsp&nbsp&nbsp&nbsp&nbsp
 
-    button.dropbtn Sort
-            .dropdown-content
+    .container
+        table.col-xs-12
+            tr
+                th Id
+                th Group name
+                th Event name
+                th Beskrivelse
+                th Lokation
+                th Tid
+                th Dato
+                th Pris
+                th Facebook URL
+            each event in eventlist ? eventlist : []
+                tr
+                    td #{event.id}
+                    td #{event.group_id}
+                    td #{event.event_name}
+                    td #{event.beskrivelse}
+                    td #{event.lokation}
+                    td #{event.tid}
+                    td #{event.dato}
+                    td #{event.pris}
+                    td #{event.fburl}
 
-                    a(href='/events/sortddateasc') Date  &uarr;
 
-                    a(href='/events/sortddatedesc') Date &darr;
 
-                    a(href='/events/eventnameasc') Name &uarr;
 
-                    a(href='/events/eventnamedesc') Name &darr;
-
-    .sidebar
-            ol 
-                Events  
-                        ol
-                            each event in eventlist ? eventlist : []
-                                p  Navn: #{event.event_name} Klubnavn: #{event.orgname} Event Type: #{event.event_type} Beskrivelse: #{event.beskrivelse} Lokation: #{event.lokation} Tid: #{event.tid} Dato: #{event.dato} Pris: #{event.pris} Facebook URL: #{event.fburl}

@@ -15,26 +15,26 @@ block content
     a(href='/logout' style='color: white') Logout &nbsp&nbsp&nbsp&nbsp&nbsp
 
     .container
-                table.col-xs-12
-                    tr
-                        th Id
-                        th Org
-                        th Om
-                        th Email
-                        th Facebook url
-                        th Password
-                        th Roles
-                        th funktioner
-                    each group in grouplist ? grouplist : []
-                        tr
-                            td #{group.id}
-                            td #{group.group_name}
-                            td #{group.group_about}
-                            td #{group.group_email}
-                            td #{group.fburl}
-                            td #{group.password}
-                            td #{group.roles}
-                            td
+        table.col-xs-12
+            tr
+                th Id
+                th Org
+                th Om
+                th Email
+                th Facebook url
+                th Password
+                th Roles
+                th funktioner
+            each group in grouplist ? grouplist : []
+                tr
+                    td #{group.id}
+                    td #{group.group_name}
+                    td #{group.group_about}
+                    td #{group.group_email}
+                    td #{group.fburl}
+                    td #{group.password}
+                    td #{group.roles}
+                    td
 
 
 
