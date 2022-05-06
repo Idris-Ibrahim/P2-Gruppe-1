@@ -25,7 +25,7 @@ exports.vieweventsforgroup =  function (req, res, next) {
         return
     }
     if (req.session.Group.roles < 1){
-        res.send("You do not have permission to do this")
+        res.render("NoPermission")
         return
     }
     console.log(req.session)
@@ -44,7 +44,7 @@ exports.vieweventsforgroup =  function (req, res, next) {
 exports.eventsdesc =  function (req, res, next) {
     return Events.findAll({ order: [['dato','DESC'],['tid','DESC']]})
         .then(function(data) {
-            res.render('events', {eventlist: data });
+            res.render("NoPermission");
         })
         .catch( function(err)  {
             console.log(err)
@@ -74,7 +74,7 @@ exports.eventnamedesc =  function (req, res, next) {
 
 exports.eventcreate = function (req, res, next){
 if (req.session.loggedIn !== true || req.session.Group.roles < 1){
-    res.send("You do not have permission to do this")
+    res.render("NoPermission")
     return
 }
 connection
