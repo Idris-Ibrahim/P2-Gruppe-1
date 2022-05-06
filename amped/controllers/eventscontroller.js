@@ -23,6 +23,10 @@ exports.vieweventsforgroup =  function (req, res, next) {
         res.redirect('/login')
         return
     }
+    if (req.session.Group.roles < 1){
+        res.send("You do not have permission to do this")
+        return
+    }
     console.log(req.session)
     return Events.findAll({where: {group_id : req.session.Group.id}},{order: [['dato'],['tid']]})
         .then(function(data) {
