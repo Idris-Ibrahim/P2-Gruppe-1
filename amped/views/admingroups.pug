@@ -1,9 +1,10 @@
+extends layout
 block content
     .topbar 
     ul
     a(href='/admin' style='color: white') AdminPage &nbsp&nbsp&nbsp&nbsp&nbsp
 
-    a(href='/admin/events' style='color: white') EventsAdmin &nbsp&nbsp&nbsp&nbsp&nbsp
+    a(href='admin/events' style='color: white') EventsAdmin &nbsp&nbsp&nbsp&nbsp&nbsp
 
     a(href='/events' style='color: white') Events &nbsp&nbsp&nbsp&nbsp&nbsp
 
@@ -11,35 +12,34 @@ block content
 
     a(href='/logout' style='color: white') Logout &nbsp&nbsp&nbsp&nbsp&nbsp
 
-.container
-    .users.col-md-11.col-xs-12.table-responsive
-        h1 Current Users
-        form.form(method="post" action="/admin/groups")
-            table.col-xs-12
+    .container
+        table.col-xs-12
+            tr
+                th Id
+                th Org
+                th Om
+                th Email
+                th Facebook url
+                th Password
+                th Roles
+                th funktioner
+            each group in grouplist ? grouplist : []
                 tr
-                    th Id
-                    th Org
-                    th Om
-                    th Email
-                    th Facebook url
-                    th Password
-                    th Roles
-                    th
-                each group in grouplist ? grouplist : []
-                    tr
-                        td #{group.id}
-                        td #{group.group_name}
-                        td #{group.group_about}
-                        td #{group.group_email}
-                        td #{group.fburl}
-                        td #{group.password}
-                        td #{group.roles}
-                        td
+                    td #{group.id}
+                    td #{group.group_name}
+                    td #{group.group_about}
+                    td #{group.group_email}
+                    td #{group.fburl}
+                    td #{group.password}
+                    td #{group.roles}
+                    td
 
-                            button.btn.btn-danger.col-xs-12 X
-form(action="/admin/groups",)
-    .form-group
-        input(type="button" name="id"  placeholder="Id der skal slettes")
-form(action="/admin/groups", method="post")
-    .form-group
-        input(type="text" name="id" class="group-id" placeholder="Id der skal slettes")
+
+
+
+    form(action="/admin/groups", method="post")
+        .form-group
+            input(type="text" name="id"  class="group-id" placeholder="Id der skal slettes")
+
+
+
