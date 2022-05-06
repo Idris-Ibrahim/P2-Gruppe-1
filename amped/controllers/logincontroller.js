@@ -12,10 +12,10 @@ exports.loginpage = (req, res, next) => {
 }
 
 exports.loggingin = (req, res, next) => {
-    const Username = req.body.username
+    const Username = req.body.Username
     const Password = req.body.password
     if(!Username || !Password ){
-         res.send("Username and/or Password is incorrect")
+         res.send("Username and/or Password is incorrect") 
         return
     }
 
