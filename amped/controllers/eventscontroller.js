@@ -64,9 +64,9 @@ exports.eventnamedesc =  function (req, res, next) {
 }
 
 exports.eventcreate = function (req, res, next){
- if (req.session.loggedIn !== true) {
-     res.redirect("/login")
-     return
+if (req.session.loggedIn !== true || req.session.Group.roles < 1){
+    res.send("You do not have permission to do this")
+    return
 }
 connection
 .sync(/*{force:true}*/)
@@ -90,6 +90,10 @@ connection
 }
 
 exports.eventdelete = function(req, res, next){
+    if (req.session.loggedIn !== true || req.session.Group.roles < 1){
+        res.send("You do not have permission to do this")
+        return
+    }
      Events.destroy({
         //slet ud fra id
         where: {id: req.body.id}
@@ -97,7 +101,10 @@ exports.eventdelete = function(req, res, next){
 }
 
 exports.eventupdate = function(req, res, next){
-    
+    if (req.session.loggedIn !== true || req.session.Group.roles < 1){
+        res.send("You do not have permission to do this")
+        return
+    }
     Events.update(
         // Values to update
         {
