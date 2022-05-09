@@ -39,7 +39,7 @@ exports.groupsearch = function (req, res, next){
         }
       })
        .then(function(data) {
-       return res.render('admingroups', {grouplist: data });
+       return res.render('groups', {grouplist: data });
     })
     .catch( function(err)  {
         console.log(err)

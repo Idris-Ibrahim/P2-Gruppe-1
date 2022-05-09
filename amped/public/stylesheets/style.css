@@ -10,7 +10,7 @@ body {
 }
 
 header {
-    background-image: url("../images/AMP.png");
+    background-image: url("../images/sq.gif");
     background-size: contain;
     background-color: black;
     position: fixed;
@@ -176,4 +176,15 @@ ol h5.event-title {
     color: white;
     padding: 75px 48px;
     text-align: center;
+}
+
+.login-box{
+    min-width: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 350px 48px;
+    text-align: center;
+
 }
