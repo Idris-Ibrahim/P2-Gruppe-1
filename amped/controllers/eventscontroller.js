@@ -179,7 +179,7 @@ exports.createevents = (req, res, next) => {
     });
 }
 exports.findOne = (req, res) => {
-    const id = req.params.id;
+    const id = req.query.id;
     Events.findByPk(id)
         .then(data => {
             if (data) {

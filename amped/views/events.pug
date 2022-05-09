@@ -16,10 +16,10 @@ block content
             .event-container
                 each event in eventlist
                     p()
-                    a(href='/eventinfo' style='color: white')  #{event.event_name}
+                    a(href='/events/info' style='color: white' role = 'search' method = 'GET')  #{event.event_name}
                         p()
 
-                        .event #{event.id}
+                        .event
                             .event-left
                                 .event-date
 
@@ -28,7 +28,7 @@ block content
                                 .klub Klub: #{event.group_id}
                                 .date d. #{event.dato}
                                 .sted Sted: #{event.lokation}
-                                .event-description #{event.beskrivelse}
+                                .event-description Om: #{event.beskrivelse}
                                 .event-timing Kl. #{event.tid}
 
     include pagination
