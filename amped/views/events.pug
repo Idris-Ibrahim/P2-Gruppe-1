@@ -4,11 +4,7 @@ block content
     include nav
     h1= current = ''
     body
-    
-    form(action="/events/search", method='GET', role='search')
-        .form-search
-            input(type='search' placeholder=' Search...' name='SearchName' id="SearchID")
-            button(type='search' id='searchButton') Search 
+
         ol
             .event-container
                 each event in eventlist

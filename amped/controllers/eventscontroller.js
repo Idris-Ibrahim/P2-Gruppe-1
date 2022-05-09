@@ -3,13 +3,15 @@ const {Datatypes, Op} = Sequelize;
 const Events = require("../models/events");
 const { grouproleone } = require("./groupscontroller");
 const Groups = require("../models/groups");
+let today = new Date()
+today.setDate(today.getDate() + 1);
 
 // all events sorted by date and time
 
 exports.viewevents =  function (req, res, next) {
     console.log(req.session)
-    return Events.findAll({
-        order: [['dato'],['tid']]})
+    return Events.findAll({where: {'dato' :{ [Op.gt]: today}}},
+        {order: [['dato'],['tid']]})
         .then(function(data) {
             res.render('events', {eventlist: data },
             console.log(data));
@@ -18,6 +20,7 @@ exports.viewevents =  function (req, res, next) {
             console.log(err)
         });
 }
+
 
 exports.vieweventsforgroup =  function (req, res, next) {
     if(req.session.loggedIn !== true){

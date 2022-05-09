@@ -8,9 +8,44 @@ body {
     color: white;
 }
 
+header {
+    background-color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 25px 0 black;
+}
+
+header * {
+    display: inline;
+}
+
+header li {
+    margin: 20px;
+}
+
+header li a {
+    color: black;
+    text-decoration: none;
+}
+
 .current {
     color: white;
 }
+
+.form-group {
+    min-width: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 75px 48px;
+    text-align: center;
+}
+
 
 /*Removes the underline of hyperlinks*/
 a:link { text-decoration: none; }

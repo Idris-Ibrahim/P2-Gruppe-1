@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    include nav
+    .reg-box
+        .header
+            h2 Opdater gruppe
+        form(action="/adminupdate", method="post")
+            .form-group
+                label Groupname
+                input(type="text" name="group_name" class="group-input")
+            .form-group
+                label Gruppe beskrivelse
+                input(type="text" name="group_about" class="group-input")
+            .form-group
+                label Email
+                input(type="email" name="group_email" class="group-input")
+            .form-group
+                label Password
+                input(type="password" name="password" class="group-input")
+            .form-group
+                label Facebook URL:
+                input(type="text" name="fburl" class="group-input")
+            .form-group
+                label Role
+                input(type="text" name="roles" class="group-input")
+
+            button(type="submit" class="btn btn-primary") Submit

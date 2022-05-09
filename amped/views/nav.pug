@@ -1,23 +1,23 @@
 nav.topnav
 
-    ul
-        a(href='/events' style='color: white') Events
-        |
-        |
-        a(href='/groups' style='color: white') Groups
-        |
-        |
-        a(href='/login' style='color: white') Login
-        |
-        |
-        a(href='/logout' style='color: white') Logout
-        |
-        |
-        a(href='/admin' style='color: white') AdminPanel
-        |
-        |
-        a(href='/grouppanel' style='color: white') GroupPanel
-
-
-
-
+head
+    title
+header
+    nav.topnav
+        ul
+            li
+                a(href='/events' style='color: white') Events
+            li
+                a(href='/groups' style='color: white') Groups
+            li
+                a(href='/login' style='color: white') Login
+            li
+                a(href='/logout' style='color: white') Logout
+            li
+                a(href='/admin' style='color: white') AdminPanel
+            li
+                a(href='/grouppanel' style='color: white') GroupPanel
+            form(action="/events/search", method='GET', role='search')
+                .form-search
+                    input(type='search' placeholder=' Search...' name='SearchName' id="SearchID")
+                    button(type='search' id='searchButton') Search
