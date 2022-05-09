@@ -14,8 +14,9 @@ today1.setDate(today.getDate() + 1);
 exports.viewevents =  function (req, res, next) {
     console.log(req.session)
     return Events.findAll(
-        {order: [['dato', 'ASC'],['tid', 'ASC']],
-        where: {'dato' :{ [Op.gt]: today}}})
+    {order: [['dato', 'ASC'],['tid', 'ASC']],
+        where: {'dato' :{ [Op.gt]: today1}}})
+
         .then(function(data) {
             res.render('events', {eventlist: data },
             console.log(data));

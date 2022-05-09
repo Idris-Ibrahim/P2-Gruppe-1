@@ -72,5 +72,6 @@ Groups.hasMany(Events, {
 
 Events.belongsTo(Groups, {
     targetKey: 'group_name',
-    foreignKey: 'group_id'
+    foreignKey: 'id',
+    as: 'group_name'
 })
