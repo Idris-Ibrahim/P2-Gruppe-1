@@ -3,6 +3,8 @@ const {Datatypes, Op} = Sequelize;
 const Events = require("../models/events");
 const { grouproleone } = require("./groupscontroller");
 const Groups = require("../models/groups");
+
+//datetime of the current date for referencing:
 let today = new Date()
 today.setDate(today.getDate() + 1);
 
@@ -10,7 +12,7 @@ today.setDate(today.getDate() + 1);
 
 exports.viewevents =  function (req, res, next) {
     console.log(req.session)
-    return Events.findAll({where: {'dato' :{ [Op.gt]: today}}},
+    return Events.findAll({include: [{model: Groups}]},{where: {'dato' :{ [Op.gt]: today}}},
         {order: [['dato'],['tid']]})
         .then(function(data) {
             res.render('events', {eventlist: data },
@@ -34,7 +36,7 @@ exports.vieweventsforgroup =  function (req, res, next) {
     console.log(req.session)
     return Events.findAll({where: {group_id : req.session.Group.id}},{order: [['dato'],['tid']]})
         .then(function(data) {
-            res.render('grouppanel', {eventlist: data },
+            res.render('grouppanel', {yourevent: data },
             console.log(data));
         })
         .catch( function(err)  {
@@ -66,7 +68,7 @@ exports.eventnameasc =  function (req, res, next) {
 }
 // alle events sortert efter navn DESC
 exports.eventnamedesc =  function (req, res, next) {
-    return Events.findAll({ order: [['event_name','DESC']]})
+    return Events.findAll({include: [{model: Groups, as: 'group_name'}]},{ order: [['event_name','DESC']]})
         .then(function(data) {
             res.render('events', {eventlist: data });
         })
@@ -146,4 +148,29 @@ exports.eventinfo = function(req, res, next){
         .catch( function(err)  {
             console.log(err)
         });
+}
+
+// se createvent
+exports.createevent = (req, res, next) => {
+    res.render("createevent")
+}
+
+// opret event
+exports.createevents = (req, res, next) => {
+    Events.create({
+        group_id : req.session.Group.id,
+        event_name: req.body.event_name,
+        beskrivelse: req.body.beskrivelse,
+        lokation: req.body.lokation,
+        tid: req.body.tid,
+        dato: req.body.dato,
+        pris: req.body.pris,
+        fburl: req.body.fburl
+    }).then(function (event) {
+        if (event) {
+            res.redirect('/grouppanel');
+        } else {
+            response.status(400).send('Error in insert new event');
+        }
+    });
 }

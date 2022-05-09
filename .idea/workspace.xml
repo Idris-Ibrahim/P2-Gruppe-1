@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5c553f8e-3720-4485-91d2-276a84c4f526" name="Changes" comment="admin panel mangler kun update">
+      <change afterPath="$PROJECT_DIR$/amped/views/createevent.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amped/controllers/accountcontroller.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/amped/controllers/eventscontroller.js" beforeDir="false" afterPath="$PROJECT_DIR$/amped/controllers/eventscontroller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amped/controllers/groupscontroller.js" beforeDir="false" afterPath="$PROJECT_DIR$/amped/controllers/groupscontroller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amped/controllers/logincontroller.js" beforeDir="false" afterPath="$PROJECT_DIR$/amped/controllers/logincontroller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amped/routes/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/amped/routes/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amped/views/admingroups.pug" beforeDir="false" afterPath="$PROJECT_DIR$/amped/views/admingroups.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amped/views/events.pug" beforeDir="false" afterPath="$PROJECT_DIR$/amped/views/events.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amped/views/grouppanel.pug" beforeDir="false" afterPath="$PROJECT_DIR$/amped/views/grouppanel.pug" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Pug File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="28e10wiXLLoJLuyuIbTLQchAOMn" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5c553f8e-3720-4485-91d2-276a84c4f526" name="Changes" comment="" />
+      <created>1651562018090</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1651562018090</updated>
+      <workItem from="1651562019311" duration="29883000" />
+      <workItem from="1651821408031" duration="54094000" />
+    </task>
+    <task id="LOCAL-00001" summary="knapper i /admin/groups">
+      <created>1651664288931</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1651664288931</updated>
+    </task>
+    <task id="LOCAL-00002" summary="knapper i /admin/groups">
+      <created>1651755793107</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1651755793107</updated>
+    </task>
+    <task id="LOCAL-00003" summary="knapper i /admin/groups">
+      <created>1651836085118</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1651836085119</updated>
+    </task>
+    <task id="LOCAL-00004" summary="knapper i /admin/groups">
+      <created>1651837204798</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1651837204798</updated>
+    </task>
+    <task id="LOCAL-00005" summary="knapper i /admin/groups">
+      <created>1651837533944</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1651837533944</updated>
+    </task>
+    <task id="LOCAL-00006" summary="admin panel mangler kun update">
+      <created>1651842136565</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1651842136565</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="false" />
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="knapper i /admin/groups" />
+    <MESSAGE value="admin panel mangler kun update" />
+    <option name="LAST_COMMIT_MESSAGE" value="admin panel mangler kun update" />
+  </component>
+</project>
