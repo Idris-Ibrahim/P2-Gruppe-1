@@ -44,8 +44,12 @@ router.get(`/groups/search`, search_controller.groupsearch);
 router.get('/eventinfo');
 
 /// Groups:
+// landing page for groups
 router.get('/groups', groups_controller.viewgroups);
 router.get('/grouppanel', events_controller.vieweventsforgroup)
+// create event
+router.get('/createevent', events_controller.createevent);
+router.post('/createevent',events_controller.createevents);
 
 
 
@@ -82,11 +86,12 @@ router.get(`/admin/search`, search_controller.groupsearch);
 router.get('/adminopret', admin_controller.registeradmin);
 router.post('/adminopret',admin_controller.adminregistergroups);
 // update gruppe
-router.get('/adminupdate', admin_controller.updateadmin);
-router.post('/adminupdate',admin_controller.adminupdategroups);
+router.get('/adminupdate/:id', admin_controller.updateadmin);
+router.post('/adminupdate/:id',admin_controller.adminupdategroups);
 
-/// Grupper
 //
+// se events
+router.get('/admin/events', admin_controller.viewevents);
 
 
 
