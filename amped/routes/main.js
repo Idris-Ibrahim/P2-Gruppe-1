@@ -40,7 +40,7 @@ router.get(`/events/search`, search_controller.eventsearch);
 router.get(`/groups/search`, search_controller.groupsearch);
 
 //eventinfo
-router.get('/events',events_controller.findOne);
+router.get('/eventsinfo',events_controller.findOne);
 
 /// Groups:
 // landing page for groups
