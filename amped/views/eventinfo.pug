@@ -6,7 +6,10 @@ block content
         ol
             for event in eventlist
                 .event id: #{event.id}
+                .group Klub: #{event.group_id}
+                .beskrivelse Om: #{event.beskrivelse}
                 .date d. #{event.dato}
                 .sted Sted: #{event.lokation}
-                .event-description Om: #{event.beskrivelse}
                 .event-timing Kl. #{event.tid}
+                .pris Pris: #{event.pris}
+                .fburl Evt. Facebook link: #{event.fburl}
