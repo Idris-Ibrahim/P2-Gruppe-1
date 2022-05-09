@@ -32,6 +32,7 @@ exports.loggingin = (req, res, next) => {
         req.session.loggedIn = true
         req.session.Group = Group
 
+
         if(Group.roles == 0){
             res.redirect("/events")
         } else if (Group.roles == 2){
