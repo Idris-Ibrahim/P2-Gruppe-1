@@ -33,8 +33,7 @@ exports.groupsearch = function (req, res, next){
            where:{
             [Op.or]: [
                 { group_name: { [Op.like]: `%${searchInput}%`}},
-                { group_about: { [Op.like]: `%${searchInput}%`}},
-                { id: { [Op.like]: `%${searchInput}%`}}
+                { group_about: { [Op.like]: `%${searchInput}%`}}
             ]
         }
       })
@@ -45,6 +44,24 @@ exports.groupsearch = function (req, res, next){
         console.log(err)
     });
 }
+
+exports.groupsearchadmin = function (req, res, next){
+    var searchInput = req.query.SearchGroupAdmin
+        return Groups.findAll({
+            where:{
+             [Op.or]: [
+                 { group_name: { [Op.like]: `%${searchInput}%`}},
+                 { group_about: { [Op.like]: `%${searchInput}%`}}
+             ]
+         }
+       })
+        .then(function(data) {
+        return res.render('admingroups', {grouplist: data });
+     })
+     .catch( function(err)  {
+         console.log(err)
+     });
+ }
 
 //getting search input:
 /*exports.eventsearch = function (req, res, next){
