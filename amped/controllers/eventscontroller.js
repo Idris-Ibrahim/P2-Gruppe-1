@@ -183,7 +183,7 @@ exports.findOne = (req, res) => {
     Events.findByPk(id)
         .then(data => {
             if (data) {
-                res.send(data);
+                res.render('eventsinfo', data);
             } else {
                 res.status(404).send({
                     message: `Cannot find Event with id=${id}.`
