@@ -10,7 +10,7 @@ today.setDate(today.getDate() + 1);
 
 exports.viewevents =  function (req, res, next) {
     console.log(req.session)
-    return Events.findAll({where: {'dato' :{ [Op.gt]: today}}},
+    return Events.findAll({include: [{model: Groups}]},{where: {'dato' :{ [Op.gt]: today}}},
         {order: [['dato'],['tid']]})
         .then(function(data) {
             res.render('events', {eventlist: data },
@@ -66,7 +66,7 @@ exports.eventnameasc =  function (req, res, next) {
 }
 // alle events sortert efter navn DESC
 exports.eventnamedesc =  function (req, res, next) {
-    return Events.findAll({ order: [['event_name','DESC']]})
+    return Events.findAll({include: [{model: Groups, as: 'group_name'}]},{ order: [['event_name','DESC']]})
         .then(function(data) {
             res.render('events', {eventlist: data });
         })
