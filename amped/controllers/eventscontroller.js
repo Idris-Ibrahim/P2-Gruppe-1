@@ -160,6 +160,15 @@ exports.createevent = (req, res, next) => {
 
 // opret event
 exports.createevents = (req, res, next) => {
+    var pris = req.body.pris
+
+    if (pris.length == 0){
+        pris = 0;
+    
+    }else{
+        pris = req.body.pris
+    }
+
     Events.create({
         group_id : req.session.Group.id,
         event_name: req.body.event_name,
@@ -167,8 +176,10 @@ exports.createevents = (req, res, next) => {
         lokation: req.body.lokation,
         tid: req.body.tid,
         dato: req.body.dato,
-        pris: req.body.pris,
+        pris: pris,
         fburl: req.body.fburl
+
+    
 
     }).then(function (event) {
         if (event) {

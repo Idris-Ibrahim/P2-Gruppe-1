@@ -50,6 +50,7 @@ const Events = connection.define("Events", {
     pris:{
         type: Sequelize.DECIMAL,
         allowNull: true,
+        defaultValue: null
     }
     ,
     fburl:{
