@@ -181,8 +181,8 @@ exports.createevents = (req, res, next) => {
 exports.findOne = (req, res) => {
     const idcheck = req.query.id
     console.log(idcheck)
-    Events.findByPk(idcheck)
-    
+    Events.findAll({where: {'id' : { [Op.eq]: idcheck} }})
+
     .then(function(data) {
         res.render('eventinfo', {eventlist: data },
         console.log(data));
