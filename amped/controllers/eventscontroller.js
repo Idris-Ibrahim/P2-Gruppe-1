@@ -179,9 +179,10 @@ exports.createevents = (req, res, next) => {
     });
 }
 exports.findOne = (req, res) => {
-    let id = req.query.id
-    console.log
-    Events.findAll(id)
+    const idcheck = req.query.id
+    console.log(idcheck)
+    Events.findByPk(idcheck)
+    
     .then(function(data) {
         res.render('eventinfo', {eventlist: data },
         console.log(data));
