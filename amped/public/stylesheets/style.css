@@ -2,7 +2,7 @@
 body {
   background-image: url('../images/AMP.png');
   margin-bottom: 100px;
-    padding-top: 100px;
+    padding-top: 75px;
   background-repeat: no-repeat;
   background-size: contain;
   background-color: black;
@@ -10,6 +10,8 @@ body {
 }
 
 header {
+    background-image: url("../images/AMP.png");
+    background-size: contain;
     background-color: black;
     position: fixed;
     top: 0;
