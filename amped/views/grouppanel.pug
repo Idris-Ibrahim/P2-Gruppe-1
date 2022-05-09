@@ -4,7 +4,6 @@ block content
     include nav
     h1= current = ''
     body
-
     .container.funktioner
         form(action="/groups/search", method='GET', role='search')
             .form-search
@@ -23,7 +22,7 @@ block content
 
 
     ol
-            .event-container
+            .event-container Yourevent
                 each event in yourevent
 
                     a(href='/eventinfo' style='color: white')  #{event.event_name}

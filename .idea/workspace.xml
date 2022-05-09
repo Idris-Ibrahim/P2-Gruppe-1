@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c553f8e-3720-4485-91d2-276a84c4f526" name="Changes" comment="admin panel mangler kun update">
-      <change afterPath="$PROJECT_DIR$/amped/views/createevent.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amped/controllers/accountcontroller.js" beforeDir="false" />
+    <list default="true" id="5c553f8e-3720-4485-91d2-276a84c4f526" name="Changes" comment="createevent.pug">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/amped/controllers/eventscontroller.js" beforeDir="false" afterPath="$PROJECT_DIR$/amped/controllers/eventscontroller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amped/controllers/groupscontroller.js" beforeDir="false" afterPath="$PROJECT_DIR$/amped/controllers/groupscontroller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amped/controllers/logincontroller.js" beforeDir="false" afterPath="$PROJECT_DIR$/amped/controllers/logincontroller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amped/routes/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/amped/routes/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amped/views/admingroups.pug" beforeDir="false" afterPath="$PROJECT_DIR$/amped/views/admingroups.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amped/views/events.pug" beforeDir="false" afterPath="$PROJECT_DIR$/amped/views/events.pug" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/amped/views/grouppanel.pug" beforeDir="false" afterPath="$PROJECT_DIR$/amped/views/grouppanel.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amped/views/login.pug" beforeDir="false" afterPath="$PROJECT_DIR$/amped/views/login.pug" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +48,7 @@
       <option name="presentableId" value="Default" />
       <updated>1651562018090</updated>
       <workItem from="1651562019311" duration="29883000" />
-      <workItem from="1651821408031" duration="54094000" />
+      <workItem from="1651821408031" duration="57594000" />
     </task>
     <task id="LOCAL-00001" summary="knapper i /admin/groups">
       <created>1651664288931</created>
@@ -97,7 +92,21 @@
       <option name="project" value="LOCAL" />
       <updated>1651842136565</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="createevent.pug">
+      <created>1652100771272</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1652100771272</updated>
+    </task>
+    <task id="LOCAL-00008" summary="createevent.pug">
+      <created>1652100841726</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1652100841726</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,6 +132,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="knapper i /admin/groups" />
     <MESSAGE value="admin panel mangler kun update" />
-    <option name="LAST_COMMIT_MESSAGE" value="admin panel mangler kun update" />
+    <MESSAGE value="createevent.pug" />
+    <option name="LAST_COMMIT_MESSAGE" value="createevent.pug" />
   </component>
 </project>
