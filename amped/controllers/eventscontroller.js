@@ -6,7 +6,7 @@ const Groups = require("../models/groups");
 let today = new Date()
 today.setDate(today.getDate() + 1);
 
-// all events sorted by date and time
+// all events sorted by date and time without the
 
 exports.viewevents =  function (req, res, next) {
     console.log(req.session)
