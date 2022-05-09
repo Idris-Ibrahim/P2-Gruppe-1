@@ -1,0 +1,110 @@
+Index: amped/controllers/groupscontroller.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\nconst Sequelize = require(\"sequelize\");\r\nconst {Datatypes, Op} = Sequelize;\r\nconst Groups = require(\"../models/groups\");\r\n\r\n\r\nexports.viewgroups = (req, res, next) => {\r\n    return Groups.findAll()\r\n        .then((data) => {\r\n            res.render('groups', {grouplist: data });\r\n        })\r\n        .catch((err) => {\r\n            console.log(err)\r\n        });\r\n}\r\n\r\n// register group\r\nexports.registergroups = function (req, res, next) {\r\n        Groups.create({\r\n        group_name: req.body.group_name,\r\n        group_email: req.body.group_email,\r\n        password: req.body.password,\r\n        roles: 0\r\n    }).then(function (groups) {\r\n        if (groups) {\r\n            res.redirect('/login');\r\n        } else {\r\n            response.status(400).send('Error in insert new record');\r\n        }\r\n    });\r\n}\r\n\r\n//justering af group status til at kunne lave events:\r\nexports.grouproleone = function(req, res, next){\r\n    \r\n    Groups.update(\r\n        // Values to update\r\n        {\r\n            roles : 1\r\n        },\r\n        //what group to update\r\n        {\r\n            where: {id: req.body.id}\r\n        },\r\n        console.log(result))\r\n        //catching error\r\n    .catch ((err) => {\r\n        console.log(err);\r\n    });\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/amped/controllers/groupscontroller.js b/amped/controllers/groupscontroller.js
+--- a/amped/controllers/groupscontroller.js	(revision 1ca82b228c0881c0f505a4d878929f8cb2c402b2)
++++ b/amped/controllers/groupscontroller.js	(date 1651564176906)
+@@ -25,7 +25,7 @@
+         if (groups) {
+             res.redirect('/login');
+         } else {
+-            response.status(400).send('Error in insert new record');
++            response.status(400).send('Error');
+         }
+     });
+ }
+Index: amped/routes/main.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>const express = require('express');\r\nconst router = express.Router();\r\n\r\n// Require controller modules.\r\nconst events_controller = require('../controllers/eventscontroller');\r\nconst groups_controller = require('../controllers/groupscontroller');\r\nconst admin_controller = require('../controllers/admincontroller')\r\nconst search_controller = require('../controllers/searchcontroller')\r\n\r\n// main page\r\nrouter.get('/', events_controller.viewevents);\r\n\r\n/// Events:\r\n\r\n// gets all sorted events from events_controller\r\nrouter.get('/events', events_controller.viewevents);\r\n\r\n// gets all events sorted ASC\r\nrouter.get('/events/sortddateasc', events_controller.viewevents);\r\n\r\n// gets all events sorted DESC\r\nrouter.get('/events/sortddatedesc', events_controller.eventsdesc);\r\n\r\n// gets all sorted events with event name ASC from events_controller\r\nrouter.get('/events/eventnameasc', events_controller.eventnameasc);\r\n\r\n// gets all sorted events with event name DESC from events_controller\r\nrouter.get('/events/eventnamedesc', events_controller.eventsdesc);\r\n\r\n//search\r\nrouter.get('/events/search', search_controller.eventsearch);\r\n\r\n\r\n/// Groups:\r\n\r\n// gets all groups from groups_controller\r\nrouter.get('/groups', groups_controller.viewgroups);\r\n\r\n//Kalender\r\nrouter.get('/calendar', (req, res) => {\r\n    res.render('calendar')\r\n})\r\n\r\n/// login\r\n// get login page\r\nrouter.get('/login', (req, res) => {\r\n    res.render('login')\r\n})\r\n\r\n// Login us\r\n\r\n// register\r\n\r\nrouter.get('/register', (req, res) => {\r\n    res.render('register')\r\n})\r\n\r\nrouter.post('/register',groups_controller.registergroups);\r\n\r\nrouter.get('/admin', (req, res) => {\r\n    res.render('admin')\r\n})\r\n\r\nrouter.get('/Calendar');\r\n\r\n//admin page:\r\nrouter.get('/admin/groups', admin_controller.viewgroups);\r\nrouter.get('/admin/events', admin_controller.viewevents);\r\n\r\n\r\nmodule.exports = router;\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/amped/routes/main.js b/amped/routes/main.js
+--- a/amped/routes/main.js	(revision 1ca82b228c0881c0f505a4d878929f8cb2c402b2)
++++ b/amped/routes/main.js	(date 1651565967229)
+@@ -27,8 +27,11 @@
+ // gets all sorted events with event name DESC from events_controller
+ router.get('/events/eventnamedesc', events_controller.eventsdesc);
+ 
+-//search
+-router.get('/events/search', search_controller.eventsearch);
++
++
++
++
++
+ 
+ 
+ /// Groups:
+@@ -49,7 +52,7 @@
+ 
+ // Login us
+ 
+-// register
++/// register
+ 
+ router.get('/register', (req, res) => {
+     res.render('register')
+@@ -57,6 +60,12 @@
+ 
+ router.post('/register',groups_controller.registergroups);
+ 
++/// Search
++
++
++router.get('/events/search', search_controller.eventsearch);
++
++
+ router.get('/admin', (req, res) => {
+     res.render('admin')
+ })
+Index: amped/controllers/searchcontroller.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>const Sequelize = require(\"sequelize\");\r\nconst {Datatypes, Op} = Sequelize;\r\nconst Events = require(\"../models/events\");\r\n\r\n//det virker men searchss er undifined:\r\n\r\nexports.eventsearch = function (req, res, next){\r\n    const input = req.body.searchss\r\n    console.log(input);\r\n       return Events.findAll({where: { event_name: { [Op.like]: `${input}`}}\r\n      })\r\n\r\n       .then(function(data) {\r\n        res.render('events', {eventlist: data });\r\n    })\r\n    .catch( function(err)  {\r\n        console.log(err)\r\n    });\r\n}\r\n\r\n//getting search input:\r\n/*exports.eventsearch = function (req, res, next){\r\n    var searchString = req.body.search\r\n    var searchfilter = Events.filter(function(req, res, next){\r\n      return Events.event_name.includes(searchString) || Events.orgname.includes(searchString)\r\n    })\r\n    res.render('search', {eventlist: searchfilter});\r\n}*/\r\n\r\n/*\r\nsearchbar = req.body.search\r\nsearchbar.addEventListener('keyup', function(req, res, next){\r\n    var searchString = searchfilter\r\n\r\n\r\n\r\nbutton.addEventListener('click', eventnamesearched);\r\nconst searchInput = Events.querySelector('.input')\r\n//defining button in use:\r\nexports.eventnamesearched =  function (req, res, next) {\r\n    \r\n    console.log(value);\r\n    //search result to lower case:\r\n    var Searchvalue = value.toLowerCase();\r\n    var name = event_name.toLowerCase();\r\n    \r\n    if (name.includes(Searchvalue)) {\r\n            return Events.findAll({ where: {name: name.includes(Searchvalue)}})\r\n                    .then(function(data) {\r\n                        res.render('events', {eventlist: data });\r\n                    });\r\n                }\r\n            \r\n}; \r\n\r\n/*\r\nconst Sequelize = require('sequelize');\r\nconst Events = require('../models/events');\r\nconst {Datatypes, Op} = Sequelize;\r\nconst Groups = require('../models/events');\r\n\r\nexports.eventsearch = function(req, res, next){\r\n\r\n    Events.findAll(where: { event_name: {}\r\n    })\r\n}\r\n*/\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/amped/controllers/searchcontroller.js b/amped/controllers/searchcontroller.js
+--- a/amped/controllers/searchcontroller.js	(revision 1ca82b228c0881c0f505a4d878929f8cb2c402b2)
++++ b/amped/controllers/searchcontroller.js	(date 1651566919749)
+@@ -5,9 +5,9 @@
+ //det virker men searchss er undifined:
+ 
+ exports.eventsearch = function (req, res, next){
+-    const input = req.body.searchss
+-    console.log(input);
+-       return Events.findAll({where: { event_name: { [Op.like]: `${input}`}}
++    const search = req.body.event_name
++    console.log(search);
++       return Events.findAll({where: { event_name: { [Op.like]: `${search}`}}
+       })
+ 
+        .then(function(data) {
+Index: amped/views/events.pug
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>extends layout\r\n\r\nblock content\r\n    include nav\r\n    h1= current = 'Events'\r\n    body\r\n    \r\n    form(action=\"/events/search\", method='GET')\r\n        .form-search\r\n            input(type='text' placeholder=' Search...' name='searchss' id=\"inputId\")\r\n            button(type=\"submit\" class=\"btn btn-primary\") Submit\r\n        \r\n        button.dropbtn Sort\r\n                .dropdown-content\r\n\r\n                        a(href='/events/sortddateasc') Date  &uarr;\r\n\r\n                        a(href='/events/sortddatedesc') Date &darr;\r\n\r\n                        a(href='/events/eventnameasc') Name &uarr;\r\n\r\n                        a(href='/events/eventnamedesc') Name &darr;\r\n\r\n        ol\r\n            .event-container\r\n                each event in eventlist\r\n                    h3.event-title #{event.event_name}\r\n\r\n                        .event\r\n                            .event-left\r\n                                .event-date\r\n\r\n                            .event-right\r\n\r\n                                .klub Klub: #{event.orgname}\r\n                                .date d. #{event.dato}\r\n                                .sted Sted: #{event.lokation}\r\n                                .event-description #{event.beskrivelse}\r\n                                .event-timing Kl. #{event.tid}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/amped/views/events.pug b/amped/views/events.pug
+--- a/amped/views/events.pug	(revision 1ca82b228c0881c0f505a4d878929f8cb2c402b2)
++++ b/amped/views/events.pug	(date 1651566919738)
+@@ -5,9 +5,9 @@
+     h1= current = 'Events'
+     body
+     
+-    form(action="/events/search", method='GET')
++    form(action="/events/search", method='get')
+         .form-search
+-            input(type='text' placeholder=' Search...' name='searchss' id="inputId")
++            input(type='text' placeholder=' Search...' name='search' class="search")
+             button(type="submit" class="btn btn-primary") Submit
+         
+         button.dropbtn Sort

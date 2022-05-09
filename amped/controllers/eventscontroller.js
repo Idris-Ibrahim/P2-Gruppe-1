@@ -36,7 +36,7 @@ exports.vieweventsforgroup =  function (req, res, next) {
     console.log(req.session)
     return Events.findAll({where: {group_id : req.session.Group.id}},{order: [['dato'],['tid']]})
         .then(function(data) {
-            res.render('grouppanel', {eventlist: data },
+            res.render('grouppanel', {yourevent: data },
             console.log(data));
         })
         .catch( function(err)  {
@@ -148,4 +148,29 @@ exports.eventinfo = function(req, res, next){
         .catch( function(err)  {
             console.log(err)
         });
+}
+
+// se createvent
+exports.createevent = (req, res, next) => {
+    res.render("createevent")
+}
+
+// opret event
+exports.createevents = (req, res, next) => {
+    Events.create({
+        group_id : req.session.Group.id,
+        event_name: req.body.event_name,
+        beskrivelse: req.body.beskrivelse,
+        lokation: req.body.lokation,
+        tid: req.body.tid,
+        dato: req.body.dato,
+        pris: req.body.pris,
+        fburl: req.body.fburl
+    }).then(function (event) {
+        if (event) {
+            res.redirect('/grouppanel');
+        } else {
+            response.status(400).send('Error in insert new event');
+        }
+    });
 }

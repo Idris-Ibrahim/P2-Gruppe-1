@@ -1,6 +1,6 @@
 extends layout
 block content
-    .topbar 
+    .topbar
     ul
     a(href='/admin' style='color: white') AdminPage &nbsp&nbsp&nbsp&nbsp&nbsp
 
@@ -12,11 +12,23 @@ block content
 
     a(href='/logout' style='color: white') Logout &nbsp&nbsp&nbsp&nbsp&nbsp
 
-    form(action="/groups/search", method='GET', role='search')
-        .form-search
-            input(type='search' placeholder=' Search...' name='SearchGroup' id="SearchIDA")
-            button(type='search' id='searchButton') Search
-    .container
+
+    .container.funktioner
+        form(action="/groups/search", method='GET', role='search')
+            .form-search
+                input(type='search' placeholder=' Search...' name='SearchGroup' id="SearchIDG")
+                button(type='search' id='searchButton') Search
+        form(action="/admin/groups", method="post")
+            .form-group
+                input(type="text" name="id"  class="group-id" placeholder="Id der skal slettes")
+
+        input(type='button' onclick="location.href='/adminopret';" value='Opret en gruppe')
+
+
+        input(type="button" onclick="location.href='/adminupdate/:id'," value='Opdater en gruppe')
+
+
+    .container tabel
         table.col-xs-12
             tr
                 th Id
@@ -26,7 +38,7 @@ block content
                 th Facebook url
                 th Password
                 th Roles
-                th funktioner
+                th Funktioner
             each group in grouplist ? grouplist : []
                 tr
                     td #{group.id}
@@ -37,15 +49,13 @@ block content
                     td #{group.password}
                     td #{group.roles}
                     td
+                        input(type="button" onclick="location.href='/adminupdate';" value='Opdater en gruppe')
 
 
 
 
-    form(action="/admin/groups", method="post")
-        .form-group
-            input(type="text" name="id"  class="group-id" placeholder="Id der skal slettes")
-    input(type='button' onclick="location.href='/adminopret';" value='Opret en gruppe')
-    form(action="/adminupdate", method="post")
-        .form-group
-            input(type="text" name="id" onclick="location.href='/adminupdate" class="group-id" placeholder="Id der skal opdateres")
+
+
+
+
 

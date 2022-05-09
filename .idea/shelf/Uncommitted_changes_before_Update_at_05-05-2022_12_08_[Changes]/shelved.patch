@@ -1,0 +1,11 @@
+Index: amped/views/updateevent.pug
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>Hej idris :)
+===================================================================
+diff --git a/amped/views/updateevent.pug b/amped/views/updateevent.pug
+--- a/amped/views/updateevent.pug	
++++ b/amped/views/updateevent.pug	
+@@ -1,1 +1,0 @@
+-Hej idris :)
+\ No newline at end of file

@@ -38,7 +38,7 @@ exports.loggingin = (req, res, next) => {
         } else if (Group.roles == 2){
             res.redirect("/admin")
         }else if (Group.roles == 1){
-            res.redirect("/GroupPanel")
+            res.redirect("/grouppanel")
         }
         
 

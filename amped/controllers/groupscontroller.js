@@ -3,7 +3,7 @@ const {Datatypes, Op} = Sequelize;
 const Groups = require("../models/groups");
 const Events = require("../models/events");
 
-
+// se alle groups
 exports.viewgroups = (req, res, next) => {
     return Groups.findAll()
         .then((data) => {
@@ -52,8 +52,9 @@ exports.grouproleone = function(req, res, next){
 
 
 // slet grupper
+
 exports.groupsdelete = function(req, res, next){
-    Groups.destroy({
+    return Groups.destroy({
         //slet ud fra id
         where: {id: req.body.id}
     }).then(function (groups) {
@@ -64,6 +65,7 @@ exports.groupsdelete = function(req, res, next){
         }
     });
 }
+
 // Update event
 exports.groupspdate = function(req, res, next){
 
@@ -86,3 +88,5 @@ exports.groupspdate = function(req, res, next){
             console.log(err);
         });
 }
+
+

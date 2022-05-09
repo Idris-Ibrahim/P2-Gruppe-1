@@ -1,0 +1,31 @@
+extends layout
+
+block content
+    include nav
+    .create-box
+        .header
+            h2 Opret event
+        form(action="/createevent", method="post")
+            .form-event
+                label Event navn
+                input(type="text" name="event_name" class="event-input")
+            .form-event
+                label Beskrivelse
+                input(type="text" name="event_email" class="event-input")
+            .form-event
+                label Lokation
+                input(type="text" name="lokation" class="event-input")
+            .form-event
+                label Tid
+                input(type="time" name="tid" class="event-input")
+            .form-event
+                label Dato
+                input(type="date" name="dato" class="event-input")
+            .form.event
+                label Pris
+                input(type="text" name="pris" class="event-input")
+            .form-event
+                label Facebook URL:
+                input(type="url" name="fburl" class="event-input")
+
+            button(type="submit" class="btn btn-primary") Submit

@@ -4,14 +4,27 @@ block content
     include nav
     h1= current = ''
     body
-    
-    form(action="/events/search", method='GET', role='search')
-        .form-search
-            input(type='search' placeholder=' Search...' name='SearchName' id="SearchID")
-            button(type='search' id='searchButton') Search 
-        ol
+
+    .container.funktioner
+        form(action="/groups/search", method='GET', role='search')
+            .form-search
+                input(type='search' placeholder=' Search...' name='SearchGroup' id="SearchIDG")
+                button(type='search' id='searchButton') Search
+        form(action="/admin/groups", method="post")
+            .form-group
+                input(type="text" name="id"  class="group-id" placeholder="Id der skal slettes")
+        form(action='/createevent')
+            button(type='submit') Opret en event
+
+
+
+
+
+
+
+    ol
             .event-container
-                each event in eventlist
+                each event in yourevent
 
                     a(href='/eventinfo' style='color: white')  #{event.event_name}
                         p()
