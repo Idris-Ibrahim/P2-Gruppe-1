@@ -179,20 +179,14 @@ exports.createevents = (req, res, next) => {
     });
 }
 exports.findOne = (req, res) => {
-    const id = req.query.id;
-    Events.findByPk(id)
-        .then(data => {
-            if (data) {
-                res.render('eventsinfo', data);
-            } else {
-                res.status(404).send({
-                    message: `Cannot find Event with id=${id}.`
-                });
-            }
-        })
-        .catch(err => {
-            res.status(500).send({
-                message: "Error retrieving Event with id=" + id
-            });
-        });
+    let id = req.query.id
+    console.log
+    Events.findAll(id)
+    .then(function(data) {
+        res.render('eventinfo', {eventlist: data },
+        console.log(data));
+    })
+    .catch( function(err)  {
+        console.log(err)
+    });
 };

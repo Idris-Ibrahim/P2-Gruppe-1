@@ -16,7 +16,7 @@ block content
             .event-container
                 each event in eventlist
                     p()
-                    a(href=`/eventsinfo/${event.id}` style='color: white' method = 'GET' id=`${event.id}`)  #{event.event_name}
+                    a(href=`/eventsinfo/?id=${event.id}` style='color: white' method = 'GET' id=`EventInfo`)  #{event.event_name}
                         p()
 
                         .event

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+const Events = require("../models/events");
 
 
 // Require controller modules.
@@ -40,7 +40,7 @@ router.get(`/events/search`, search_controller.eventsearch);
 router.get(`/groups/search`, search_controller.groupsearch);
 
 //eventinfo
-router.get('/eventsinfo',events_controller.findOne);
+router.get(`/eventsinfo/`,events_controller.findOne);
 
 /// Groups:
 // landing page for groups
@@ -91,7 +91,5 @@ router.post('/adminupdate/:id',admin_controller.adminupdategroups);
 //
 // se events
 router.get('/admin/events', admin_controller.viewevents);
-
-
 
 module.exports = router;
