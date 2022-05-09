@@ -6,14 +6,16 @@ const Groups = require("../models/groups");
 
 //datetime of the current date for referencing:
 let today = new Date()
-today.setDate(today.getDate() + 1);
+let today1 = new Date()
+today1.setDate(today.getDate() + 1);
 
 // all events sorted by date and time without the
 
 exports.viewevents =  function (req, res, next) {
     console.log(req.session)
-    return Events.findAll({include: [{model: Groups}]},{where: {'dato' :{ [Op.gt]: today}}},
-        {order: [['dato'],['tid']]})
+    return Events.findAll(
+        {order: [['dato', 'ASC'],['tid', 'ASC']],
+        where: {'dato' :{ [Op.gt]: today}}})
         .then(function(data) {
             res.render('events', {eventlist: data },
             console.log(data));
@@ -22,9 +24,6 @@ exports.viewevents =  function (req, res, next) {
             console.log(err)
         });
 }
-
-
-
 
 exports.vieweventsforgroup =  function (req, res, next) {
     if(req.session.loggedIn !== true){
@@ -36,7 +35,8 @@ exports.vieweventsforgroup =  function (req, res, next) {
         return
     }
     console.log(req.session)
-    return Events.findAll({where: {group_id : req.session.Group.id}},{order: [['dato'],['tid']]})
+    return Events.findAll({where: {group_id : req.session.Group.id},
+        order: [['dato', 'ASC'],['tid', 'ASC']]})
         .then(function(data) {
             res.render('grouppanel', {yourevent: data },
             console.log(data));
@@ -78,24 +78,24 @@ exports.eventnamedesc =  function (req, res, next) {
             console.log(err)
         });
 }
-
+/*
 exports.eventcreate = function (req, res, next){
 if (req.session.loggedIn !== true || req.session.Group.roles < 1){
     res.render("NoPermission")
     return
 }
-connection
-.sync(/*{force:true}*/)
+Sequelize
+.sync(/*{force:true}*//*)
 .then((result) => {
     //dato skal være: (år-måned-dag):
     Events.create({ 
-            group_name: req.session.Group.group_name, //<= skal være samme gruppe som er logget ind
+            group_id: req.session.Group.id, //<= skal være samme gruppe som er logget ind
             event_name: req.body.event_name,
             lokation: req.body.event_lokation,
             tid: req.body.event_tid,
             dato: req.body.event_dato,
             pris: req.body.event_pris,
-            pris: req.body.event_fburl});
+            fburl: req.body.event_fburl});
                     
     console.log(result);
 })
@@ -103,7 +103,7 @@ connection
 .catch ((err) => {
     console.log(err);
 });
-}
+}*/
 
 exports.eventdelete = function(req, res, next){
     if (req.session.loggedIn !== true || req.session.Group.roles < 1){
@@ -168,6 +168,7 @@ exports.createevents = (req, res, next) => {
         dato: req.body.dato,
         pris: req.body.pris,
         fburl: req.body.fburl
+
     }).then(function (event) {
         if (event) {
             res.redirect('/grouppanel');

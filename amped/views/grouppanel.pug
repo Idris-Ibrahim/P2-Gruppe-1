@@ -24,7 +24,7 @@ block content
     ol
             .event-container Yourevent
                 each event in yourevent
-
+                    P()
                     a(href='/eventinfo' style='color: white')  #{event.event_name}
                         p()
 
@@ -33,7 +33,7 @@ block content
                                 .event-date
 
                             .event-right
-
+                                .id Event id: #{event.id}
                                 .date d. #{event.dato}
                                 .sted Sted: #{event.lokation}
                                 .event-description #{event.beskrivelse}
