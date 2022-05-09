@@ -3,6 +3,8 @@ const {Datatypes, Op} = Sequelize;
 const Events = require("../models/events");
 const { grouproleone } = require("./groupscontroller");
 const Groups = require("../models/groups");
+
+//datetime of the current date for referencing:
 let today = new Date()
 today.setDate(today.getDate() + 1);
 
