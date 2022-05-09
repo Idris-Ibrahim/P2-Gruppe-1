@@ -25,9 +25,6 @@ exports.viewevents =  function (req, res, next) {
         });
 }
 
-
-
-
 exports.vieweventsforgroup =  function (req, res, next) {
     if(req.session.loggedIn !== true){
         res.redirect('/login')
