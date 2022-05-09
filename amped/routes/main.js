@@ -10,7 +10,6 @@ const admin_controller = require('../controllers/admincontroller');
 const search_controller = require('../controllers/searchcontroller');
 const login_controller = require('../controllers/logincontroller');
 const register_controller = require('../controllers/registercontroller');
-const eventinfo_controller = require('../controllers/eventinfocontroller');
 
 
 // main page
