@@ -2,6 +2,7 @@
 body {
   background-image: url('../images/AMP.png');
   margin-bottom: 100px;
+    padding-top: 100px;
   background-repeat: no-repeat;
   background-size: contain;
   background-color: black;
@@ -36,16 +37,6 @@ header li a {
 .current {
     color: white;
 }
-
-.form-group {
-    min-width: 82px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 75px 48px;
-    text-align: center;
-}
-
 
 /*Removes the underline of hyperlinks*/
 a:link { text-decoration: none; }
