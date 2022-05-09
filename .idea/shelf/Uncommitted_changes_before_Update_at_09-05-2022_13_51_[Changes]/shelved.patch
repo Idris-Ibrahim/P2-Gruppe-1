@@ -1,0 +1,314 @@
+Index: amped/controllers/accountcontroller.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/amped/controllers/accountcontroller.js b/amped/views/createevent.pug
+rename from amped/controllers/accountcontroller.js
+rename to amped/views/createevent.pug
+--- a/amped/controllers/accountcontroller.js	(revision 5bd762df14942f9fba7c87f3bb74d7921ef7a142)
++++ b/amped/views/createevent.pug	(date 1652096964680)
+@@ -1,0 +1,31 @@
++extends layout
++
++block content
++    include nav
++    .create-box
++        .header
++            h2 Opret event
++        form(action="/createevents", method="post")
++            .form-event
++                label Event navn
++                input(type="text" name="event_name" class="event-input")
++            .form-event
++                label Beskrivelse
++                input(type="text" name="event_email" class="event-input")
++            .form-event
++                label Lokation
++                input(type="text" name="lokation" class="event-input")
++            .form-event
++                label Tid
++                input(type="time" name="tid" class="event-input")
++            .form-event
++                label Dato
++                input(type="date" name="dato" class="event-input")
++            .form.event
++                label Pris
++                input(type="text" name="pris" class="event-input")
++            .form-event
++                label Facebook URL:
++                input(type="url" name="fburl" class="event-input")
++
++            button(type="submit" class="btn btn-primary") Submit
+Index: amped/views/grouppanel.pug
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>extends layout\r\n\r\nblock content\r\n    include nav\r\n    h1= current = ''\r\n    body\r\n    \r\n    form(action=\"/events/search\", method='GET', role='search')\r\n        .form-search\r\n            input(type='search' placeholder=' Search...' name='SearchName' id=\"SearchID\")\r\n            button(type='search' id='searchButton') Search \r\n        ol\r\n            .event-container\r\n                each event in eventlist\r\n\r\n                    a(href='/eventinfo' style='color: white')  #{event.event_name}\r\n                        p()\r\n\r\n                        .event\r\n                            .event-left\r\n                                .event-date\r\n\r\n                            .event-right\r\n\r\n                                .date d. #{event.dato}\r\n                                .sted Sted: #{event.lokation}\r\n                                .event-description #{event.beskrivelse}\r\n                                .event-timing Kl. #{event.tid}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/amped/views/grouppanel.pug b/amped/views/grouppanel.pug
+--- a/amped/views/grouppanel.pug	(revision 5bd762df14942f9fba7c87f3bb74d7921ef7a142)
++++ b/amped/views/grouppanel.pug	(date 1652096039114)
+@@ -4,14 +4,27 @@
+     include nav
+     h1= current = ''
+     body
+-    
+-    form(action="/events/search", method='GET', role='search')
+-        .form-search
+-            input(type='search' placeholder=' Search...' name='SearchName' id="SearchID")
+-            button(type='search' id='searchButton') Search 
+-        ol
++
++    .container.funktioner
++        form(action="/groups/search", method='GET', role='search')
++            .form-search
++                input(type='search' placeholder=' Search...' name='SearchGroup' id="SearchIDG")
++                button(type='search' id='searchButton') Search
++        form(action="/admin/groups", method="post")
++            .form-group
++                input(type="text" name="id"  class="group-id" placeholder="Id der skal slettes")
++        form(action='/createevent')
++            button(type='submit') Opret en event
++
++
++
++
++
++
++
++    ol
+             .event-container
+-                each event in eventlist
++                each event in yourevent
+ 
+                     a(href='/eventinfo' style='color: white')  #{event.event_name}
+                         p()
+Index: amped/controllers/eventscontroller.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>const Sequelize = require(\"sequelize\");\r\nconst {Datatypes, Op} = Sequelize;\r\nconst Events = require(\"../models/events\");\r\nconst { grouproleone } = require(\"./groupscontroller\");\r\nconst Groups = require(\"../models/groups\");\r\nlet today = new Date()\r\ntoday.setDate(today.getDate() + 1);\r\n\r\n// all events sorted by date and time without the\r\n\r\nexports.viewevents =  function (req, res, next) {\r\n    console.log(req.session)\r\n    return Events.findAll({where: {'dato' :{ [Op.gt]: today}}},\r\n        {order: [['dato'],['tid']]})\r\n        .then(function(data) {\r\n            res.render('events', {eventlist: data },\r\n            console.log(data));\r\n        })\r\n        .catch( function(err)  {\r\n            console.log(err)\r\n        });\r\n}\r\n\r\n\r\nexports.vieweventsforgroup =  function (req, res, next) {\r\n    if(req.session.loggedIn !== true){\r\n        res.redirect('/login')\r\n        return\r\n    }\r\n    if (req.session.Group.roles < 1){\r\n        res.render(\"NoPermission\")\r\n        return\r\n    }\r\n    console.log(req.session)\r\n    return Events.findAll({where: {group_id : req.session.Group.id}},{order: [['dato'],['tid']]})\r\n        .then(function(data) {\r\n            res.render('grouppanel', {eventlist: data },\r\n            console.log(data));\r\n        })\r\n        .catch( function(err)  {\r\n            console.log(err)\r\n        });\r\n}\r\n\r\n\r\n// all events sorted by date DESC\r\nexports.eventsdesc =  function (req, res, next) {\r\n    return Events.findAll({ order: [['dato','DESC'],['tid','DESC']]})\r\n        .then(function(data) {\r\n            res.render(\"NoPermission\");\r\n        })\r\n        .catch( function(err)  {\r\n            console.log(err)\r\n        });\r\n}\r\n\r\n// alle events sortert efter navn ASC\r\nexports.eventnameasc =  function (req, res, next) {\r\n    return Events.findAll({ order: ['event_name']})\r\n        .then(function(data) {\r\n            res.render('events', {eventlist: data });\r\n        })\r\n        .catch( function(err)  {\r\n            console.log(err)\r\n        });\r\n}\r\n// alle events sortert efter navn DESC\r\nexports.eventnamedesc =  function (req, res, next) {\r\n    return Events.findAll({ order: [['event_name','DESC']]})\r\n        .then(function(data) {\r\n            res.render('events', {eventlist: data });\r\n        })\r\n        .catch( function(err)  {\r\n            console.log(err)\r\n        });\r\n}\r\n\r\nexports.eventcreate = function (req, res, next){\r\nif (req.session.loggedIn !== true || req.session.Group.roles < 1){\r\n    res.render(\"NoPermission\")\r\n    return\r\n}\r\nconnection\r\n.sync(/*{force:true}*/)\r\n.then((result) => {\r\n    //dato skal være: (år-måned-dag):\r\n    Events.create({ \r\n            group_name: req.session.Group.group_name, //<= skal være samme gruppe som er logget ind\r\n            event_name: req.body.event_name,\r\n            lokation: req.body.event_lokation,\r\n            tid: req.body.event_tid,\r\n            dato: req.body.event_dato,\r\n            pris: req.body.event_pris,\r\n            pris: req.body.event_fburl});\r\n                    \r\n    console.log(result);\r\n})\r\n// catch error\r\n.catch ((err) => {\r\n    console.log(err);\r\n});\r\n}\r\n\r\nexports.eventdelete = function(req, res, next){\r\n    if (req.session.loggedIn !== true || req.session.Group.roles < 1){\r\n        res.send(\"You do not have permission to do this\")\r\n        return\r\n    }\r\n     Events.destroy({\r\n        //slet ud fra id\r\n        where: {id: req.body.id}\r\n    });\r\n}\r\n\r\nexports.eventupdate = function(req, res, next){\r\n    if (req.session.loggedIn !== true || req.session.Group.roles < 1){\r\n        res.send(\"You do not have permission to do this\")\r\n        return\r\n    }\r\n    Events.update(\r\n        // Values to update\r\n        {\r\n            event_name: req.body.event_name,\r\n            lokation: req.body.event_lokation,\r\n            tid: req.body.event_tid,\r\n            dato: req.body.event_dato,\r\n            pris: req.body.event_pris,\r\n            fburl: req.body.event_fburl\r\n        },\r\n        {\r\n            where: {id: req.body.id}\r\n        },\r\n        console.log(result))\r\n        //catching error\r\n    .catch ((err) => {\r\n        console.log(err);\r\n    });\r\n}\r\n\r\n//event info display\r\nexports.eventinfo = function(req, res, next){\r\n    return Events.findAll({ order: [['name'],['tid']]})\r\n        .then(function(data) {\r\n            res.redirect('eventinfo', {eventlist: data });\r\n        })\r\n        .catch( function(err)  {\r\n            console.log(err)\r\n        });\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/amped/controllers/eventscontroller.js b/amped/controllers/eventscontroller.js
+--- a/amped/controllers/eventscontroller.js	(revision 5bd762df14942f9fba7c87f3bb74d7921ef7a142)
++++ b/amped/controllers/eventscontroller.js	(date 1652092088625)
+@@ -34,7 +34,7 @@
+     console.log(req.session)
+     return Events.findAll({where: {group_id : req.session.Group.id}},{order: [['dato'],['tid']]})
+         .then(function(data) {
+-            res.render('grouppanel', {eventlist: data },
++            res.render('grouppanel', {yourevent: data },
+             console.log(data));
+         })
+         .catch( function(err)  {
+@@ -147,3 +147,28 @@
+             console.log(err)
+         });
+ }
++
++// se createvent
++exports.createevent = (req, res, next) => {
++    res.render("createevent")
++}
++
++// opret event
++exports.createevents = (req, res, next) => {
++    Event.create({
++        group_id : req.session.Group.group_id,
++        event_name: req.body.event_name,
++        beskrivelse: req.body.beskrivelse,
++        lokation: req.body.lokation,
++        tid: req.body.tid,
++        dato: req.body.dato,
++        pris: req.body.pris,
++        fburl: req.body.fburl
++    }).then(function (event) {
++        if (event) {
++            res.redirect('/grouppanel');
++        } else {
++            response.status(400).send('Error in insert new record');
++        }
++    });
++}
+Index: amped/controllers/groupscontroller.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>const Sequelize = require(\"sequelize\");\r\nconst {Datatypes, Op} = Sequelize;\r\nconst Groups = require(\"../models/groups\");\r\nconst Events = require(\"../models/events\");\r\n\r\n\r\nexports.viewgroups = (req, res, next) => {\r\n    return Groups.findAll()\r\n        .then((data) => {\r\n            res.render('groups', {grouplist: data },\r\n            console.log(data));\r\n        })\r\n        .catch((err) => {\r\n            console.log(err)\r\n        });\r\n}\r\n\r\n// register group\r\nexports.registergroups = function (req, res, next) {\r\n        Groups.create({\r\n        group_name: req.body.group_name,\r\n        group_email: req.body.group_email,\r\n        password: req.body.password,\r\n        roles: 0\r\n    }).then(function (groups) {\r\n        if (groups) {\r\n            res.redirect('/login');\r\n        } else {\r\n            response.status(400).send('Error in insert new record');\r\n        }\r\n    });\r\n}\r\n\r\n//justering af group status til at kunne lave events:\r\nexports.grouproleone = function(req, res, next){\r\n\r\n    Groups.update(\r\n        // Values to update\r\n        {\r\n            roles : 1\r\n        },\r\n        //what group to update\r\n        {\r\n            where: {id: req.body.id}\r\n        },\r\n        console.log(result))\r\n        //catching error\r\n    .catch ((err) => {\r\n        console.log(err);\r\n    });\r\n}\r\n\r\n\r\n// slet grupper\r\nexports.groupsdelete = function(req, res, next){\r\n    Groups.destroy({\r\n        //slet ud fra id\r\n        where: {id: req.body.id}\r\n    }).then(function (groups) {\r\n        if (groups) {\r\n            res.redirect('/admin/groups');\r\n        } else {\r\n            response.status(400).send('Error in delete');\r\n        }\r\n    });\r\n}\r\n// Update event\r\nexports.groupspdate = function(req, res, next){\r\n\r\n    Events.update(\r\n        // Values to update\r\n        {   \r\n            event_name: req.body.event_name,\r\n            lokation: req.body.event_lokation,\r\n            tid: req.body.event_tid,\r\n            dato: req.body.event_dato,\r\n            pris: req.body.event_pris,\r\n            fburl: req.body.event_fburl\r\n        },\r\n        {\r\n            where: {id: req.body.id}\r\n        },\r\n        console.log(result))\r\n        //catching error\r\n        .catch ((err) => {\r\n            console.log(err);\r\n        });\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/amped/controllers/groupscontroller.js b/amped/controllers/groupscontroller.js
+--- a/amped/controllers/groupscontroller.js	(revision 5bd762df14942f9fba7c87f3bb74d7921ef7a142)
++++ b/amped/controllers/groupscontroller.js	(date 1652091041012)
+@@ -3,7 +3,7 @@
+ const Groups = require("../models/groups");
+ const Events = require("../models/events");
+ 
+-
++// se alle groups
+ exports.viewgroups = (req, res, next) => {
+     return Groups.findAll()
+         .then((data) => {
+@@ -52,8 +52,9 @@
+ 
+ 
+ // slet grupper
++
+ exports.groupsdelete = function(req, res, next){
+-    Groups.destroy({
++    return Groups.destroy({
+         //slet ud fra id
+         where: {id: req.body.id}
+     }).then(function (groups) {
+@@ -64,6 +65,7 @@
+         }
+     });
+ }
++
+ // Update event
+ exports.groupspdate = function(req, res, next){
+ 
+@@ -86,3 +88,5 @@
+             console.log(err);
+         });
+ }
++
++
+Index: amped/routes/main.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>const express = require('express');\r\nconst router = express.Router();\r\n\r\n\r\n\r\n// Require controller modules.\r\nconst events_controller = require('../controllers/eventscontroller');\r\nconst groups_controller = require('../controllers/groupscontroller');\r\nconst admin_controller = require('../controllers/admincontroller');\r\nconst search_controller = require('../controllers/searchcontroller');\r\nconst login_controller = require('../controllers/logincontroller');\r\nconst register_controller = require('../controllers/registercontroller');\r\nconst eventinfo_controller = require('../controllers/eventinfocontroller');\r\n\r\n\r\n// main page\r\nrouter.get('/', events_controller.viewevents);\r\n\r\n\r\n\r\n/// Events:\r\n\r\n// gets all sorted events from events_controller\r\nrouter.get('/events', events_controller.viewevents);\r\n\r\n// gets all events sorted ASC\r\nrouter.get('/events/sortddateasc', events_controller.viewevents);\r\n\r\n// gets all events sorted DESC\r\nrouter.get('/events/sortddatedesc', events_controller.eventsdesc);\r\n\r\n// gets all sorted events with event name ASC from events_controller\r\nrouter.get('/events/eventnameasc', events_controller.eventnameasc);\r\n\r\n// gets all sorted events with event name DESC from events_controller\r\nrouter.get('/events/eventnamedesc', events_controller.eventsdesc);\r\n\r\n\r\n//search\r\nrouter.get(`/events/search`, search_controller.eventsearch);\r\nrouter.get(`/groups/search`, search_controller.groupsearch);\r\n\r\n//eventinfo\r\nrouter.get('/eventinfo');\r\n\r\n/// Groups:\r\nrouter.get('/groups', groups_controller.viewgroups);\r\nrouter.get('/grouppanel', events_controller.vieweventsforgroup)\r\n\r\n\r\n\r\n\r\n\r\n\r\n/// login\r\n\r\n// get login page\r\nrouter.get('/login', login_controller.loginpage);\r\nrouter.post('/login', login_controller.loggingin);\r\nrouter.get('/logout', login_controller.logout);\r\n\r\n\r\n// register\r\n\r\nrouter.get('/register', register_controller.registerpage);\r\n\r\nrouter.post('/register',register_controller.registergroups);\r\n\r\n\r\n///admin\r\n//\r\nrouter.get('/admin', admin_controller.adminpage);\r\n// se gruper\r\nrouter.get('/admin/groups', admin_controller.viewgroups);\r\n//slet grupper\r\nrouter.post('/admin/groups', groups_controller.groupsdelete);\r\n// se events\r\nrouter.get('/admin/events', admin_controller.viewevents);\r\n// søg grupper\r\nrouter.get(`/admin/search`, search_controller.groupsearch);\r\n// opret gruppe\r\nrouter.get('/adminopret', admin_controller.registeradmin);\r\nrouter.post('/adminopret',admin_controller.adminregistergroups);\r\n// update gruppe\r\nrouter.get('/adminupdate', admin_controller.updateadmin);\r\nrouter.post('/adminupdate',admin_controller.adminupdategroups);\r\n\r\n/// Grupper\r\n//\r\n\r\n\r\n\r\nmodule.exports = router;\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/amped/routes/main.js b/amped/routes/main.js
+--- a/amped/routes/main.js	(revision 5bd762df14942f9fba7c87f3bb74d7921ef7a142)
++++ b/amped/routes/main.js	(date 1652092859397)
+@@ -44,8 +44,12 @@
+ router.get('/eventinfo');
+ 
+ /// Groups:
++// landing page for groups
+ router.get('/groups', groups_controller.viewgroups);
+ router.get('/grouppanel', events_controller.vieweventsforgroup)
++// create event
++router.get('/createevent', events_controller.createevent);
++router.post('/createevent',events_controller.createevents);
+ 
+ 
+ 
+@@ -82,11 +86,12 @@
+ router.get('/adminopret', admin_controller.registeradmin);
+ router.post('/adminopret',admin_controller.adminregistergroups);
+ // update gruppe
+-router.get('/adminupdate', admin_controller.updateadmin);
+-router.post('/adminupdate',admin_controller.adminupdategroups);
++router.get('/adminupdate/:id', admin_controller.updateadmin);
++router.post('/adminupdate/:id',admin_controller.adminupdategroups);
+ 
+-/// Grupper
+ //
++// se events
++router.get('/admin/events', admin_controller.viewevents);
+ 
+ 
+ 
+Index: amped/views/admingroups.pug
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>extends layout\r\nblock content\r\n    .topbar \r\n    ul\r\n    a(href='/admin' style='color: white') AdminPage &nbsp&nbsp&nbsp&nbsp&nbsp\r\n\r\n    a(href='admin/events' style='color: white') EventsAdmin &nbsp&nbsp&nbsp&nbsp&nbsp\r\n\r\n    a(href='/events' style='color: white') Events &nbsp&nbsp&nbsp&nbsp&nbsp\r\n\r\n    a(href='/groups' style='color: white') Groups &nbsp&nbsp&nbsp&nbsp&nbsp\r\n\r\n    a(href='/logout' style='color: white') Logout &nbsp&nbsp&nbsp&nbsp&nbsp\r\n\r\n    form(action=\"/groups/search\", method='GET', role='search')\r\n        .form-search\r\n            input(type='search' placeholder=' Search...' name='SearchGroup' id=\"SearchIDG\")\r\n            button(type='search' id='searchButton') Search\r\n    .container\r\n        table.col-xs-12\r\n            tr\r\n                th Id\r\n                th Org\r\n                th Om\r\n                th Email\r\n                th Facebook url\r\n                th Password\r\n                th Roles\r\n                th funktioner\r\n            each group in grouplist ? grouplist : []\r\n                tr\r\n                    td #{group.id}\r\n                    td #{group.group_name}\r\n                    td #{group.group_about}\r\n                    td #{group.group_email}\r\n                    td #{group.fburl}\r\n                    td #{group.password}\r\n                    td #{group.roles}\r\n                    td\r\n\r\n\r\n\r\n\r\n    form(action=\"/admin/groups\", method=\"post\")\r\n        .form-group\r\n            input(type=\"text\" name=\"id\"  class=\"group-id\" placeholder=\"Id der skal slettes\")\r\n    input(type='button' onclick=\"location.href='/adminopret';\" value='Opret en gruppe')\r\n    form(action=\"/adminupdate\", method=\"post\")\r\n        .form-group\r\n            input(type=\"text\" name=\"id\" onclick=\"location.href='/adminupdate\" class=\"group-id\" placeholder=\"Id der skal opdateres\")\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/amped/views/admingroups.pug b/amped/views/admingroups.pug
+--- a/amped/views/admingroups.pug	(revision 5bd762df14942f9fba7c87f3bb74d7921ef7a142)
++++ b/amped/views/admingroups.pug	(date 1652088714862)
+@@ -1,6 +1,6 @@
+ extends layout
+ block content
+-    .topbar 
++    .topbar
+     ul
+     a(href='/admin' style='color: white') AdminPage &nbsp&nbsp&nbsp&nbsp&nbsp
+ 
+@@ -12,11 +12,23 @@
+ 
+     a(href='/logout' style='color: white') Logout &nbsp&nbsp&nbsp&nbsp&nbsp
+ 
+-    form(action="/groups/search", method='GET', role='search')
+-        .form-search
+-            input(type='search' placeholder=' Search...' name='SearchGroup' id="SearchIDG")
+-            button(type='search' id='searchButton') Search
+-    .container
++
++    .container.funktioner
++        form(action="/groups/search", method='GET', role='search')
++            .form-search
++                input(type='search' placeholder=' Search...' name='SearchGroup' id="SearchIDG")
++                button(type='search' id='searchButton') Search
++        form(action="/admin/groups", method="post")
++            .form-group
++                input(type="text" name="id"  class="group-id" placeholder="Id der skal slettes")
++
++        input(type='button' onclick="location.href='/adminopret';" value='Opret en gruppe')
++
++
++        input(type="button" onclick="location.href='/adminupdate/:id'," value='Opdater en gruppe')
++
++
++    .container tabel
+         table.col-xs-12
+             tr
+                 th Id
+@@ -26,7 +38,7 @@
+                 th Facebook url
+                 th Password
+                 th Roles
+-                th funktioner
++                th Funktioner
+             each group in grouplist ? grouplist : []
+                 tr
+                     td #{group.id}
+@@ -37,15 +49,13 @@
+                     td #{group.password}
+                     td #{group.roles}
+                     td
++                        input(type="button" onclick="location.href='/adminupdate';" value='Opdater en gruppe')
++
++
++
+ 
+ 
+ 
+ 
+-    form(action="/admin/groups", method="post")
+-        .form-group
+-            input(type="text" name="id"  class="group-id" placeholder="Id der skal slettes")
+-    input(type='button' onclick="location.href='/adminopret';" value='Opret en gruppe')
+-    form(action="/adminupdate", method="post")
+-        .form-group
+-            input(type="text" name="id" onclick="location.href='/adminupdate" class="group-id" placeholder="Id der skal opdateres")
++
+ 
+Index: amped/views/events.pug
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>extends layout\r\n\r\nblock content\r\n    include nav\r\n    h1= current = ''\r\n    body\r\n        button.dropbtn Sort\r\n            .dropdown-content\r\n\r\n                a(href='/events/sortddateasc') Date  &uarr;\r\n\r\n                a(href='/events/sortddatedesc') Date &darr;\r\n\r\n        ol\r\n            .event-container\r\n                each event in eventlist\r\n                    p()\r\n                    a(href='/eventinfo' style='color: white')  #{event.event_name}\r\n                        p()\r\n\r\n                        .event\r\n                            .event-left\r\n                                .event-date\r\n\r\n                            .event-right\r\n\r\n                                .klub Klub: #{event.group_id.group_name}\r\n                                .date d. #{event.dato}\r\n                                .sted Sted: #{event.lokation}\r\n                                .event-description #{event.beskrivelse}\r\n                                .event-timing Kl. #{event.tid}\r\n\r\n    include pagination
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/amped/views/events.pug b/amped/views/events.pug
+--- a/amped/views/events.pug	(revision 5bd762df14942f9fba7c87f3bb74d7921ef7a142)
++++ b/amped/views/events.pug	(date 1652094949824)
+@@ -24,7 +24,7 @@
+ 
+                             .event-right
+ 
+-                                .klub Klub: #{event.group_id.group_name}
++                                .klub Klub: #{event.group_id}
+                                 .date d. #{event.dato}
+                                 .sted Sted: #{event.lokation}
+                                 .event-description #{event.beskrivelse}
