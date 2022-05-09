@@ -9,9 +9,9 @@ block content
             .form-search
                 input(type='search' placeholder=' Search...' name='SearchGroup' id="SearchIDG")
                 button(type='search' id='searchButton') Search
-        form(action="/admin/groups", method="post")
+        form(action="/grouppanel/delete", method="POST")
             .form-group
-                input(type="text" name="id"  class="group-id" placeholder="Id der skal slettes")
+                input(type="text" name="eventid"  class="group-id" placeholder="Id der skal slettes")
         form(action='/createevent')
             button(type='submit') Opret en event
 

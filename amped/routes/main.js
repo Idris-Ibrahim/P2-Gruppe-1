@@ -50,6 +50,8 @@ router.get('/grouppanel', events_controller.vieweventsforgroup)
 router.get('/createevent', events_controller.createevent);
 router.post('/createevent',events_controller.createevents);
 
+//selt events
+router.get('/grouppanel/delete', events_controller.eventdelete)
 
 
 

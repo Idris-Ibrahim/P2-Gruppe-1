@@ -113,8 +113,9 @@ exports.eventdelete = function(req, res, next){
     }
      Events.destroy({
         //slet ud fra id
-        where: {id: req.body.id}
+        where: {id: req.body.eventid}
     });
+        
 }
 
 exports.eventupdate = function(req, res, next){
