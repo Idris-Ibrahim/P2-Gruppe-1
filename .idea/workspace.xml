@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c553f8e-3720-4485-91d2-276a84c4f526" name="Changes" comment="FuCK calendar">
+    <list default="true" id="5c553f8e-3720-4485-91d2-276a84c4f526" name="Changes" comment="Update to eventinfo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/amped/controllers/eventscontroller.js" beforeDir="false" afterPath="$PROJECT_DIR$/amped/controllers/eventscontroller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amped/routes/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/amped/routes/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amped/views/events.pug" beforeDir="false" afterPath="$PROJECT_DIR$/amped/views/events.pug" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +49,7 @@
       <workItem from="1651562019311" duration="29883000" />
       <workItem from="1651821408031" duration="57594000" />
       <workItem from="1652104416811" duration="515000" />
-      <workItem from="1652109566318" duration="615000" />
+      <workItem from="1652109566318" duration="1387000" />
     </task>
     <task id="LOCAL-00001" summary="knapper i /admin/groups">
       <created>1651664288931</created>
@@ -116,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652104759261</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Update to eventinfo">
+      <created>1652110206072</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1652110206072</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -144,6 +149,7 @@
     <MESSAGE value="admin panel mangler kun update" />
     <MESSAGE value="createevent.pug" />
     <MESSAGE value="FuCK calendar" />
-    <option name="LAST_COMMIT_MESSAGE" value="FuCK calendar" />
+    <MESSAGE value="Update to eventinfo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update to eventinfo" />
   </component>
 </project>
