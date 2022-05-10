@@ -20,7 +20,7 @@ exports.registergroups = (req, res, next) => {
         .then(function(data){
             if (data.length == 0){
                 Groups.create({
-                    group_name: req.body.group_name,
+                    group_name: navn,
                     group_email: req.body.group_email,
                     password: req.body.password,
                     group_about: req.body.GruppeBeskrivelse,
@@ -29,7 +29,7 @@ exports.registergroups = (req, res, next) => {
                 })
                 res.redirect('/login')
             }else{
-                response.status(400).send('Username already in use');
+                res.send('Username already in use');
             }
         })
 }
