@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c553f8e-3720-4485-91d2-276a84c4f526" name="Changes" comment="register, group, update role">
-      <change beforePath="$PROJECT_DIR$/amped/views/admingroups.pug" beforeDir="false" afterPath="$PROJECT_DIR$/amped/views/admingroups.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amped/controllers/eventscontroller.js" beforeDir="false" afterPath="$PROJECT_DIR$/amped/controllers/eventscontroller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amped/controllers/groupscontroller.js" beforeDir="false" afterPath="$PROJECT_DIR$/amped/controllers/groupscontroller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amped/routes/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/amped/routes/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amped/views/grouppanel.pug" beforeDir="false" afterPath="$PROJECT_DIR$/amped/views/grouppanel.pug" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +53,7 @@
       <workItem from="1651821408031" duration="57594000" />
       <workItem from="1652104416811" duration="515000" />
       <workItem from="1652109566318" duration="1387000" />
-      <workItem from="1652167228839" duration="13800000" />
+      <workItem from="1652167228839" duration="16659000" />
     </task>
     <task id="LOCAL-00001" summary="knapper i /admin/groups">
       <created>1651664288931</created>
@@ -142,7 +146,28 @@
       <option name="project" value="LOCAL" />
       <updated>1652181390845</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="register, group, update role">
+      <created>1652181749563</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1652181749563</updated>
+    </task>
+    <task id="LOCAL-00015" summary="register, group, update role">
+      <created>1652181826573</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1652181826573</updated>
+    </task>
+    <task id="LOCAL-00016" summary="register, group, update role">
+      <created>1652181872936</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1652181872936</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

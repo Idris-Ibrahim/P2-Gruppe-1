@@ -111,11 +111,18 @@ exports.eventdelete = function(req, res, next){
         res.send("You do not have permission to do this")
         return
     }
-     Events.destroy({
+    const idcheck = req.query.id
+    console.log(idcheck)
+    return Events.destroy({
         //slet ud fra id
-        where: {id: req.body.id}
-    })
-        
+        where: {'id' : { [Op.eq]: idcheck} }
+    }).then(function (events) {
+        if (events) {
+            res.redirect('/grouppanel/delete');
+        } else {
+            response.status(400).send('Error in delete');
+        }
+    });
 }
 
 exports.eventupdate = function(req, res, next){
