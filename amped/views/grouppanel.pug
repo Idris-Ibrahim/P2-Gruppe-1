@@ -7,7 +7,7 @@ block content
     .container.funktioner
         form(action="/groups/search", method='GET', role='search')
             .form-search
-                input(type='search' placeholder=' Search...' name='SearchGroup' id="SearchIDG")
+                input(type='search' placeholder=' Search for your events' name='SearchGroup' id="SearchIDG")
                 button(type='search' id='searchButton') Search
         form(action="/admin/groups", method="post")
             .form-group
@@ -25,7 +25,7 @@ block content
             .event-container Yourevent
                 each event in yourevent
                     P()
-                    a(href='/eventinfo' style='color: white')  #{event.event_name}
+                    a(href=`/eventsinfo/?id=${event.id}` style='color: white')  #{event.event_name}
                         p()
 
                         .event
