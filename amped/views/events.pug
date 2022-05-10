@@ -14,7 +14,7 @@ block content
         ol
 
             .event-container
-                each event in eventlist
+                each event in eventlist 
                         p()
                         a(href=`/eventsinfo/?id=${event.id}` style='color: white' method = 'GET' id=`EventInfo`)  #{event.event_name}
                             p()
