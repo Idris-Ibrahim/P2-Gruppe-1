@@ -1,13 +1,13 @@
 extends layout
 block content
         ul
-            a(href='/admin' style='color: white') AdminPage &nbsp&nbsp&nbsp&nbsp&nbsp
 
             a(href='admin/events' style='color: white') Events &nbsp&nbsp&nbsp&nbsp&nbsp
 
             a(href='admin/groups' style='color: white') Groups &nbsp&nbsp&nbsp&nbsp&nbsp
 
             a(href='/logout' style='color: white') Logout &nbsp&nbsp&nbsp&nbsp&nbsp
+
 
         .row
             .col-sm-1
@@ -16,3 +16,5 @@ block content
             .col-sm-1
             .col-sm-4
             a(href='admin/events' style='color: white') EventsAdmin &nbsp&nbsp&nbsp&nbsp&nbsp
+
+        include calendar

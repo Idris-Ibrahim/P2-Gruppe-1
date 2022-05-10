@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+const Events = require("../models/events");
 
 
 // Require controller modules.
@@ -43,11 +43,19 @@ router.get('/events/eventnamedesc', events_controller.eventsdesc);
 router.get(`/events/search`, search_controller.eventsearch);
 router.get(`/groups/search`, search_controller.groupsearch);
 
-
+//eventinfo
+router.get(`/eventsinfo/`,events_controller.findOne);
 
 /// Groups:
+// landing page for groups
 router.get('/groups', groups_controller.viewgroups);
+router.get('/grouppanel', events_controller.vieweventsforgroup)
+// create event
+router.get('/createevent', events_controller.createevent);
+router.post('/createevent',events_controller.createevents);
 
+//selt events
+router.get('/grouppanel/delete', events_controller.eventdelete)
 
 //group info
 router.get(`/groupinfo/`,groups_controller.groupinfo);
@@ -73,14 +81,34 @@ router.post('/register',register_controller.registergroups);
 
 
 ///admin
-//
+// landing page få admin
 router.get('/admin', admin_controller.adminpage);
-// se gruper
+// grupper
+// se grupper
 router.get('/admin/groups', admin_controller.viewgroups);
 //slet grupper
-router.post('/:id', groups_controller.groupsdelete);
+router.post('/admin/groups', groups_controller.groupsdelete);
+// Give gruppe role 1
+router.post('/admin/groups', groups_controller.grouproleone);
 // se events
 router.get('/admin/events', admin_controller.viewevents);
+// søg grupper
+router.get('/admin/search', search_controller.groupsearchadmin);
+// opret gruppe
+router.get('/adminopret', admin_controller.registeradmin);
+router.post('/adminopret',admin_controller.adminregistergroups);
+// update gruppe
+router.get('/adminupdate/', groups_controller.updateadmin);
+router.post('/adminupdate/',groups_controller.groupspdate);
+
+
+//Events
+// se events
+router.get('/admin/events', admin_controller.viewevents);
+// slet events
+router.post('/admin/events', groups_controller.groupsdelete);
+// søg events
+router.get('/admin/eventsearch', search_controller.eventsearchadmin);
 
 //script controller
 router.get('/config/scripts/fullcalendar.css', script_controller.fullcalendarcss);

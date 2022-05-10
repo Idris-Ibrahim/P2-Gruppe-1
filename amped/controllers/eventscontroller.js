@@ -203,3 +203,18 @@ exports.findOne = (req, res) => {
         console.log(err)
     });
 };
+
+exports.eventsdelete = function(req, res, next){
+    const idcheck = req.query.id
+    console.log(idcheck)
+    return Events.destroy({
+        //slet ud fra id
+        where: {'id' : { [Op.eq]: idcheck} }
+    }).then(function (event) {
+        if (event) {
+            res.redirect('/admin/event');
+        } else {
+            response.status(400).send('Error in delete');
+        }
+    });
+}

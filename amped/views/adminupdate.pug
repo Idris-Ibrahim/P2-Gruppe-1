@@ -5,7 +5,7 @@ block content
     .reg-box
         .header
             h2 Opdater gruppe
-        form(action="/adminupdate", method="post")
+        form(action=`/adminupdate/`, method="post")
             .form-group
                 label Groupname
                 input(type="text" name="group_name" class="group-input")
@@ -21,8 +21,4 @@ block content
             .form-group
                 label Facebook URL:
                 input(type="text" name="fburl" class="group-input")
-            .form-group
-                label Role
-                input(type="text" name="roles" class="group-input")
-
             button(type="submit" class="btn btn-primary") Submit

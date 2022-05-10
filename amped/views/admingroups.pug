@@ -2,7 +2,9 @@ extends layout
 block content
     .topbar
     ul
-    a(href='/admin' style='color: white') AdminPage &nbsp&nbsp&nbsp&nbsp&nbsp
+    a(href='/admin' style='color: white') Dashboard &nbsp&nbsp&nbsp&nbsp&nbsp
+
+    a(href='/admin/events' style='color: white') Admin events &nbsp&nbsp&nbsp&nbsp&nbsp
 
     a(href='/events' style='color: white') Events &nbsp&nbsp&nbsp&nbsp&nbsp
 
@@ -11,19 +13,13 @@ block content
     a(href='/logout' style='color: white') Logout &nbsp&nbsp&nbsp&nbsp&nbsp
 
 
-    .container.funktioner
+    .container.search
         form(action="/admin/search", method='GET', role='search')
             .form-search
                 input(type='search' placeholder=' Search...' name='SearchGroupAdmin' id="SearchIDA")
                 button(type='search' id='searchButton') Search
-        form(action="/admin/groups", method="post")
-            .form-group
-                input(type="text" name="id"  class="group-id" placeholder="Id der skal slettes")
-
-        input(type='button' onclick="location.href='/adminopret';" value='Opret en gruppe')
 
 
-        input(type="button" onclick="location.href='/adminupdate/:id'," value='Opdater en gruppe')
 
 
     .container tabel
@@ -47,7 +43,13 @@ block content
                     td #{group.password}
                     td #{group.roles}
                     td
-                        input(type="button" onclick="location.href='/adminupdate';" value='Opdater en gruppe')
+                        form(action=`/admin/groups/?id=${group.id}` method='post')
+                            button.btn.btn-lg(type='submit') Delete
+                        form(action=`/admin/groups/?id=${group.id}` method='post')
+                            button.btn.btn-lg(type='submit') Give role 1
+                        a(href=`/adminupdate/?id=${group.id}`) Update
+
+
 
 
 
