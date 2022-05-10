@@ -17,7 +17,8 @@ exports.viewgroups = (req, res, next) => {
 
 //justering af group status til at kunne lave events:
 exports.grouproleone = function(req, res, next){
-
+    const idcheck = req.query.id
+    console.log(idcheck)
     Groups.update(
         // Values to update
         {
@@ -25,12 +26,13 @@ exports.grouproleone = function(req, res, next){
         },
         //what group to update
         {
-            where: {id: req.body.id}
-        },
-        console.log(result))
-        //catching error
-    .catch ((err) => {
-        console.log(err);
+            where: {'id' : { [Op.eq]: idcheck}}
+        }).then(function (groups) {
+        if (groups) {
+            res.redirect('/admin/groups');
+        } else {
+            response.status(400).send('Error in delete');
+        }
     });
 }
 
@@ -38,9 +40,11 @@ exports.grouproleone = function(req, res, next){
 // slet grupper
 
 exports.groupsdelete = function(req, res, next){
+    const idcheck = req.query.id
+    console.log(idcheck)
     return Groups.destroy({
         //slet ud fra id
-        where: {id: req.body.id}
+        where: {'id' : { [Op.eq]: idcheck} }
     }).then(function (groups) {
         if (groups) {
             res.redirect('/admin/groups');
@@ -50,27 +54,35 @@ exports.groupsdelete = function(req, res, next){
     });
 }
 
-// Update event
+// viser update page
+exports.updateadmin = (req, res, next) => {
+    res.render("adminupdate")
+}
+// Update Group
 exports.groupspdate = function(req, res, next){
-
-    Events.update(
+    if (req.session.loggedIn !== true || req.session.Group.roles < 2){
+        res.send("You do not have permission to do this")
+        return
+    }
+    const idcheck = req.query.id
+    console.log(idcheck)
+    Groups.update(
         // Values to update
-        {   
-            event_name: req.body.event_name,
-            lokation: req.body.event_lokation,
-            tid: req.body.event_tid,
-            dato: req.body.event_dato,
-            pris: req.body.event_pris,
-            fburl: req.body.event_fburl
-        },
         {
-            where: {id: req.body.id}
-        },
-        console.log(result))
-        //catching error
-        .catch ((err) => {
-            console.log(err);
-        });
+            where: {'id' : { [Op.eq]: idcheck},
+            group_name: req.body.group_name,
+            group_about: req.body.group_about,
+            group_email: req.body.group_email,
+            password: req.body.password,
+            fburl: req.body.fburl,
+        }}
+        ).then(function (groups) {
+        if (groups) {
+        res.redirect('/admin/groups');
+        } else {
+        response.status(400).send('Error in update');
+        }
+    });
 }
 
 //

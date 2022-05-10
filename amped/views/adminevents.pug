@@ -2,7 +2,9 @@ extends layout
 block content
     .topbar
     ul
-    a(href='/admin' style='color: white') AdminPage &nbsp&nbsp&nbsp&nbsp&nbsp
+    a(href='/admin' style='color: white') Dashboard &nbsp&nbsp&nbsp&nbsp&nbsp
+
+    a(href='/admin/groups' style='color: white') Admin groups &nbsp&nbsp&nbsp&nbsp&nbsp
 
     a(href='/events' style='color: white') Events &nbsp&nbsp&nbsp&nbsp&nbsp
 
@@ -10,6 +12,11 @@ block content
 
     a(href='/logout' style='color: white') Logout &nbsp&nbsp&nbsp&nbsp&nbsp
 
+    .container.search
+        form(action="/admin/eventsearch", method='GET', role='search')
+            .form-search
+                input(type='search' placeholder=' Search...' name='SearchEventAdmin' id="SearchIDC")
+                button(type='search' id='searchButton') Search
     .container
         table.col-xs-12
             tr
@@ -22,6 +29,7 @@ block content
                 th Dato
                 th Pris
                 th Facebook URL
+                th Funktioner
             each event in eventlist ? eventlist : []
                 tr
                     td #{event.id}
@@ -33,6 +41,12 @@ block content
                     td #{event.dato}
                     td #{event.pris}
                     td #{event.fburl}
+                    td
+                        form(action=`/admin/groups/?id=${event.id}` method='post')
+                            button.btn.btn-lg(type='submit') Delete
+                        form(action=`/admin/groups/?id=${event.id}` method='post')
+                            button.btn.btn-lg(type='submit') Give role 1
+                        a(href=`/adminupdate/?id=${event.id}`) Update
 
 
 

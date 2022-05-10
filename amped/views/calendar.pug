@@ -1,0 +1,27 @@
+extends layout
+block content
+    include nav
+    
+    doctype html
+    head
+      meta(charset='utf-8')
+      link(href='http://localhost:3000/config/scripts/fullcalendar.css' rel='stylesheet')
+      script(src='http://localhost:3000/config/scripts/fullcalendar.js')
+
+    
+    script.
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: !{JSON.stringify(eventlist)},
+            });
+            calendar.render();
+        });
+    #calendar

@@ -63,6 +63,25 @@ exports.groupsearchadmin = function (req, res, next){
      });
  }
 
+exports.eventsearchadmin = function (req, res, next){
+    var searchInput = req.query.SearchEventAdmin
+    return Events.findAll({
+        where:{
+            [Op.or]: [
+                { event_name: { [Op.like]: `%${searchInput}%`}},
+                { id: { [Op.like]: `%${searchInput}%`}}
+            ]
+        }
+    })
+        .then(function(data) {
+            return res.render('adminevents', {eventlist: data });
+        })
+        .catch( function(err)  {
+            console.log(err)
+        });
+}
+
+
 //getting search input:
 /*exports.eventsearch = function (req, res, next){
     var searchString = req.body.search
