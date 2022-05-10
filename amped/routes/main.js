@@ -89,7 +89,7 @@ router.get('/admin/groups', admin_controller.viewgroups);
 //slet grupper
 router.post('/admin/groups', groups_controller.groupsdelete);
 // Give gruppe role 1
-router.post('/admin/groups', groups_controller.grouproleone);
+router.post('/admin/groups/role', groups_controller.grouproleone);
 // se events
 router.get('/admin/events', admin_controller.viewevents);
 // søg grupper

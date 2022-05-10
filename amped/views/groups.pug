@@ -8,15 +8,14 @@ block content
 
         .group-event
             each group in grouplist
-                h5.group-name 
                 p()
-                    a(href=`/groupinfo/?id=${group.id}` style='color: white' method = 'GET' id=`GroupInfo`)
-                        p()
-                            .group
-                                .group-left
+                a(href=`/groupinfo/?id=${group.id}` style='color: white' method = 'GET' id=`GroupInfo`)
+                    p()
+                        .group
+                            .group-left
 
-                                .group-right
+                            .group-right
 
-                                    .name #{group.group_name}
-                                    .email Email: #{group.group_email}
-                                    .fburl Facebook: #{group.fburl}
+                                .name #{group.group_name}
+                                 .email Email: #{group.group_email}
+                                .fburl Facebook: #{group.fburl}
