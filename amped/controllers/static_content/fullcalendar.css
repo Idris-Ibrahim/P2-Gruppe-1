@@ -32,6 +32,7 @@
     border-collapse: collapse;
     border-spacing: 0;
     font-size: 1em; /* normalize cross-browser */
+    border-color: #6d2eff!important;
   }
 .fc th {
     text-align: center;
@@ -42,7 +43,6 @@
     padding: 0;
     background-color: #e3e3e3 !important;
     color: #242424;
-    border-color: #6d2eff;
   }
 .fc a[data-navlink] {
     cursor: pointer;
@@ -60,8 +60,8 @@
 }
 .fc-theme-standard td,
   .fc-theme-standard th {
-    border: 1px solid #ddd;
-    border: 1px solid var(--fc-border-color, #ddd);
+    border: 2px solid #cbcbcb;
+    border: 2px solid var(--fc-border-color, #cbcbcb);
   }
 /* for FF, which doesn't expand a 100% div within a table cell. use absolute positioning */
 /* inner-wrappers are responsible for being absolute */
@@ -141,6 +141,11 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
   /* reset */
 
 }
+/*custom insert */
+.fc-title {
+    color: #2a3039;
+}
+
 .fc .fc-button {
     border-radius: 0;
     overflow: visible;
@@ -886,6 +891,10 @@ A HORIZONTAL event
 .fc-daygrid-block-event .fc-event-time,
   .fc-daygrid-block-event .fc-event-title {
     padding: 1px;
+    white-space: normal;
+  }
+  .fc-event-title {
+      white-space: normal;
   }
 /* --- the dot style of event --- */
 .fc-daygrid-dot-event {
@@ -902,7 +911,7 @@ A HORIZONTAL event
     font-weight: bold;
   }
 .fc-daygrid-dot-event:hover,
-  .fc-daygrid-dot-event.fc-event-mirror {
+  .fc-daygrid-dot-event½-mirror {
     background: rgba(0, 0, 0, 0.1);
   }
 .fc-daygrid-dot-event.fc-event-selected:before {
