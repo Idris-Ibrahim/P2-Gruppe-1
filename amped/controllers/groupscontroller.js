@@ -89,4 +89,17 @@ exports.groupspdate = function(req, res, next){
         });
 }
 
-
+//
+exports.groupinfo = function(req, res, next){
+        const idgroupcheck = req.query.id
+        console.log(idgroupcheck)
+        Groups.findAll({where: {'id' : { [Op.eq]: idgroupcheck} }})
+    
+        .then(function(data) {
+            res.render('groupinfo', {grouplist: data },
+            console.log(data));
+        })
+        .catch( function(err)  {
+            console.log(err)
+        });
+}

@@ -53,7 +53,8 @@ router.post('/createevent',events_controller.createevents);
 //selt events
 router.get('/grouppanel/delete', events_controller.eventdelete)
 
-
+//group info
+router.get(`/groupinfo/`,groups_controller.groupinfo);
 
 
 
