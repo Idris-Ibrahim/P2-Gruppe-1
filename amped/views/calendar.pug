@@ -13,15 +13,30 @@ block content
         document.addEventListener('DOMContentLoaded', function() {
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl, {
+
+                //window config
                 height: 500,
-                aspectRatio: 2,
-                contentHeight: 800,
-                initialView: 'dayGridMonth',
+                aspectRatio: 1.35,
                 headerToolbar: {
                     left: 'prev,next today',
                     center: 'title',
                     right: 'dayGridMonth,timeGridWeek,timeGridDay'
                 },
+
+                //month view
+                fixedWeekCount: false,
+
+                //week view
+                
+                initialView: 'timeGridWeek',
+                scrollTime: '08:00:00',
+
+
+                // nowindicator: true,
+                expandRows:true,
+                navLinks: true,
+                selectable: true,
+                dayMaxEventRows: true, // for all non-TimeGrid views
                 events: !{JSON.stringify(eventlist)},
             });
             calendar.render();
