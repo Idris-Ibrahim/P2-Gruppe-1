@@ -9,17 +9,12 @@ const Events = connection.define("Events", {
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
-       
     },
     group_id:{
         //foreign key to Groups id
         type: Sequelize.INTEGER,
         required: true,
-        allowNull: false,
-        references: {
-            model: Groups,
-            key: 'group_name'
-        }
+        allowNull: false
     },
     event_name:{
         type: Sequelize.STRING,

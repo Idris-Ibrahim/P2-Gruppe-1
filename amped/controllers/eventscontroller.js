@@ -19,7 +19,7 @@ exports.viewevents =  function (req, res, next) {
 
         .then(function(data) {
             res.render('events', {eventlist: data },
-            console.log(data))
+            console.log(data));
         })
         .catch( function(err)  {
             console.log(err)
