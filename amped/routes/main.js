@@ -52,6 +52,9 @@ router.get('/groups', groups_controller.viewgroups);
 //group info
 router.get(`/groupinfo/`,groups_controller.groupinfo);
 
+//calendar
+router.get('/calendar',calendar_controller.calendar);
+
 
 
 /// login

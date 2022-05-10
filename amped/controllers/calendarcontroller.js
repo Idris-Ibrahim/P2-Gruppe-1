@@ -16,7 +16,6 @@ exports.calendar =  function (req, res, next) {
             }
         })
         res.render('calendar', {eventlist: caldata})
-        console.log(caldata);
     })
     .catch( function(err)  {
         console.log(err)
