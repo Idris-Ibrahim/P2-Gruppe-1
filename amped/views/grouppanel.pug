@@ -38,6 +38,7 @@ block content
                                 .sted Sted: #{event.lokation}
                                 .event-description #{event.beskrivelse}
                                 .event-timing Kl. #{event.tid}
-                                    form(action='/delete/:id' method='post')
-                                        button.btn.btn-lg(type='submit') Delete
-                                    button(id=`${event.id}`)
+
+                                form(action=`/grouppanel/delete/?id=${event.id}` method='post')
+                                    button.btn.btn-lg(type='submit') Delete
+

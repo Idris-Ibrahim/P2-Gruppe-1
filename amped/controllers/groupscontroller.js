@@ -40,6 +40,10 @@ exports.grouproleone = function(req, res, next){
 // slet grupper
 
 exports.groupsdelete = function(req, res, next){
+    if (req.session.loggedIn !== true || req.session.Group.roles < 2){
+        res.send("You do not have permission to do this")
+        return
+    }
     const idcheck = req.query.id
     console.log(idcheck)
     return Groups.destroy({
@@ -59,23 +63,25 @@ exports.updateadmin = (req, res, next) => {
     res.render("adminupdate")
 }
 // Update Group
-exports.groupspdate = function(req, res, next){
+exports.groupsupdate = function(req, res, next){
     if (req.session.loggedIn !== true || req.session.Group.roles < 2){
         res.send("You do not have permission to do this")
         return
     }
     const idcheck = req.query.id
     console.log(idcheck)
-    Groups.update(
+    return Groups.update(
         // Values to update
         {
-            where: {'id' : { [Op.eq]: idcheck},
             group_name: req.body.group_name,
             group_about: req.body.group_about,
             group_email: req.body.group_email,
             password: req.body.password,
             fburl: req.body.fburl,
-        }}
+        },
+        {
+        where: {where: {'id' : { [Op.eq]: idcheck} }}
+        }
         ).then(function (groups) {
         if (groups) {
         res.redirect('/admin/groups');

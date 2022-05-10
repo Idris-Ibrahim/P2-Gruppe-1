@@ -54,8 +54,8 @@ router.get('/grouppanel', events_controller.vieweventsforgroup)
 router.get('/createevent', events_controller.createevent);
 router.post('/createevent',events_controller.createevents);
 
-//selt events
-router.get('/grouppanel/delete', events_controller.eventdelete)
+//slet events
+router.post('/grouppanel/delete', events_controller.eventdelete)
 
 //group info
 router.get(`/groupinfo/`,groups_controller.groupinfo);
@@ -99,7 +99,7 @@ router.get('/adminopret', admin_controller.registeradmin);
 router.post('/adminopret',admin_controller.adminregistergroups);
 // update gruppe
 router.get('/adminupdate/', groups_controller.updateadmin);
-router.post('/adminupdate/',groups_controller.groupspdate);
+router.post('/adminupdate/',groups_controller.groupsupdate);
 
 
 //Events
