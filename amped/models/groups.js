@@ -1,6 +1,7 @@
 const Sequelize = require("sequelize");
 const connection = require("../config");
 const express =require('express');
+const Events = require("../models/events");
 
 const Groups = connection.define("Groups", {
     id: {
@@ -8,6 +9,10 @@ const Groups = connection.define("Groups", {
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
+        references: {
+            model: Events,
+            key: 'group_id'
+        }
     },
     group_name:{
         type: Sequelize.STRING,

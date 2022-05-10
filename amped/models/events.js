@@ -9,12 +9,17 @@ const Events = connection.define("Events", {
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
+       
     },
     group_id:{
         //foreign key to Groups id
         type: Sequelize.INTEGER,
         required: true,
-        allowNull: false
+        allowNull: false,
+        references: {
+            model: Groups,
+            key: 'group_name'
+        }
     },
     event_name:{
         type: Sequelize.STRING,
@@ -66,13 +71,6 @@ const Events = connection.define("Events", {
 
 module.exports = Events;
 
-Groups.hasMany(Events, {
-    foreignKey: 'group_id',
-    sourceKey: 'group_name'
-})
+Groups.hasMany(Events)
 
-Events.belongsTo(Groups, {
-    targetKey: 'group_name',
-    foreignKey: 'id',
-    as: 'group_name'
-})
+Events.belongsTo(Groups)
