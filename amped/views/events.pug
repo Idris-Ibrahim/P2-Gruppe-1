@@ -14,20 +14,20 @@ block content
         ol
 
             .event-container
-                for event in eventlist
-                    p()
-                    a(href=`/eventsinfo/?id=${event.id}` style='color: white' method = 'GET' id=`EventInfo`)  #{event.event_name}
+                each event in eventlist
                         p()
+                        a(href=`/eventsinfo/?id=${event.id}` style='color: white' method = 'GET' id=`EventInfo`)  #{event.event_name}
+                            p()
 
-                        .event
-                            .event-left
-                                .event-date
+                            .event
+                                .event-left
+                                    .event-date
 
-                            .event-right
+                                .event-right
 
-                                .klub Klub: #{event.group}
-                                .date d. #{event.dato}
-                                .sted Sted: #{event.lokation}
-                                .event-timing Kl. #{event.tid}
+                                    .klub Klub: #{event.group_id}
+                                    .date d. #{event.dato}
+                                    .sted Sted: #{event.lokation}
+                                    .event-timing Kl. #{event.tid}
 
     include pagination
