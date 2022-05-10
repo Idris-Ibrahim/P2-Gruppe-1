@@ -13,13 +13,14 @@ exports.registeradmin = (req, res, next) => {
 
 // register group
 exports.registergroups = (req, res, next) => {
-        (function (groups) {
+    const navn = req.body.group_name
+    console.log(navn)
         //checks if name is already in use:
-        Groups.findAll({where : {'group_name':{ [Op.eq]: req.body.group_name}}})
+        Groups.findAll({where : {'group_name':{ [Op.eq]: navn}}})
         .then(function(data){
             if (data.length == 0){
                 Groups.create({
-                    group_name: req.body.group_name,
+                    group_name: navn,
                     group_email: req.body.group_email,
                     password: req.body.password,
                     group_about: req.body.GruppeBeskrivelse,
@@ -27,14 +28,8 @@ exports.registergroups = (req, res, next) => {
                     roles: 0
                 })
                 res.redirect('/login')
-            }else if(data.length != NULL){
-                response.status(400).send('Username already in use');
+            }else{
+                res.send('Username already in use');
             }
         })
-        if (groups) {
-            res.redirect('/login');
-        } else {
-            response.status(400).send('Error in insert new record');
-        }
-    });
 }

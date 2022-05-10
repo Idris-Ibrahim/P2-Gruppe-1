@@ -49,9 +49,14 @@ router.get(`/groups/search`, search_controller.groupsearch);
 router.get('/groups', groups_controller.viewgroups);
 
 
+<<<<<<< HEAD
 
 //Calendar
 router.get('/calendar', calendar_controller.calendar);
+=======
+//group info
+router.get(`/groupinfo/`,groups_controller.groupinfo);
+>>>>>>> 798da0f2b14319b29fdece57484008bf4394269c
 
 
 
