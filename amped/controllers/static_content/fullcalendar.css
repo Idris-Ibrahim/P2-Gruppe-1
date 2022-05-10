@@ -40,6 +40,9 @@
   .fc td {
     vertical-align: top;
     padding: 0;
+    background-color: #e3e3e3 !important;
+    color: #242424;
+    border-color: #6d2eff;
   }
 .fc a[data-navlink] {
     cursor: pointer;
