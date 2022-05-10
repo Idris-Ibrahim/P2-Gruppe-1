@@ -7,7 +7,7 @@ const Groups = require("../models/groups");
 
 exports.adminpage = (req, res) => {
     if (req.session.loggedIn !== true || req.session.Group.roles !== 2){
-        res.render("NoPermission")
+        res.render("nopugmission")
         return
     }
     res.render("admin")
@@ -16,7 +16,7 @@ exports.adminpage = (req, res) => {
 
 exports.viewevents = (req, res, next) => {
     if (req.session.loggedIn !== true || req.session.Group.roles !== 2){
-        res.render("NoPermission")
+        res.render("nopugmission")
         return
     }
     return Events.findAll({ order: [['dato'],['tid']]})
@@ -30,7 +30,7 @@ exports.viewevents = (req, res, next) => {
 
 exports.viewgroups = (req, res, next) => {
     if (req.session.loggedIn !== true || req.session.Group.roles !== 2){
-        res.render("NoPermission")
+        res.render("nopugmission")
         return
     }
     return Groups.findAll()

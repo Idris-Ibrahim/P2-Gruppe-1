@@ -36,10 +36,6 @@ header li a {
     text-decoration: none;
 }
 
-.current {
-    color: white;
-}
-
 /*Removes the underline of hyperlinks*/
 a:link { text-decoration: none; }
 a:visited { text-decoration: none; }
@@ -51,8 +47,28 @@ button {
     position: relative;
     display: inline-block;
     background-color: white;
+    align-items: center;
+    padding-right: px;
 }
 
+h69 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: red;
+    padding: 500px 500px;
+    text-align: center;
+    background-image: url("../images/dog-anim.gif");
+    background-repeat: no-repeat;
+    background-position-x: 275px;
+    background-size: contain;
+    font-size: xxx-large;
+}
+
+input {
+    align-items: center;
+    padding-right: px;
+}
 /*Customize the dropdown*/
 .dropdown-content {
     display: none;
@@ -186,5 +202,4 @@ ol h5.event-title {
     color: white;
     padding: 350px 48px;
     text-align: center;
-
 }
