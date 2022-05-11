@@ -4,13 +4,6 @@ block content
     include nav
     h1= current = ''
     body
-        button.dropbtn Sort
-            .dropdown-content
-
-                a(href='/events/sortddateasc') Date  &uarr;
-
-                a(href='/events/sortddatedesc') Date &darr;
-
         ol
 
             .event-container
@@ -25,7 +18,7 @@ block content
 
                                 .event-right
 
-                                    .klub Klub: #{`${event.group_id}`}
+                                    .klub Klub: #{'${event.group_id}'}
                                     .date d. #{event.dato}
                                     .sted Sted: #{event.lokation}
                                     .event-timing Kl. #{event.tid}

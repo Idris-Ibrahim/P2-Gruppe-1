@@ -7,19 +7,18 @@ header
         ul
             li
                 a(href='/events' style='color: white') Events
-                
             li
                 a(href='/calendar' style='color: white') Calendar
             li
                 a(href='/groups' style='color: white') Groups
             li
-                a(href='/login' style='color: white') Login
+                a(href='/login' style='color: white' id='in') Login
             li
-                a(href='/logout' style='color: white') Logout
+                a(href='/logout' style='color: white' id='out') Logout
             li
-                a(href='/admin' style='color: white') AdminPanel
+                a(href='/admin' style='color: white' id='admn') AdminPanel
             li
-                a(href='/grouppanel' style='color: white') GroupPanel
+                a(href='/grouppanel' style='color: white' id='grup') GroupPanel
             li
                 form(action=`/events/search`, method='GET', role='search')
                     .form-search
@@ -30,3 +29,5 @@ header
                     .form-search
                         input(type='search' placeholder=' Search for all groups' name='SearchGroup' id="SearchIDG")
                         button(type='search' id='searchButton') Search Groups
+
+

@@ -35,10 +35,16 @@ exports.loggingin = (req, res, next) => {
 
         if(Group.roles == 0){
             res.redirect("/events")
+            res.render('nav', {role : req.session.Group.roles})
+
         } else if (Group.roles == 2){
             res.redirect("/admin")
+            res.render('nav', {role : req.session.Group.roles})
+
         }else if (Group.roles == 1){
             res.redirect("/grouppanel")
+            res.render('nav', {role : req.session.Group.roles})
+
         }
         
 
