@@ -38,15 +38,10 @@ const Groups = connection.define("Groups", {
         
 }});
 
-
-Groups.hasMany(Events, {
-    foreginKey: 'group_id',
-    sourceKey: 'id'
-})
-
 Events.belongsTo(Groups, {
-    targetKey: 'id',
-    foreignKey: 'group_id'
+    targetKey: 'group_name',
+    foreignKey: 'group_id',
+    as: 'group_name'
 })
 
 
