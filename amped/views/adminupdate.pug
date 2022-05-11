@@ -2,8 +2,8 @@ extends layout
 
 block content
     include nav
-
-    .reg-box
+    for group in grouplist
+        .reg-box
         .header
             h2 Opdater gruppe
         form(action=`/adminupdate/`, method="post")
@@ -22,5 +22,8 @@ block content
             .form-group
                 label Facebook URL:
                 input(type="text" name="fburl" class="group-input")
+            .form-group
+                input(type="hidden" name="id" class="group-input" value=`${group.id}`)
+
 
             button(type="submit" class="btn btn-primary") Submit

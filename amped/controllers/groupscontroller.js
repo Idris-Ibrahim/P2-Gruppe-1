@@ -72,15 +72,17 @@ exports.updateadmin = (req, res, next) => {
 
 // Update Group
 exports.groupsupdate = function (req, res, next) {
-    const idcheck = req.query.id
+    const idcheck = req.body.id
     console.log(idcheck)
     if (req.session.loggedIn !== true || req.session.Group.roles < 2) {
         res.send("You do not have permission to do this")
         return
     }
+
     Groups.update(
         // Values to update
         {
+            id:idcheck,
             group_name: req.body.group_name,
             group_about: req.body.group_about,
             group_email: req.body.group_email,
@@ -88,7 +90,7 @@ exports.groupsupdate = function (req, res, next) {
             fburl: req.body.fburl,
         },
         {
-            where: {'id' : { [Op.eq]: idcheck} }
+            where: {'id': {[Op.eq]: idcheck} }
         }
     ).then(function (groups) {
         if (groups) {
