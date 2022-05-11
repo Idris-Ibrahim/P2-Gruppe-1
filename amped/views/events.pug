@@ -15,7 +15,7 @@ block content
 
             .event-container
 
-                each data in eventlist, grouplist
+                each event in eventlist
                         p()
                         a(href=`/eventsinfo/?id=${event.id}` style='color: white' method = 'GET' id=`EventInfo`)  #{event.event_name}
                             p()
@@ -30,8 +30,9 @@ block content
                                     .date d. #{event.dato}
                                     .sted Sted: #{event.lokation}
                                     .event-timing Kl. #{event.tid}
-                                    -if(
-                                        .pris #{event.pris} kr.
+                                    -let pricing = {pris:`${event.pris}`}
+                                    if pricing.pris > 0
+                                                |#{event.pris} kr
 
 
 
