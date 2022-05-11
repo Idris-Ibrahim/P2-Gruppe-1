@@ -42,11 +42,10 @@ block content
                     td #{event.pris}
                     td #{event.fburl}
                     td
-                        form(action=`/admin/groups/?id=${event.id}` method='post')
+                        form(action=`/admin/events/?id=${event.id}` method='post')
                             button.btn.btn-lg(type='submit') Delete
-                        form(action=`/admin/groups/?id=${event.id}` method='post')
-                            button.btn.btn-lg(type='submit') Give role 1
-                        a(href=`/adminupdate/?id=${event.id}`) Update
+
+                        a(href=`/adminupdateevent/?id=${event.id}`) Update
 
 
 

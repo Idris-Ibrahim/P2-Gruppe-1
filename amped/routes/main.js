@@ -47,15 +47,22 @@ router.get(`/groups/search`, search_controller.groupsearch);
 router.get(`/eventsinfo/`,events_controller.findOne);
 
 /// Groups:
-// landing page for groups
+// ?
 router.get('/groups', groups_controller.viewgroups);
+// landing page for groups
 router.get('/grouppanel', events_controller.vieweventsforgroup)
 // create event
 router.get('/createevent', events_controller.createevent);
-router.post('/createevent',events_controller.createevents);
+router.post('/createevent',events_controller.createevents);// create
+// update event
+router.get('/grouppanelupdate/', events_controller.updateeventsgroup);
+router.post('/grouppanelupdate/',events_controller.eventsupdategroup);
+// slet event
+router.post('/grouppanel', events_controller.eventsdeletegroup);
 
-//slet events
-router.post('/grouppanel/delete', events_controller.eventdelete)
+
+
+
 
 //group info
 router.get(`/groupinfo/`,groups_controller.groupinfo);
@@ -104,12 +111,14 @@ router.post('/adminupdate/',groups_controller.groupsupdate);
 
 //Events
 // se events
-router.get('/admin/events', admin_controller.viewevents);
+router.get('/admin/events', events_controller.viewevents);
 // slet events
-router.post('/admin/events', groups_controller.groupsdelete);
+router.post('/admin/events', events_controller.eventsdelete);
 // søg events
 router.get('/admin/eventsearch', search_controller.eventsearchadmin);
-
+// update events
+router.get('/adminupdateevent/', events_controller.updateeventsadmin);
+router.post('/adminupdateevent/',events_controller.eventsupdate);
 //script controller
 router.get('/config/scripts/fullcalendar.css', script_controller.fullcalendarcss);
 router.get('/config/scripts/fullcalendar.js', script_controller.fullcalendarjs);

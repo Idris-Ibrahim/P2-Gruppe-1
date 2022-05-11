@@ -12,7 +12,7 @@ block content
             button(type='submit') Opret en event
 
     .group-information
-        each group in grouplist ? grouplist : []
+        for group in grouplist ? grouplist : []
             p
             .groupabout Om #{group.group_about}
 
@@ -20,23 +20,22 @@ block content
     ol
             .event-container Your events:
                 each event in yourevent
-                    P()
-                    a(href=`/eventsinfo/?id=${event.id}` style='color: white')  #{event.event_name}
-                        p()
+
+                    a(href=`/eventsinfo/?id=${event.id}` style='color: white')
+
 
                         .event
                             .event-left
-                                .event-date
 
+                                .event-date
                             .event-right
-                                .id Event id #{event.id}
+                                .id Event name: #{event.event_name}
                                 .date d. #{event.dato}
                                 .sted Sted: #{event.lokation}
                                 .event-description #{event.beskrivelse}
                                 .event-timing Kl. #{event.tid}
 
-                                form(action=`/grouppanel/delete/?id=${event.id}` method='post')
+                                form(action=`/grouppanel/?id=${event.id}` method='post')
                                     button.btn.btn-lg(type='submit') Delete
-                                form(action=`#` method='post')
-                                    button.btn.btn-lg(type='submit') Update
+                                a(href=`/grouppanelupdate/?id=${event.id}`) Update
 

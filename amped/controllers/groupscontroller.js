@@ -58,7 +58,7 @@ exports.groupsdelete = function(req, res, next){
     });
 }
 
-// viser update page
+// viser update group page
 exports.updateadmin = (req, res, next) => {
     const idcheck = req.query.id
     console.log(idcheck)

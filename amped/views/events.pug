@@ -14,7 +14,8 @@ block content
         ol
 
             .event-container
-                each event in eventlist 
+
+                each data in eventlist, grouplist
                         p()
                         a(href=`/eventsinfo/?id=${event.id}` style='color: white' method = 'GET' id=`EventInfo`)  #{event.event_name}
                             p()
@@ -25,10 +26,13 @@ block content
 
                                 .event-right
 
-                                    .klub Klub: #{event.group_id}
+                                    .klub Klub: #{group_id}
                                     .date d. #{event.dato}
                                     .sted Sted: #{event.lokation}
                                     .event-timing Kl. #{event.tid}
+                                    -if(
+                                        .pris #{event.pris} kr.
+
 
 
     include pagination

@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c553f8e-3720-4485-91d2-276a84c4f526" name="Changes" comment="updateadmin virker ikke">
+    <list default="true" id="5c553f8e-3720-4485-91d2-276a84c4f526" name="Changes" comment="updateadmin virker">
+      <change afterPath="$PROJECT_DIR$/amped/views/adminupdateevent.pug" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/amped/views/grouppanelupdate.pug" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amped/controllers/eventscontroller.js" beforeDir="false" afterPath="$PROJECT_DIR$/amped/controllers/eventscontroller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/amped/controllers/groupscontroller.js" beforeDir="false" afterPath="$PROJECT_DIR$/amped/controllers/groupscontroller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amped/routes/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/amped/routes/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amped/views/adminevents.pug" beforeDir="false" afterPath="$PROJECT_DIR$/amped/views/adminevents.pug" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/amped/views/adminupdate.pug" beforeDir="false" afterPath="$PROJECT_DIR$/amped/views/adminupdate.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amped/views/eventinfo.pug" beforeDir="false" afterPath="$PROJECT_DIR$/amped/views/eventinfo.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amped/views/events.pug" beforeDir="false" afterPath="$PROJECT_DIR$/amped/views/events.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amped/views/grouppanel.pug" beforeDir="false" afterPath="$PROJECT_DIR$/amped/views/grouppanel.pug" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +59,7 @@
       <workItem from="1651821408031" duration="57594000" />
       <workItem from="1652104416811" duration="515000" />
       <workItem from="1652109566318" duration="1387000" />
-      <workItem from="1652167228839" duration="41803000" />
+      <workItem from="1652167228839" duration="52708000" />
     </task>
     <task id="LOCAL-00001" summary="knapper i /admin/groups">
       <created>1651664288931</created>
@@ -179,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652264714924</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="updateadmin virker">
+      <created>1652265482856</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1652265482856</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,6 +227,7 @@
     <MESSAGE value="register, group, update role" />
     <MESSAGE value="group panel delete done" />
     <MESSAGE value="updateadmin virker ikke" />
-    <option name="LAST_COMMIT_MESSAGE" value="updateadmin virker ikke" />
+    <MESSAGE value="updateadmin virker" />
+    <option name="LAST_COMMIT_MESSAGE" value="updateadmin virker" />
   </component>
 </project>

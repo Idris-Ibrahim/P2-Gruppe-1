@@ -27,12 +27,8 @@ exports.viewevents =  function (req, res, next) {
 }
 
 exports.vieweventsforgroup =  function (req, res, next) {
-    if(req.session.loggedIn !== true){
-        res.redirect('/login')
-        return
-    }
-    if (req.session.Group.roles < 1){
-        res.render("NoPermission")
+    if (req.session.loggedIn !== true || req.session.Group.roles !== 1){
+        res.render("nopugmission")
         return
     }
     console.log(req.session)
@@ -79,32 +75,6 @@ exports.eventnamedesc =  function (req, res, next) {
             console.log(err)
         });
 }
-/*
-exports.eventcreate = function (req, res, next){
-if (req.session.loggedIn !== true || req.session.Group.roles < 1){
-    res.render("NoPermission")
-    return
-}
-Sequelize
-.sync(/*{force:true}*//*)
-.then((result) => {
-    //dato skal være: (år-måned-dag):
-    Events.create({ 
-            group_id: req.session.Group.id, //<= skal være samme gruppe som er logget ind
-            event_name: req.body.event_name,
-            lokation: req.body.event_lokation,
-            tid: req.body.event_tid,
-            dato: req.body.event_dato,
-            pris: req.body.event_pris,
-            fburl: req.body.event_fburl});
-                    
-    console.log(result);
-})
-// catch error
-.catch ((err) => {
-    console.log(err);
-});
-}*/
 
 exports.eventdelete = function(req, res, next){
     if (req.session.loggedIn !== true || req.session.Group.roles < 1){
@@ -210,8 +180,12 @@ exports.findOne = (req, res) => {
         console.log(err)
     });
 };
-
+// events delete for admin
 exports.eventsdelete = function(req, res, next){
+    if (req.session.loggedIn !== true || req.session.Group.roles < 2){
+        res.send("You do not have permission to do this")
+        return
+    }
     const idcheck = req.query.id
     console.log(idcheck)
     return Events.destroy({
@@ -219,7 +193,116 @@ exports.eventsdelete = function(req, res, next){
         where: {'id' : { [Op.eq]: idcheck} }
     }).then(function (event) {
         if (event) {
-            res.redirect('/admin/event');
+            res.redirect('/admin/events');
+        } else {
+            res.status(400).send('Error in delete');
+        }
+    });
+}
+
+// viser update event page for adminevent
+exports.updateeventsadmin = (req, res, next) => {
+    const idcheck = req.query.id
+    console.log(idcheck)
+    Events.findAll({where: {'id': {[Op.eq]: idcheck}}})
+        .then(function (data) {
+            res.render('adminupdateevent', {eventlist: data},
+                console.log(data));
+
+        })
+}
+// opdater event for admin event
+exports.eventsupdate = function (req, res, next) {
+    const idcheck = req.body.id
+    console.log(idcheck)
+    if (req.session.loggedIn !== true || req.session.Group.roles < 2) {
+        res.send("You do not have permission to do this")
+        return
+    }
+
+    Events.update(
+        // Values to update
+        {
+            id:idcheck,
+            event_name: req.body.event_name,
+            beskrivelse: req.body.beskrivelse,
+            lokation: req.body.lokation,
+            tid: req.body.tid,
+            dato: req.body.dato,
+            pris: req.body.pris,
+            fburl: req.body.fburl,
+        },
+        {
+            where: {'id': {[Op.eq]: idcheck} }
+        }
+    ).then(function (groups) {
+        if (groups) {
+            res.redirect('/admin/events');
+        } else {
+            response.status(400).send('Error in update');
+        }
+    });
+}
+
+// viser update event page for grouppanel
+exports.updateeventsgroup = (req, res, next) => {
+    const idcheck = req.query.id
+    console.log(idcheck)
+    Events.findAll({where: {'id': {[Op.eq]: idcheck}}})
+        .then(function (data) {
+            res.render('grouppanelupdate', {eventlist: data},
+                console.log(data));
+
+        })
+}
+
+// opdater event for grouppanel
+exports.eventsupdategroup = function (req, res, next) {
+    const idcheck = req.body.id
+    console.log(idcheck)
+    if (req.session.loggedIn !== true || req.session.Group.roles < 1) {
+        res.send("You do not have permission to do this")
+        return
+    }
+
+    Events.update(
+        // Values to update
+        {
+            id:idcheck,
+            event_name: req.body.event_name,
+            beskrivelse: req.body.beskrivelse,
+            lokation: req.body.lokation,
+            tid: req.body.tid,
+            dato: req.body.dato,
+            pris: req.body.pris,
+            fburl: req.body.fburl,
+        },
+        {
+            where: {'id': {[Op.eq]: idcheck} }
+        }
+    ).then(function (groups) {
+        if (groups) {
+            res.redirect('/grouppanel');
+        } else {
+            response.status(400).send('Error in update');
+        }
+    });
+}
+
+// event delete for group
+exports.eventsdeletegroup = function(req, res, next){
+    if (req.session.loggedIn !== true || req.session.Group.roles < 1){
+        res.send("You do not have permission to do this")
+        return
+    }
+    const idcheck = req.query.id
+    console.log(idcheck)
+    return Events.destroy({
+        //slet ud fra id
+        where: {'id' : { [Op.eq]: idcheck} }
+    }).then(function (event) {
+        if (event) {
+            res.redirect('/grouppanel');
         } else {
             res.status(400).send('Error in delete');
         }
