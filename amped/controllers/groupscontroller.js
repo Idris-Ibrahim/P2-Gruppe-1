@@ -60,17 +60,25 @@ exports.groupsdelete = function(req, res, next){
 
 // viser update page
 exports.updateadmin = (req, res, next) => {
-    res.render("adminupdate")
+    const idcheck = req.query.id
+    console.log(idcheck)
+    Groups.findAll({where: {'id': {[Op.eq]: idcheck}}})
+        .then(function (data) {
+            res.render('adminupdate', {grouplist: data},
+                console.log(data));
+
+        })
 }
+
 // Update Group
-exports.groupsupdate = function(req, res, next){
-    if (req.session.loggedIn !== true || req.session.Group.roles < 2){
+exports.groupsupdate = function (req, res, next) {
+    const idcheck = req.query.id
+    console.log(idcheck)
+    if (req.session.loggedIn !== true || req.session.Group.roles < 2) {
         res.send("You do not have permission to do this")
         return
     }
-    const idcheck = req.query.id
-    console.log(idcheck)
-    return Groups.update(
+    Groups.update(
         // Values to update
         {
             group_name: req.body.group_name,
@@ -80,13 +88,13 @@ exports.groupsupdate = function(req, res, next){
             fburl: req.body.fburl,
         },
         {
-        where: {where: {'id' : { [Op.eq]: idcheck} }}
+            where: {'id' : { [Op.eq]: idcheck} }
         }
-        ).then(function (groups) {
+    ).then(function (groups) {
         if (groups) {
-        res.redirect('/admin/groups');
+            res.redirect('/admin/groups');
         } else {
-        response.status(400).send('Error in update');
+            response.status(400).send('Error in update');
         }
     });
 }

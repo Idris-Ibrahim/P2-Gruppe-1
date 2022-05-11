@@ -8,17 +8,13 @@ block content
         form(action="/groups/search", method='GET', role='search')
             .form-search
                 input(type='search' placeholder=' Search for your events' name='SearchGroup' id="SearchIDG")
-                button(type='search' id='searchButton') Search
-        form(action="/admin/groups", method="post")
-            .form-group
-                input(type="text" name="id"  class="group-id" placeholder="Id der skal slettes")
         form(action='/createevent')
             button(type='submit') Opret en event
 
-
-
-
-
+    .group-information
+        each group in grouplist ? grouplist : []
+            p
+            .groupabout Om #{group.group_about}
 
 
     ol
@@ -41,4 +37,6 @@ block content
 
                                 form(action=`/grouppanel/delete/?id=${event.id}` method='post')
                                     button.btn.btn-lg(type='submit') Delete
+                                form(action=`#` method='post')
+                                    button.btn.btn-lg(type='submit') Update
 
