@@ -32,7 +32,7 @@ exports.vieweventsforgroup =  function (req, res, next) {
         return
     }
     if (req.session.Group.roles < 1){
-        res.render("NoPermission")
+        res.render("nopugmission")
         return
     }
     console.log(req.session)
@@ -52,7 +52,7 @@ exports.vieweventsforgroup =  function (req, res, next) {
 exports.eventsdesc =  function (req, res, next) {
     return Events.findAll({ order: [['dato','DESC'],['tid','DESC']]})
         .then(function(data) {
-            res.render("NoPermission");
+            res.render("nopugmission");
         })
         .catch( function(err)  {
             console.log(err)
@@ -82,7 +82,7 @@ exports.eventnamedesc =  function (req, res, next) {
 /*
 exports.eventcreate = function (req, res, next){
 if (req.session.loggedIn !== true || req.session.Group.roles < 1){
-    res.render("NoPermission")
+    res.render("nopugmission")
     return
 }
 Sequelize
