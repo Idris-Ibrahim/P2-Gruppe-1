@@ -221,7 +221,7 @@ exports.eventsdelete = function(req, res, next){
         if (event) {
             res.redirect('/admin/event');
         } else {
-            response.status(400).send('Error in delete');
+            res.status(400).send('Error in delete');
         }
     });
 }
