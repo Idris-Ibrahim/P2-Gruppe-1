@@ -1,7 +1,6 @@
 const Sequelize = require("sequelize");
 const connection = require("../config");
 const express = require('express');
-const Groups = require('./groups');
 
 const Events = connection.define("Events", {
     id:{
@@ -65,13 +64,3 @@ const Events = connection.define("Events", {
 });
 
 module.exports = Events;
-
-Groups.hasMany(Events, {
-    foreginKey: 'group_id',
-    sourceKey: 'id'
-})
-
-Events.belongsTo(Groups, {
-    targetKey: 'id',
-    foreignKey: 'group_id'
-})
