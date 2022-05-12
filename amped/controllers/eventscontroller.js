@@ -3,6 +3,7 @@ const {Datatypes, Op} = Sequelize;
 const Events = require("../models/events");
 const { grouproleone } = require("./groupscontroller");
 const Groups = require("../models/groups");
+var async = require('async')
 
 //datetime of the current date for referencing:
 let today = new Date()
@@ -10,22 +11,41 @@ let today1 = new Date()
 today1.setDate(today.getDate() + 1);
 
 // all events sorted by date and time without the
-
+var findgroups = '';
+var findevents = '';
 exports.viewevents =  function (req, res, next) {
-    console.log(req.session)
-    return Events.findAll(
+    console.log(req.session),
+
+    async.series({
+        one: function() {
+            findgroups = Groups.findAll();
+        },
+        two: function() {
+            findevents = Events.findAll(
+                {order: [['dato', 'ASC'],['tid', 'ASC']],
+                    where: {'dato' :{ [Op.gt]: today1}}});
+        }
+    }, function(err, results) {
+        res.render('events', {eventlist: results})
+    });
+
+    /*
+    findgroups = Groups.findAll(),
+    findevents = Events.findAll(
     {order: [['dato', 'ASC'],['tid', 'ASC']],
         where: {'dato' :{ [Op.gt]: today1}}})
 
-        .then(function(data) {
-            //data = {...data, name}
-            res.render('events', {eventlist: data },
-            console.log(data));
+
+        .then(function(findevents , findgroups) {
+            res.render('events', {eventlist: findevents, findgroups},
+            console.log(findevents, findgroups));
         })
+
         .catch( function(err)  {
             console.log(err)
         });
-}
+*/
+    }
 
 exports.vieweventsforgroup =  function (req, res, next) {
     if (req.session.loggedIn !== true || req.session.Group.roles !== 1){

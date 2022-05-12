@@ -15,25 +15,25 @@ block content
 
             .event-container
 
-                each event in eventlist
-                        p()
-                        a(href=`/eventsinfo/?id=${event.id}` style='color: white' method = 'GET' id=`EventInfo`)  #{event.event_name}
+                each event in eventlist    
                             p()
+                            a(href=`/eventsinfo/?id=${event.id}` style='color: white' method = 'GET' id=`EventInfo`)  #{event.event_name}
+                                p()
 
-                            .event
-                                .event-left
-                                    .event-date
+                                .event
+                                    .event-left
+                                        .event-date
 
-                                .event-right
+                                    .event-right
 
-                                    .klub Klub: #{group_id}
-                                    .date d. #{event.dato}
-                                    .sted Sted: #{event.lokation}
-                                    -let pricing = {pris:`${event.pris}`}
-                                    if pricing.pris > 0
-                                                |Pris: #{event.pris} kr
-                                    .event-timing Kl. #{event.tid}
-                                    
+                                        .klub Klub: #{event.group_name}
+                                        .date d. #{event.dato}
+                                        .sted Sted: #{event.lokation}
+                                        -let pricing = {pris:`${event.pris}`}
+                                        if pricing.pris > 0
+                                                    |Pris: #{event.pris} kr
+                                        .event-timing Kl. #{event.tid}
+                                        
 
 
 
