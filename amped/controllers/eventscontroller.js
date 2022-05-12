@@ -11,25 +11,10 @@ let today1 = new Date()
 today1.setDate(today.getDate() + 1);
 
 // all events sorted by date and time without the
-var findgroups = '';
-var findevents = '';
 exports.viewevents =  function (req, res, next) {
-    console.log(req.session),
+    console.log(req.session);
 
-    async.parallel({
-        one: function() {
-            findgroups = Groups.findAll();
-        },
-        two: function() {
-            findevents = Events.findAll(
-                {order: [['dato', 'ASC'],['tid', 'ASC']],
-                    where: {'dato' :{ [Op.gt]: today1}}});
-        }
-    }, function(err, results) {
-        res.render('events', {eventlist: results})
-    });
 
-    /*
     findgroups = Groups.findAll(),
     findevents = Events.findAll(
     {order: [['dato', 'ASC'],['tid', 'ASC']],
@@ -44,7 +29,7 @@ exports.viewevents =  function (req, res, next) {
         .catch( function(err)  {
             console.log(err)
         });
-*/
+
     }
 
 exports.vieweventsforgroup =  function (req, res, next) {
