@@ -183,7 +183,7 @@ exports.findOne = (req, res) => {
 // events delete for admin
 exports.eventsdelete = function(req, res, next){
     if (req.session.loggedIn !== true || req.session.Group.roles < 2){
-        res.send("You do not have permission to do this")
+        res.render("nopugmission")
         return
     }
     const idcheck = req.query.id
@@ -216,7 +216,7 @@ exports.eventsupdate = function (req, res, next) {
     const idcheck = req.body.id
     console.log(idcheck)
     if (req.session.loggedIn !== true || req.session.Group.roles < 2) {
-        res.send("You do not have permission to do this")
+        res.render("nopugmission")
         return
     }
 
@@ -261,7 +261,7 @@ exports.eventsupdategroup = function (req, res, next) {
     const idcheck = req.body.id
     console.log(idcheck)
     if (req.session.loggedIn !== true || req.session.Group.roles < 1) {
-        res.send("You do not have permission to do this")
+        res.render("nopugmission")
         return
     }
 
@@ -292,7 +292,7 @@ exports.eventsupdategroup = function (req, res, next) {
 // event delete for group
 exports.eventsdeletegroup = function(req, res, next){
     if (req.session.loggedIn !== true || req.session.Group.roles < 1){
-        res.send("You do not have permission to do this")
+        res.render("nopugmission")
         return
     }
     const idcheck = req.query.id
