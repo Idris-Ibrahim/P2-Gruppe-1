@@ -29,10 +29,11 @@ block content
                                     .klub Klub: #{group_id}
                                     .date d. #{event.dato}
                                     .sted Sted: #{event.lokation}
-                                    .event-timing Kl. #{event.tid}
                                     -let pricing = {pris:`${event.pris}`}
                                     if pricing.pris > 0
-                                                |#{event.pris} kr
+                                                |Pris: #{event.pris} kr
+                                    .event-timing Kl. #{event.tid}
+                                    
 
 
 
