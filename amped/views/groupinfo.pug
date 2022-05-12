@@ -3,9 +3,13 @@ block content
     include nav
     h1= current = ''
     body
+        h666    Group info
         ol
-            for group in grouplist
-                        .name #{group.group_name}
-                        .info Om: #{group.group_about}
-                        .email Email: #{group.group_email}
-                        .fburl Facebook: #{group.fburl}
+            .group-container
+                for group in grouplist
+                        .group-right
+
+                            .name #{group.group_name}
+                            .info Om: #{group.group_about}
+                            .email Email: #{group.group_email}
+                            .fburl Facebook: #{group.fburl}

@@ -5,14 +5,15 @@ block content
     .login-box
         .header
             h2
-        form(action="/login", method="post")
-            .form-group
-                label Username
-                input(type="text" name="Username" class="form-control shadow-none")
-            .form-group
-                label Password
-                input(type="password" name="password" class="form-control")
-            button(type="submit" class="btn btn-primary") Login
-
-        form(action='/register')
-             button(type='submit') Register
+        ul
+            form(action="/login", method="post")
+                .form-group
+                    label Username
+                    input(type="text" name="Username" class="form-control shadow-none")
+                .form-group
+                    label Password
+                    input(type="password" name="password" class="form-control")
+                button(type="submit" class="btn btn-primary") Login
+        ul
+            form(action='/register')
+                button(type='submit') Register

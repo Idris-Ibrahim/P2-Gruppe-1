@@ -51,6 +51,24 @@ button {
     padding-right: px;
 }
 
+h420 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: red;
+    text-align: center;
+    font-size: xxx-large;
+}
+
+h666 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: red;
+    text-align: center;
+    font-size: xxx-large;
+}
+
 h69 {
     display: flex;
     align-items: center;
@@ -119,7 +137,7 @@ button:hover .dropdown-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 10px 24px;
+    padding: 20px 24px;
 }
 
 /*Customize the blue box that state time*/
@@ -194,12 +212,118 @@ ol h5.event-title {
     text-align: center;
 }
 
-.login-box{
-    min-width: 82px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    padding: 350px 48px;
+.login-box {
     text-align: center;
+    padding: 350px 48px;
+}
+
+.event-container2 {
+    text-align: center;
+    padding: 715px;
+    padding-top: 100px;
+}
+
+.event .event-right2 .event {
+    background: orange;
+    width: 360px;
+    padding: 8px;
+    border-radius: 16px;
+    font-size: 14px;
+}
+.event .event-right2 .beskrivelse {
+    background: orange;
+    width: 360px;
+    padding: 8px;
+    border-radius: 16px;
+    font-size: 14px;
+}
+.event .event-right2 .date {
+    background: red;
+    width: 360px;
+    padding: 8px;
+    border-radius: 16px;
+    font-size: 14px;
+}
+.event .event-right2 .sted {
+    background: indianred;
+    width: 360px;
+    padding: 8px;
+    border-radius: 16px;
+    font-size: 14px;
+}
+.event .event-right2 .event-timing {
+    background: purple;
+    width: 360px;
+    padding: 8px;
+    border-radius: 16px;
+    font-size: 14px;
+}
+.event .event-right2 .pris {
+    background: cornflowerblue;
+    width: 360px;
+    padding: 8px;
+    border-radius: 16px;
+    font-size: 14px;
+}
+.event .event-right2 .fburl {
+    background: cornflowerblue;
+    width: 360px;
+    padding: 8px;
+    border-radius: 16px;
+    font-size: 14px;
+}
+
+.group-container {
+    text-align: center;
+    padding: 715px;
+    padding-top: 100px;
+}
+
+.group-container .group-right .name {
+    background: orange;
+    width: 360px;
+    padding: 8px;
+    border-radius: 16px;
+    font-size: 14px;
+}
+
+.group-container .group-right .info {
+    background: red;
+    width: 360px;
+    padding: 8px;
+    border-radius: 16px;
+    font-size: 14px;
+}
+
+.group-container .group-right .email {
+    background: purple;
+    width: 360px;
+    padding: 8px;
+    border-radius: 16px;
+    font-size: 14px;
+}
+
+.group-container .group-right .fburl {
+    background: cornflowerblue;
+    width: 360px;
+    padding: 8px;
+    border-radius: 16px;
+    font-size: 14px;
+}
+
+h22 {
+    background: cornflowerblue;
+    width: 360px;
+    font-size: xx-large;
+    padding: 8px;
+    border-radius: 16px;
+}
+
+.reg-box{
+    background: cornflowerblue;
+    width: 360px;
+    padding: 20px;
+    border-radius: 16px;
+    font-size: 14px;
+    display: grid;
 }

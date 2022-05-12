@@ -11,9 +11,8 @@ let today1 = new Date()
 today1.setDate(today.getDate() + 1);
 
 // all events sorted by date and time without the
-var findgroups = '';
-var findevents = '';
 exports.viewevents =  function (req, res, next) {
+<<<<<<< HEAD
     console.log(req.session),
     
     console.log(findgroups)
@@ -35,6 +34,13 @@ exports.viewevents =  function (req, res, next) {
     })
 }
     /*findevents = Events.findAll(
+=======
+    console.log(req.session);
+
+
+    findgroups = Groups.findAll(),
+    findevents = Events.findAll(
+>>>>>>> 5294b198ca0b2707ea9069c307e9a6353ba955ce
     {order: [['dato', 'ASC'],['tid', 'ASC']],
         where: {'dato' :{ [Op.gt]: today1}}})
 
@@ -49,7 +55,12 @@ exports.viewevents =  function (req, res, next) {
         .catch( function(err)  {
             console.log(err)
         });
+<<<<<<< HEAD
     }*/
+=======
+
+    }
+>>>>>>> 5294b198ca0b2707ea9069c307e9a6353ba955ce
 
 exports.vieweventsforgroup =  function (req, res, next) {
     if (req.session.loggedIn !== true || req.session.Group.roles !== 1){
