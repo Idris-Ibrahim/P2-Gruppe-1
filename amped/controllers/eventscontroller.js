@@ -16,7 +16,7 @@ var findevents = '';
 exports.viewevents =  function (req, res, next) {
     console.log(req.session),
 
-    async.series({
+    async.parallel({
         one: function() {
             findgroups = Groups.findAll();
         },
