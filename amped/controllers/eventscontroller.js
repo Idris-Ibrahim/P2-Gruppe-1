@@ -3,7 +3,7 @@ const {Datatypes, Op} = Sequelize;
 const Events = require("../models/events");
 const { grouproleone } = require("./groupscontroller");
 const Groups = require("../models/groups");
-const async = require('async')
+var async = require('async')
 
 //datetime of the current date for referencing:
 let today = new Date()
@@ -11,56 +11,30 @@ let today1 = new Date()
 today1.setDate(today.getDate() + 1);
 
 // all events sorted by date and time without the
+var findgroups = '';
+var findevents = '';
 exports.viewevents =  function (req, res, next) {
-<<<<<<< HEAD
-    console.log(req.session),
-    
-    console.log(findgroups)
 
-    async.parallel({
+    findgroups = Groups.findAll()
+        .then(function(findgroups) {
+        })
 
-        one: function(){
-            findevents = Events.findAll(
-                {order: [['dato', 'ASC'],['tid', 'ASC']],
-                    where: {'dato' :{ [Op.gt]: today1}}})
-        },
-
-        secound: function(){
-            Groups.findAll({})
-        },
-
-    }, function(results){
-        res.render('events', {eventlist: results})
-    })
-}
-    /*findevents = Events.findAll(
-=======
-    console.log(req.session);
-
-
-    findgroups = Groups.findAll(),
+        ,
     findevents = Events.findAll(
->>>>>>> 5294b198ca0b2707ea9069c307e9a6353ba955ce
     {order: [['dato', 'ASC'],['tid', 'ASC']],
         where: {'dato' :{ [Op.gt]: today1}}})
 
-        
 
-        .then(function(findevents , data) {
-            res.render('events', {eventlist: findevents, data},
-            console.log(findevents),
-            console.log(data))
+        .then(function(findevents , findgroups) {
+            res.render('events', {eventlist: findevents, findgroups},
+            console.log("here is groups", findgroups));
         })
 
         .catch( function(err)  {
             console.log(err)
         });
-<<<<<<< HEAD
-    }*/
-=======
 
     }
->>>>>>> 5294b198ca0b2707ea9069c307e9a6353ba955ce
 
 exports.vieweventsforgroup =  function (req, res, next) {
     if (req.session.loggedIn !== true || req.session.Group.roles !== 1){
