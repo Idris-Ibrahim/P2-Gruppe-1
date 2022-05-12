@@ -18,6 +18,7 @@ exports.viewevents =  function (req, res, next) {
         where: {'dato' :{ [Op.gt]: today1}}})
 
         .then(function(data) {
+            //data = {...data, name}
             res.render('events', {eventlist: data },
             console.log(data));
         })
