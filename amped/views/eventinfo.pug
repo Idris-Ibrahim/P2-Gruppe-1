@@ -3,15 +3,18 @@ block content
     include nav
     h1= current = ''
     body
+        h420    Event info
         ol
+            .event-container2
+                each event in eventlist
+                    .event
 
-            for event in eventlist
-                        .event Event: #{event.event_name}    
-                        .event id: #{event.id}
-                        .group Klub: #{event.group_id}
-                        .beskrivelse Om: #{event.beskrivelse}
-                        .date d. #{event.dato}
-                        .sted Sted: #{event.lokation}
-                        .event-timing Kl. #{event.tid}
-                        .pris Pris: #{event.pris}
-                        .fburl Evt. Facebook link: #{event.fburl}
+                        .event-right2
+
+                            .event Event: #{event.event_name}
+                            .beskrivelse Om: #{event.beskrivelse}
+                            .date d. #{event.dato}
+                            .sted Sted: #{event.lokation}
+                            .event-timing Kl. #{event.tid}
+                            .pris Pris: #{event.pris}
+                            .fburl Evt. Facebook link: #{event.fburl}
