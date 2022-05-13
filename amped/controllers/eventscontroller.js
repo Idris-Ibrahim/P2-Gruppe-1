@@ -13,17 +13,14 @@ today1.setDate(today.getDate() + 1);
 // all events sorted by date and time without the
 exports.viewevents =  function (req, res, next) {
     console.log(req.session),
-    console.log(findgroups)
-
     findevents = Events.findAll(
     {order: [['dato', 'ASC'],['tid', 'ASC']],
         where: {'dato' :{ [Op.gt]: today1}}})
 
         
 
-        .then(function(findevents , data) {
-            res.render('events', {eventlist: findevents, data},
-            console.log(findevents),
+        .then(function( data) {
+            res.render('events', {eventlist: data},
             console.log(data))
         })
 
