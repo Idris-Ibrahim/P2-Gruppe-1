@@ -14,6 +14,10 @@ exports.registeradmin = (req, res, next) => {
 // register group
 exports.registergroups = (req, res, next) => {
     const navn = req.body.group_name
+    const passwordcheck = req.body.password
+    if (passwordcheck.length < 4){
+        res.send('password must be more than 3 characters');
+    }else{
     console.log(navn)
         //checks if name is already in use:
         Groups.findAll({where : {'group_name':{ [Op.eq]: navn}}})
@@ -22,7 +26,7 @@ exports.registergroups = (req, res, next) => {
                 Groups.create({
                     group_name: navn,
                     group_email: req.body.group_email,
-                    password: req.body.password,
+                    password: passwordcheck,
                     group_about: req.body.GruppeBeskrivelse,
                     fburl: req.body.FacebookURL,
                     roles: 0
@@ -32,4 +36,5 @@ exports.registergroups = (req, res, next) => {
                 res.send('Username already in use');
             }
         })
+}
 }
