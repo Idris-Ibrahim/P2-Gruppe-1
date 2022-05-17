@@ -4,26 +4,26 @@ block content
     include nav
     for group in grouplist
         .reg-box
-        .header
-            h2 Opdater gruppe
-        form(action=`/adminupdate/`, method="post")
-            .form-group
-                label Groupname
-                input(type="text" name="group_name" class="group-input" placeholder=`${group.group_name}`)
-            .form-group
-                label Gruppe beskrivelse
-                input(type="text" name="group_about" class="group-input" placeholder=`${group.group_about}`)
-            .form-group
-                label Email
-                input(type="email" name="group_email" class="group-input" placeholder=`${group.group_email}`)
-            .form-group
-                label Password
-                input(type="password" name="password" class="group-input")
-            .form-group
-                label Facebook URL:
-                input(type="text" name="fburl" class="group-input" placeholder=`${group.fburl}`)
-            .form-group
-                input(type="hidden" name="id" class="group-input" value=`${group.id}`)
+            .header
+                h22 Opdater gruppe
+            form(action=`/adminupdate/`, method="post")
+                .form-group
+                    label Groupname &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    input(type="text" name="group_name" class="group-input" placeholder=`${group.group_name}`)
+                .form-group
+                    label Gruppe beskrivelse &nbsp&nbsp
+                    input(type="text" name="group_about" class="group-input" placeholder=`${group.group_about}`)
+                .form-group
+                    label Email &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    input(type="email" name="group_email" class="group-input" placeholder=`${group.group_email}`)
+                .form-group
+                    label Password &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    input(type="password" name="password" class="group-input")
+                .form-group
+                    label Facebook URL &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    input(type="text" name="fburl" class="group-input" placeholder=`${group.fburl}`)
+                .form-group
+                    input(type="hidden" name="id" class="group-input" value=`${group.id}`)
 
 
-            button(type="submit" class="btn btn-primary") Submit
+                button(type="submit" class="btn btn-primary") Submit
