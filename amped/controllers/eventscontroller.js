@@ -58,7 +58,7 @@ exports.viewevents =  function (req, res, next) {
 */
 
 exports.vieweventsforgroup =  function (req, res, next) {
-    if (req.session.loggedIn !== true || req.session.Group.roles !== 1){
+    if (req.session.loggedIn !== true || req.session.Group.roles <= 0){
         res.render("nopugmission")
         return
     }
