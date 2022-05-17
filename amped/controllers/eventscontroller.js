@@ -12,10 +12,11 @@ let today1 = new Date()
 today1.setDate(today.getDate() - 1);
 
 // string variables for data manipulation:
-var findgroups = '';
-var findevents = '';
+var findgroups 
+var findevents 
 // all events sorted by date and time without the
 exports.viewevents =  function (req, res, next) {
+    
     console.log(req.session)
 
     Events.findAll(
@@ -31,23 +32,31 @@ exports.viewevents =  function (req, res, next) {
             console.log(err)
         });
     
-    /*  
-    async.parallel({
-
-        events: function(){ Events.findAll(
+    }    
+/*
+        Events.findAll(
             {order: [['dato', 'ASC'],['tid', 'ASC']],
                 where: {'dato' :{ [Op.gt]: today1}}})
-                
-        },
 
-        groups: function(){ Groups.findAll() }
+        .then(function(data){
+            findevents = data
+            console.log('events:', findevents)
+        })
+            Groups.findAll()
+   
 
-    }, function(results){
-        res.render('events', {eventlist: results},
-            console.log(results))
-    })
-    */
+        .then(function(data){
+            findgroups = data
+        })
+
+        .then(function(findevents, findgroups){
+            console.log('groups:', findgroups, 'events:', findevents)
+            res.render('events', {eventlist: findevents, eventlist: findgroups})
+        })
+
 }
+*/
+
 exports.vieweventsforgroup =  function (req, res, next) {
     if (req.session.loggedIn !== true || req.session.Group.roles !== 1){
         res.render("nopugmission")
@@ -89,7 +98,7 @@ exports.eventnameasc =  function (req, res, next) {
 }
 // alle events sortert efter navn DESC
 exports.eventnamedesc =  function (req, res, next) {
-    return Events.findAll({include: [{model: Groups, as: 'group_name'}]},{ order: [['event_name','DESC']]})
+    return Events.findAll({include: {model: Groups, as: 'group_name'}},{ order: [['event_name','DESC']]})
         .then(function(data) {
             res.render('events', {eventlist: data });
         })

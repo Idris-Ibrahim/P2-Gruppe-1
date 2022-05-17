@@ -66,12 +66,8 @@ const Events = connection.define("Events", {
 
 module.exports = Events;
 
-Groups.hasMany(Events, {
-    foreginKey: 'group_id',
-    sourceKey: 'id'
-})
-
 Events.belongsTo(Groups, {
-    targetKey: 'id',
-    foreignKey: 'group_id'
+    foreignKey: 'group_id',
+    targetKey: 'group_name',
+    key: 'id'
 })
