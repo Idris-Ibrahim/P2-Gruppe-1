@@ -36,7 +36,7 @@ const Events = connection.define("Events", {
     dato:{
         type: Sequelize.DATEONLY,
         allowNull: false,
-        //defining dddd-mmmm-yyyy notation for date element
+        //defining dd-mm-yyyy notation for date element
            get: function() {
             return this.getDataValue('dato')
               .toLocaleString('dk-DK', { 
