@@ -33,7 +33,8 @@ exports.groupsearch = function (req, res, next){
            where:{
             [Op.or]: [
                 { group_name: { [Op.like]: `%${searchInput}%`}},
-                { group_about: { [Op.like]: `%${searchInput}%`}}
+                { group_about: { [Op.like]: `%${searchInput}%`}},
+                { id : { [Op.like]: `${searchInput}`}}
             ]
         }
       })
