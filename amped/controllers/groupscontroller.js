@@ -19,6 +19,9 @@ exports.viewgroups = (req, res, next) => {
 exports.grouproleone = function(req, res, next){
     const idcheck = req.query.id
     console.log(idcheck)
+    if (idcheck > 0){
+        res.send('Group already has a role 1 or greater')
+    }else{
     Groups.update(
         // Values to update
         {
@@ -35,7 +38,7 @@ exports.grouproleone = function(req, res, next){
         }
     });
 }
-
+}
 
 // slet grupper
 
