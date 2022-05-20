@@ -5,7 +5,7 @@ const Events = require("../models/events");
 
 // se alle groups
 exports.viewgroups = (req, res, next) => {
-    return Groups.findAll()
+    return Groups.findAll({where: {'roles':{ [Op.gt]: 0}}})
         .then((data) => {
             res.render('groups', {grouplist: data },
             console.log(data));
