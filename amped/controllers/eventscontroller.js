@@ -295,6 +295,13 @@ exports.eventsupdategroup = function (req, res, next) {
         res.render("nopugmission")
         return
     }
+    var pris = req.body.pris
+    if (pris.length == 0){
+        pris = 0;
+    
+    }else{
+        pris = req.body.pris
+    }
 
     Events.update(
         // Values to update
@@ -305,12 +312,15 @@ exports.eventsupdategroup = function (req, res, next) {
             lokation: req.body.lokation,
             tid: req.body.tid,
             dato: req.body.dato,
-            pris: req.body.pris,
+            pris: pris,
             fburl: req.body.fburl,
         },
         {
-            where: {'id': {[Op.eq]: idcheck} }
-        }
+            where:{
+            [Op.and]: [ 
+            {id: {[Op.eq]: idcheck}},
+            {group_id: req.session.Group.id}
+        ]}}
     ).then(function (groups) {
         if (groups) {
             res.redirect('/grouppanel');
@@ -328,14 +338,18 @@ exports.eventsdeletegroup = function(req, res, next){
     }
     const idcheck = req.query.id
     console.log(idcheck)
-    return Events.destroy({
-        //slet ud fra id
-        where: {'id' : { [Op.eq]: idcheck} }
-    }).then(function (event) {
-        if (event) {
-            res.redirect('/grouppanel');
-        } else {
-            res.status(400).send('Error in delete');
-        }
-    });
+        Events.destroy({ where:{ 
+            //slet ud fra id og hvor group_id er det samme som det id der er i session
+            [Op.and]: [
+            { id : { [Op.eq]: idcheck}},
+            { group_id: req.session.Group.id}]
+            }
+        }).then(function (event) {
+            if (event) {
+                res.redirect('/grouppanel');
+            } else {
+                res.status(400).send('Error in delete');
+            }
+        });
+ 
 }
