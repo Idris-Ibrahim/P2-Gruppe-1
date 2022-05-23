@@ -19,27 +19,27 @@ exports.viewgroups = (req, res, next) => {
 exports.grouproleone = function(req, res, next){
     const idcheck = req.query.id
     console.log(idcheck)
-    if (idcheck > 0){
-        res.send('Group already has a role 1 or greater')
+    if (idcheck == 1){
+            res.send('You cannot update admin role')
     }else{
-    Groups.update(
-        // Values to update
-        {
-            roles : 1
-        },
-        //what group to update
-        {
-            where: {'id' : { [Op.eq]: idcheck}}
-        }).then(function (groups) {
-        if (groups) {
-            res.redirect('/admin/groups');
-        } else {
-            response.status(400).send('Error in delete');
-        }
-    });
-}
-}
+        Groups.update(
+            // Values to update
+            {
+                roles : 1
+            },
+            //what group to update
+            {
+                where: {'id' : { [Op.eq]: idcheck}}
+            }).then(function (groups) {
+            if (groups) {
+                res.redirect('/admin/groups');
+            } else {
+                response.status(400).send('Error in delete');
+            }
+        })
 
+    }
+}
 // slet grupper
 
 exports.groupsdelete = function(req, res, next){
