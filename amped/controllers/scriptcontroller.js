@@ -1,5 +1,3 @@
-const Fullcalendar = require('fullcalendar');
-
 exports.fullcalendarcss =  function (req, res, next) {
         res.sendFile(__dirname+'/static_content/fullcalendar.css')
 }
