@@ -85,6 +85,8 @@ exports.groupsupdate = function (req, res, next) {
     }
     if (passwordcheck.length < 3){
         res.send('password must be more than 3 characters');
+    }else if(navn.length < 3){
+        res.send('groupname must be more than 3 characters');
     }
             //checks if name is already in use:
         Groups.findAll({where : {'group_name':{ [Op.eq]: navn}}})
