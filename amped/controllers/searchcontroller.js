@@ -10,11 +10,12 @@ exports.eventsearch = function (req, res, next){
    var searchInput = req.query.SearchName
        return Events.findAll({
            where:{
-               //Op.or signalere at vi retunere eventen det enten hvis event_name, eller orgname indeholder vores søgeord
+               //Op.or signalere at vi retunere eventen det enten hvis event_name
+               //eller orgname indeholder vores søgeord
             [Op.or]: [
-                //% (procenttegn) signalere at søgerinputtet kan findes inde i et ord og bliver displayed
+                //% (procenttegn) signalere at søgerinputtet kan findes inde i et ord
                 { event_name: { [Op.like]: `%${searchInput}%`}},
-                /*{ group_name: { [Op.like]: `%${searchInput}%`}}*/
+                { group_id: {[Op.like]: `${searchInput}`}}
             ]
         }
       })
