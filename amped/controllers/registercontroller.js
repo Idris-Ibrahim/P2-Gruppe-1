@@ -19,7 +19,7 @@ exports.registergroups = (req, res, next) => {
         res.send('password must be more than 3 characters');
 
     }else if(navn.length < 3){
-        res.send('group name must be more than 3 characters')
+        res.send('group name must be more than 2 characters')
     }else{
     console.log(navn)
         //checks if name is already in use:
