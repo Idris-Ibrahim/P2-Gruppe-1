@@ -36,6 +36,7 @@ exports.registergroups = (req, res, next) => {
                 //sender brugeren til login siden
                 res.redirect('/login')
             }else{
+                //sender en meddelselse om at gruppenavnet allerede er i brug
                 res.send('Username already in use');
             }
         })
