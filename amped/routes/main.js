@@ -31,8 +31,7 @@ router.get(`/groups/search`, search_controller.groupsearch);
 //eventinfo
 router.get(`/eventsinfo/`,events_controller.findOne);
 
-/// Groups:
-// ?
+// Groups:
 router.get('/groups', groups_controller.viewgroups);
 // landing page for groups
 router.get('/grouppanel', events_controller.vieweventsforgroup)
