@@ -7,25 +7,25 @@ block content
             h2 Opret event
         form(action="/createevent", method="post")
             .form-event
-                label Event navn
+                label Event navn &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                 input(type="text" name="event_name" class="event-input")
+            .form-event1
+                label Beskrivelse &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                textarea(type="textarea" name="beskrivelse" class="event-input1")
             .form-event
-                label Beskrivelse
-                input(type="text" name="beskrivelse" class="event-input")
-            .form-event
-                label Lokation
+                label Lokation &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                 input(type="text" name="lokation" class="event-input")
             .form-event
-                label Tid
+                label Tid &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                 input(type="time" name="tid" class="event-input")
             .form-event
-                label Dato
+                label Dato &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                 input(type="date" name="dato" class="event-input")
             .form.event
-                label Pris
+                label Pris &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                 input(type="text" name="pris" class="event-input")
             .form-event
-                label Facebook URL:
+                label Facebook URL &nbsp&nbsp
                 input(type="url" name="fburl" class="event-input")
 
             button(type="submit" class="btn btn-primary") Submit

@@ -3,35 +3,35 @@ extends layout
 block content
     include nav
     for event in eventlist
-        .reg-box
-        .header
-            h2 Opdater event
-        form(action=`/grouppanelupdate/`, method="post")
-            .form-event
-                label Event navn
-                input(type="text" name="event_name" class="event-input" placeholder=`${event.event_name}`)
-            .form-event
-                label Beskrivelse
-                input(type="text" name="beskrivelse" class="event-input" placeholder=`${event.beskrivelse}`)
-            .form-event
-                label Lokation
-                input(type="text" name="lokation" class="event-input" placeholder=`${event.lokation}`)
-            .form-event
-                label Tid
-                input(type="time" name="tid" class="event-input" placeholder=`${event.tid}`)
-            .form-event
-                label Dato
-                input(type="date" name="dato" class="event-input" placeholder=`${event.dato}`)
-            .form.event
-                label Pris
-                input(type="text" name="pris" class="event-input" placeholder=`${event.pris}`)
-            .form-event
-                label Facebook URL:
-                input(type="url" name="fburl" class="event-input" placeholder=`${event.fburl}`)
-            .form-event
-                input(type="hidden" name="id" class="event-input" value=`${event.id}`)
+        .update-box
+            .header
+                h2 Opdater event
+            form(action=`/grouppanelupdate/`, method="post")
+                .form-event
+                    label Event navn &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    input(type="text" name="event_name" class="event-input" placeholder=`${event.event_name}`)
+                .form-event
+                    label Beskrivelse &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    textarea(type="text" name="beskrivelse" class="event-input" placeholder=`${event.beskrivelse}`)
+                .form-event
+                    label Lokation &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    input(type="text" name="lokation" class="event-input" placeholder=`${event.lokation}`)
+                .form-event
+                    label Tid &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    input(type="time" name="tid" class="event-input" placeholder=`${event.tid}`)
+                .form-event
+                    label Dato &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    input(type="date" name="dato" class="event-input" placeholder=`${event.dato}`)
+                .form.event
+                    label Pris &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    input(type="text" name="pris" class="event-input" placeholder=`${event.pris}`)
+                .form-event
+                    label Facebook URL &nbsp
+                    input(type="url" name="fburl" class="event-input" placeholder=`${event.fburl}`)
+                .form-event
+                    input(type="hidden" name="id" class="event-input" value=`${event.id}`)
 
-            button(type="submit" class="btn btn-primary") Submit
+                button(type="submit" class="btn btn-primary") Submit
 
 
 

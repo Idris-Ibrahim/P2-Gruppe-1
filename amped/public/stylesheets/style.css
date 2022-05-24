@@ -327,3 +327,34 @@ h22 {
     font-size: 14px;
     display: grid;
 }
+
+.create-box{
+    background: cornflowerblue;
+    width: 360px;
+    padding: 20px;
+    border-radius: 16px;
+    font-size: 14px;
+    display: grid;
+}
+
+.create-box .event-input1{
+    padding-bottom: 100px;
+}
+
+.update-box{
+    background: cornflowerblue;
+    width: 360px;
+    padding: 20px;
+    border-radius: 16px;
+    font-size: 14px;
+    display: grid;
+}
+
+.adupdate-box{
+    background: cornflowerblue;
+    width: 360px;
+    padding: 20px;
+    border-radius: 16px;
+    font-size: 14px;
+    display: grid;
+}
