@@ -11,14 +11,8 @@ let today = new Date()
 let today1 = new Date()
 today1.setDate(today.getDate() - 1);
 
-// string variables for data manipulation:
-var findgroups 
-var findevents 
 // all events sorted by date and time without the
 exports.viewevents =  function (req, res, next) {
-    
-    console.log(req.session)
-
     Events.findAll(
         {order: [['dato', 'ASC'],['tid', 'ASC']],
             where: {'dato' :{ [Op.gt]: today1}}})
@@ -33,7 +27,7 @@ exports.viewevents =  function (req, res, next) {
         });
     
     }    
-/*
+/*  Forsøg på at få displeyed gruppe navn istedet for id
         Events.findAll(
             {order: [['dato', 'ASC'],['tid', 'ASC']],
                 where: {'dato' :{ [Op.gt]: today1}}})
@@ -68,39 +62,6 @@ exports.vieweventsforgroup =  function (req, res, next) {
         .then(function(data) {
             res.render('grouppanel', {yourevent: data },
             console.log(data));
-        })
-        .catch( function(err)  {
-            console.log(err)
-        });
-}
-
-
-// all events sorted by date DESC
-exports.eventsdesc =  function (req, res, next) {
-    return Events.findAll({ order: [['dato','DESC'],['tid','DESC']]})
-        .then(function(data) {
-            res.render("NoPermission");
-        })
-        .catch( function(err)  {
-            console.log(err)
-        });
-}
-
-// alle events sortert efter navn ASC
-exports.eventnameasc =  function (req, res, next) {
-    return Events.findAll({ order: ['event_name']})
-        .then(function(data) {
-            res.render('events', {eventlist: data });
-        })
-        .catch( function(err)  {
-            console.log(err)
-        });
-}
-// alle events sortert efter navn DESC
-exports.eventnamedesc =  function (req, res, next) {
-    return Events.findAll({include: {model: Groups, as: 'group_name'}},{ order: [['event_name','DESC']]})
-        .then(function(data) {
-            res.render('events', {eventlist: data });
         })
         .catch( function(err)  {
             console.log(err)
@@ -149,17 +110,6 @@ exports.eventupdate = function(req, res, next){
     .catch ((err) => {
         console.log(err);
     });
-}
-
-//event info display
-exports.eventinfo = function(req, res, next){
-    return Events.findAll({ order: [['name'],['tid']]})
-        .then(function(data) {
-            res.redirect('eventinfo', {eventlist: data });
-        })
-        .catch( function(err)  {
-            console.log(err)
-        });
 }
 
 // se createvent
@@ -211,6 +161,7 @@ exports.findOne = (req, res) => {
         console.log(err)
     });
 };
+
 // events delete for admin
 exports.eventsdelete = function(req, res, next){
     if (req.session.loggedIn !== true || req.session.Group.roles < 2){
@@ -295,13 +246,6 @@ exports.eventsupdategroup = function (req, res, next) {
         res.render("nopugmission")
         return
     }
-    var pris = req.body.pris
-    if (pris.length == 0){
-        pris = 0;
-    
-    }else{
-        pris = req.body.pris
-    }
 
     Events.update(
         // Values to update
@@ -312,15 +256,12 @@ exports.eventsupdategroup = function (req, res, next) {
             lokation: req.body.lokation,
             tid: req.body.tid,
             dato: req.body.dato,
-            pris: pris,
+            pris: req.body.pris,
             fburl: req.body.fburl,
         },
         {
-            where:{
-            [Op.and]: [ 
-            {id: {[Op.eq]: idcheck}},
-            {group_id: req.session.Group.id}
-        ]}}
+            where: {'id': {[Op.eq]: idcheck} }
+        }
     ).then(function (groups) {
         if (groups) {
             res.redirect('/grouppanel');
@@ -338,18 +279,15 @@ exports.eventsdeletegroup = function(req, res, next){
     }
     const idcheck = req.query.id
     console.log(idcheck)
-        Events.destroy({ where:{ 
-            //slet ud fra id og hvor group_id er det samme som det id der er i session
-            [Op.and]: [
-            { id : { [Op.eq]: idcheck}},
-            { group_id: req.session.Group.id}]
-            }
-        }).then(function (event) {
-            if (event) {
-                res.redirect('/grouppanel');
-            } else {
-                res.status(400).send('Error in delete');
-            }
-        });
- 
+    return Events.destroy({
+        //slet ud fra id
+        where: {'id' : { [Op.eq]: idcheck} }
+    }).then(function (event) {
+        if (event) {
+            res.redirect('/grouppanel');
+        } else {
+            res.status(400).send('Error in delete');
+        }
+    });
 }
+

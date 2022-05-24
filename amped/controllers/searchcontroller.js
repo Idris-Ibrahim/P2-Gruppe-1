@@ -8,7 +8,8 @@ const Groups = require("../models/groups");
 exports.eventsearch = function (req, res, next){
     //req.query fik det til at virke :D, req.body eller req.params virkede ikke
    var searchInput = req.query.SearchName
-       return Events.findAll({
+       return Events.findAll(
+        {order: [['dato', 'ASC'],['tid', 'ASC']],
            where:{
                //Op.or signalere at vi retunere eventen det enten hvis event_name
                //eller orgname indeholder vores søgeord
@@ -19,7 +20,6 @@ exports.eventsearch = function (req, res, next){
             ]
         }
       })
-
        .then(function(data) {
        return res.render('events', {eventlist: data });
     })
