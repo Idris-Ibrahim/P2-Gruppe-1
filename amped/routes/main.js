@@ -85,9 +85,7 @@ router.post('/admin/groups/role', groups_controller.grouproleone);
 router.get('/admin/events', admin_controller.viewevents);
 // søg grupper
 router.get('/admin/search', search_controller.groupsearchadmin);
-// opret gruppe
-router.get('/adminopret', admin_controller.registeradmin);
-router.post('/adminopret',admin_controller.adminregistergroups);
+
 // update gruppe
 router.get('/adminupdate/', groups_controller.updateadmin);
 router.post('/adminupdate/',groups_controller.groupsupdate);

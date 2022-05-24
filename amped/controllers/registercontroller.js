@@ -4,20 +4,19 @@ const Groups = require("../models/groups"); //skal implementeres
 
 
 exports.registerpage = (req, res, next) => {
+    //render register.pug
     res.render("register")
-}
-
-exports.registeradmin = (req, res, next) => {
-    res.render("adminopret")
 }
 
 // register group
 exports.registergroups = (req, res, next) => {
+    //gemmer navn og password i lokale variabler
     const navn = req.body.group_name
     const passwordcheck = req.body.password
+    //chekker om kodeord er minimum 4 tegn
     if (passwordcheck.length < 4){
         res.send('password must be more than 3 characters');
-
+    //chekker om gruppenavn er minimum 3 tegn
     }else if(navn.length < 3){
         res.send('group name must be more than 2 characters')
     }else{
@@ -34,6 +33,7 @@ exports.registergroups = (req, res, next) => {
                     fburl: req.body.FacebookURL,
                     roles: 0
                 })
+                //sender brugeren til login siden
                 res.redirect('/login')
             }else{
                 res.send('Username already in use');
