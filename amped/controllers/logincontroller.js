@@ -1,7 +1,4 @@
-const Sequelize = require("sequelize");
 const Groups = require("../models/groups");
-const {Datatypes, Op} = Sequelize;
-const Users = require("../models/groups"); //skal implementeres
 
 exports.loginpage = (req, res, next) => {
     if(req.session.loggedIn) {

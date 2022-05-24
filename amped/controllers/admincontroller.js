@@ -1,10 +1,8 @@
 const Sequelize = require("sequelize");
-const {Datatypes, Op} = Sequelize;
 const Events = require("../models/events");
 const Groups = require("../models/groups");
 
 // all events sorted by date and time
-
 exports.adminpage = (req, res) => {
     if (req.session.loggedIn !== true || req.session.Group.roles !== 2){
         res.render("nopugmission")
@@ -41,6 +39,7 @@ exports.viewgroups = (req, res, next) => {
             console.log(err)
         });
 }
+
 // viser opret-gruppe page
 exports.registeradmin = (req, res, next) => {
     res.render("adminopret")
@@ -70,7 +69,7 @@ exports.updateadmin = (req, res, next) => {
 }
 
 // viser update gruppe form
-exports.adminupdategroups = function(req, res, next){
+exports.adminupdategroups = function(req, res, next) {
     if (req.session.loggedIn !== true || req.session.Group.roles < 2){
         res.send("You do not have permission to do this")
         return

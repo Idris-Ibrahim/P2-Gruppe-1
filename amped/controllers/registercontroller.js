@@ -1,5 +1,5 @@
 const Sequelize = require("sequelize");
-const {Datatypes, Op} = Sequelize;
+const {Op} = Sequelize;
 const Groups = require("../models/groups"); //skal implementeres
 
 

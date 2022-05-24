@@ -1,9 +1,6 @@
 const Sequelize = require("sequelize");
-const {Datatypes, Op} = Sequelize;
+const {Op} = Sequelize;
 const Events = require("../models/events");
-const { grouproleone } = require("./groupscontroller");
-const Groups = require("../models/groups");
-const async = require('async');
 const { response } = require("express");
 
 //datetime of the current date for referencing:
@@ -11,9 +8,6 @@ let today = new Date()
 let today1 = new Date()
 today1.setDate(today.getDate() - 1);
 
-// string variables for data manipulation:
-var findgroups 
-var findevents 
 // all events sorted by date and time without the
 exports.viewevents =  function (req, res, next) {
     
@@ -33,29 +27,6 @@ exports.viewevents =  function (req, res, next) {
         });
     
     }    
-/*
-        Events.findAll(
-            {order: [['dato', 'ASC'],['tid', 'ASC']],
-                where: {'dato' :{ [Op.gt]: today1}}})
-
-        .then(function(data){
-            findevents = data
-            console.log('events:', findevents)
-        })
-            Groups.findAll()
-   
-
-        .then(function(data){
-            findgroups = data
-        })
-
-        .then(function(findevents, findgroups){
-            console.log('groups:', findgroups, 'events:', findevents)
-            res.render('events', {eventlist: findevents, eventlist: findgroups})
-        })
-
-}
-*/
 
 exports.vieweventsforgroup =  function (req, res, next) {
     if (req.session.loggedIn !== true || req.session.Group.roles <= 0){
@@ -68,39 +39,6 @@ exports.vieweventsforgroup =  function (req, res, next) {
         .then(function(data) {
             res.render('grouppanel', {yourevent: data },
             console.log(data));
-        })
-        .catch( function(err)  {
-            console.log(err)
-        });
-}
-
-
-// all events sorted by date DESC
-exports.eventsdesc =  function (req, res, next) {
-    return Events.findAll({ order: [['dato','DESC'],['tid','DESC']]})
-        .then(function(data) {
-            res.render("NoPermission");
-        })
-        .catch( function(err)  {
-            console.log(err)
-        });
-}
-
-// alle events sortert efter navn ASC
-exports.eventnameasc =  function (req, res, next) {
-    return Events.findAll({ order: ['event_name']})
-        .then(function(data) {
-            res.render('events', {eventlist: data });
-        })
-        .catch( function(err)  {
-            console.log(err)
-        });
-}
-// alle events sortert efter navn DESC
-exports.eventnamedesc =  function (req, res, next) {
-    return Events.findAll({include: {model: Groups, as: 'group_name'}},{ order: [['event_name','DESC']]})
-        .then(function(data) {
-            res.render('events', {eventlist: data });
         })
         .catch( function(err)  {
             console.log(err)

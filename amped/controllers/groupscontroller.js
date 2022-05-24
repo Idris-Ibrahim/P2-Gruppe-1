@@ -1,7 +1,6 @@
 const Sequelize = require("sequelize");
-const {Datatypes, Op} = Sequelize;
+const {Op} = Sequelize;
 const Groups = require("../models/groups");
-const Events = require("../models/events");
 
 // se alle groups
 exports.viewgroups = (req, res, next) => {
@@ -40,8 +39,8 @@ exports.grouproleone = function(req, res, next){
 
     }
 }
-// slet grupper
 
+// slet grupper
 exports.groupsdelete = function(req, res, next){
     if (req.session.loggedIn !== true || req.session.Group.roles < 2){
         res.render("nopugmission")
