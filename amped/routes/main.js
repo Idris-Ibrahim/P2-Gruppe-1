@@ -72,6 +72,8 @@ router.post('/register',register_controller.registergroups);
 
 
 ///admin
+
+
 // landing page få admin
 router.get('/admin', admin_controller.adminpage);
 // grupper

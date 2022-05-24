@@ -10,18 +10,18 @@ today1.setDate(today.getDate() - 1);
 
 // all events sorted by date and time without the
 exports.viewevents =  function (req, res, next) {
-    
-    console.log(req.session)
-
+//finder alle events sorteret efter tid og dato hvor at dato ikke må være
+//mindre end dagens dato
     Events.findAll(
         {order: [['dato', 'ASC'],['tid', 'ASC']],
             where: {'dato' :{ [Op.gt]: today1}}})
 
     .then(function(data) {
+        //render dataen ud til events.pug
             res.render('events', {eventlist: data},
             console.log(data))
     })
-
+        //catching errors
         .catch( function(err)  {
             console.log(err)
         });
@@ -29,14 +29,19 @@ exports.viewevents =  function (req, res, next) {
     }    
 
 exports.vieweventsforgroup =  function (req, res, next) {
-    if (req.session.loggedIn !== true || req.session.Group.roles <= 0){
+    //checker om roles er min 1.
+    if (req.session.loggedIn !== true || req.session.Group.roles < 1){
+        //hvis ikke så render vi nopugmission.pug for at fortælle brugeren
+        //at de ikke har tilladelse til adgang
         res.render("nopugmission")
         return
     }
-    console.log(req.session)
+    //finder alle events som har samme group id som den gruppe der er i session.
     return Events.findAll({where: {group_id : req.session.Group.id},
+        //sortere efter dato og tid
         order: [['dato', 'ASC'],['tid', 'ASC']]})
         .then(function(data) {
+            //render dataen ud til grouppanel.pug
             res.render('grouppanel', {yourevent: data },
             console.log(data));
         })
@@ -45,49 +50,6 @@ exports.vieweventsforgroup =  function (req, res, next) {
         });
 }
 
-exports.eventdelete = function(req, res, next){
-    if (req.session.loggedIn !== true || req.session.Group.roles < 1){
-        res.send("You do not have permission to do this")
-        return
-    }
-    const idcheck = req.query.id
-    console.log(idcheck)
-    return Events.destroy({
-        //slet ud fra id
-        where: {'id' : { [Op.eq]: idcheck} }
-    }).then(function (events) {
-        if (events) {
-            res.redirect('/grouppanel/delete');
-        } else {
-            response.status(400).send('Error in delete');
-        }
-    });
-}
-
-exports.eventupdate = function(req, res, next){
-    if (req.session.loggedIn !== true || req.session.Group.roles < 1){
-        res.send("You do not have permission to do this")
-        return
-    }
-    Events.update(
-        // Values to update
-        {
-            event_name: req.body.event_name,
-            lokation: req.body.event_lokation,
-            tid: req.body.event_tid,
-            dato: req.body.event_dato,
-            pris: req.body.event_pris,
-            fburl: req.body.event_fburl
-        },
-        {
-            where: {id: req.body.id}
-        },
-        console.log(result))
-        //catching error
-    .catch ((err) => {
-        console.log(err);
-    });
-}
 
 //event info display
 exports.eventinfo = function(req, res, next){
