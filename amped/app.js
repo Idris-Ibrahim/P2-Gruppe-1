@@ -1,3 +1,4 @@
+//Her hentes pakker
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -8,13 +9,13 @@ const session = require('express-session')
 
 var mainRouter = require('./routes/main');
 
-var app = express();
+var app = express(); //app defineres ved express som er blevet hentet tidligere
 
 const serverhost = 'localhost';
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.set('view engine', 'pug'); 
 
 app.use(logger('dev'));
 app.use(express.json());
