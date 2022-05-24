@@ -16,7 +16,6 @@ block content
 
                 //window config
                 height: 750,
-                aspectRatio: 1.35,
                 headerToolbar: {
                     left: 'prev,next today',
                     center: 'title',
@@ -36,7 +35,6 @@ block content
                 expandRows:true,
                 navLinks: true,
                 selectable: true,
-                dayMaxEventRows: true, // for all non-TimeGrid views
                 events: !{JSON.stringify(eventlist)},
             });
             calendar.render();
