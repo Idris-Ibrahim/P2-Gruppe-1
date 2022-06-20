@@ -3,15 +3,16 @@ const {Op} = Sequelize;
 const Events = require("../models/events");
 const { response } = require("express");
 
-//datetime of the current date for referencing:
-let today = new Date()
-let today1 = new Date()
-today1.setDate(today.getDate() - 1);
 
 // all events sorted by date and time without the
 exports.viewevents =  function (req, res, next) {
 //finder alle events sorteret efter tid og dato hvor at dato ikke må være
 //mindre end dagens dato
+//datetime of the current date for referencing:
+let today = new Date()
+let today1 = new Date()
+today1.setDate(today.getDate() - 1);
+
     Events.findAll(
         {order: [['dato', 'ASC'],['tid', 'ASC']],
             where: {'dato' :{ [Op.gt]: today1}}})
@@ -25,8 +26,28 @@ exports.viewevents =  function (req, res, next) {
         .catch( function(err)  {
             console.log(err)
         });
-    
-    }    
+
+    }
+       
+/*
+    async.parallel({
+
+        events: function(callback){
+            Events.findAll(
+            {order: [['dato', 'ASC'],['tid', 'ASC']],
+            where: {'dato' :{ [Op.gt]: today1}}}, callback)
+        }, 
+
+        groups: function(callback){
+            Groups.findAll({},callback)
+        }
+   
+    }, function(err, results){
+        res.render('events', {error: err, eventlist: results})
+    })
+
+};
+*/
 
 exports.vieweventsforgroup =  function (req, res, next) {
     //checker om roles er min 1.
